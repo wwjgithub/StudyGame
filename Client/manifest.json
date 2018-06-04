@@ -7,13 +7,18 @@
 		"libs/modules/tween/tween.js",
 		"libs/modules/socket/socket.js",
 		"libs/modules/game/game.js",
-		"libs/modules/promise/promise.js"
+		"libs/modules/promise/promise.js",
+		"libs3/puremvc/bin/puremvc.js"
 	],
 	"game": [
+		"bin-debug/core/model/HeroModel.js",
+		"bin-debug/core/AppFacade.js",
 		"bin-debug/AssetAdapter.js",
 		"bin-debug/LoadingUI.js",
 		"bin-debug/Main.js",
-		"bin-debug/Platform.js",
-		"bin-debug/ThemeAdapter.js"
+		"bin-debug/ThemeAdapter.js",
+		"bin-debug/core/controller/StartCommand.js",
+		"bin-debug/core/model/HeroProxy.js",
+		"bin-debug/core/view/LoginMediator.js"
 	]
 }

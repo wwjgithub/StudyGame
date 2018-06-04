@@ -35,6 +35,10 @@
     },
     {
       "name": "promise"
+    },
+    {
+      "name": "puremvc",
+      "path": "libs3/puremvc"
     }
   ]
 }
