@@ -1,0 +1,10 @@
+{
+  "163caae3dff": {
+    "path": "..\\resource\\myskins\\N_Panel.ts",
+    "class": "N_Panel",
+    "parentPath": "resource/eui_skins/PanelSkin.exml"
+  },
+  "global": {
+    "globalAutoLayerMarkEnable": false
+  }
+}

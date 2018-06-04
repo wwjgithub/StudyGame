@@ -1,0 +1,9 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<e:Skin class="NButtonSkin" states="up,down,disabled" minHeight="50" minWidth="100" xmlns:e="http://ns.egret.com/eui" xmlns:w="http://ns.egret.com/wing">
+    <e:Image width="100%" height="100%" alpha.disabled="1"
+            
+             source="common_json.gj_tongyan1" source.down="common_json.gj_tongyan2" source.disabled="common_json.gj_tongyan3" scale9Grid="12,14,71,18"/>
+	<e:Label id="labelDisplay" top="8" bottom="8" left="8" right="8" size="20" textColor="0xFFFFFF" verticalAlign="middle" textAlign="center" text.down="" text="11" locked="true"/>
+
+	<w:Config id="163cab224d7" ></w:Config>
+</e:Skin>
