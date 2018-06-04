@@ -4,11 +4,11 @@ module game.model {
     export class HeroModel {
 
         userId: number;
-        userName: number;
+        userName: string;
         nick: string
 
 
-        constructor(userId: number, userName: number, nick: string) {
+        constructor(userId: number, userName: string, nick: string) {
             this.userId = userId;
             this.userName = userName;
             this.nick = nick;
