@@ -12,6 +12,7 @@
     },
     "include": [
         "src",
-        "libs"
+        "libs",
+        "libs3/puremvc"
     ]
 }

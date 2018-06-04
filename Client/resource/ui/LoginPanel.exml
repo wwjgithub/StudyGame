@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<e:Skin class="LoginPanel" width="640" height="960" xmlns:e="http://ns.egret.com/eui">
+	<e:Image width="484" height="396" x="78" y="282" anchorOffsetX="0" anchorOffsetY="0" source="common_json.gj_tongyongdi2" scale9Grid="14,14,88,88"/>
+	<e:Button label="登录" x="216.17" y="596.67" anchorOffsetX="0" width="207.67" anchorOffsetY="0" height="49.67" enabled="true" skinName="NButtonSkin"/>
+</e:Skin>

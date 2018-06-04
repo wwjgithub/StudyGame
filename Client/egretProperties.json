@@ -5,21 +5,40 @@
   "target": {
     "current": "web"
   },
+  "eui": {
+    "exmlRoot": [
+      "resource/eui_skins"
+    ],
+    "themes": [
+      "resource/default.thm.json"
+    ],
+    "exmlPublishPolicy": "commonjs"
+  },
   "modules": [
     {
       "name": "egret"
     },
     {
-      "name": "game"
-    },
-    {
-      "name": "tween"
+      "name": "eui"
     },
     {
       "name": "assetsmanager"
     },
     {
+      "name": "tween"
+    },
+    {
+      "name": "socket"
+    },
+    {
+      "name": "game"
+    },
+    {
       "name": "promise"
+    },
+    {
+      "name": "puremvc",
+      "path": "libs3/puremvc"
     }
   ]
 }
