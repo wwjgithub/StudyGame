@@ -10,14 +10,6 @@ module game {
             super(mediatorName, viewComponent);
         }
 
-        listNotificationInterests(): string[] {
-            return super.listNotificationInterests();
-        }
-
-        handleNotification(notification: puremvc.INotification): void {
-            super.handleNotification(notification);
-        }
-
         public show() {
             console.log("LoginMediator show");
         }
