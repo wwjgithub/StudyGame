@@ -28,16 +28,16 @@ module engine.vo {
 
         public getPrev():MjCard{
             if(this.isNumCard()){
-                if(num!=1){
-                    return new MjCard(this.type, num - 1);
+                if(this.num!=1){
+                    return new MjCard(this.type, this.num - 1);
                 }
             }
             return null
         }
         public getNext():MjCard{
             if(this.isNumCard()){
-                if(num!=9){
-                    return new MjCard(this.type, num + 1);
+                if(this.num!=9){
+                    return new MjCard(this.type, this.num + 1);
                 }
             }
             return null
@@ -48,19 +48,19 @@ module engine.vo {
             switch (this.type) {
                 case MjConst.type_feng:
                     var ss = ["东风", "南风", "西风", "北风"];
-                    s = ss[num - 1];
+                    s = ss[this.num - 1];
                     break;
                 case MjConst.type_se:
                     var ss1 = ["红中", "发财", "白板"];
-                    s = ss1[num - 1];
+                    s = ss1[this.num - 1];
                     break;
                 case MjConst.type_hua:
                     var ss4 = ["春", "夏", "秋", "冬", "梅", "兰", "竹", "菊"];
-                    s = ss4[num - 1];
+                    s = ss4[this.num - 1];
                     break;
                 default :
                     var ss2 = ["一", "二", "三", "四", "五", "六", "七", "八", "九"];
-                    s = ss2[num - 1];
+                    s = ss2[this.num - 1];
                     if (this.type == MjConst.type_wan) {
                         s += "万";
                     }
@@ -84,7 +84,7 @@ module engine.vo {
             if (last == null) {
                 return false;
             }
-            return this.type == last.type && num == last.num;
+            return this.type == last.type && this.num == last.num;
         }
 
         /**
@@ -96,7 +96,7 @@ module engine.vo {
         }
 
         public clone():MjCard {
-            return new MjCard(this.type, num);
+            return new MjCard(this.type, this.num);
         }
 
         /**
