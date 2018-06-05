@@ -4,29 +4,36 @@
  * Date: 13-4-17
  * Time: 下午5:43
  */
+
+
+
 module engine {
 
-    export class MjRound extends egret.EventDispatcher {
+    import MjPlayer = engine.vo.MjPlayer;
+    import MjCard = engine.vo.MjCard;
+    import MjFetchInfo = engine.vo.MjFetchInfo;
+    import MjChiInfo = engine.vo.MjChiInfo;
+
+    export class MjRound {
         private _players:MjPlayer[] = [];
         private _playType:number;
         private cards:MjCard[] = [];
         public quanFeng:number;
         public static CNT_CHANGE:string = "MjRound.CNT_CHANGE";
         public menFeng:number;
-        public static var instance:MjRound;
+        public static instance:MjRound;
 
         public static init(playType:number) {
-            instance = new MjRound(playType);
+            MjRound.instance = new MjRound(playType);
         }
 
         constructor(playType:number) {
-            super();
             this._playType = playType;
-            _players = new Vector.<MjPlayer>();
+            this._players = [];
             var i:number = 0;
             for (i = 0; i < playType; i++) {
                 var mjPlayer:MjPlayer = new MjPlayer();
-                _players.push(mjPlayer);
+                this._players.push(mjPlayer);
             }
         }
 
@@ -35,14 +42,14 @@ module engine {
          * @return [playerId,cardId]
          */
         public fetch(reverse:boolean):MjFetchInfo {
-            if (cards.length <= 0) {
+            if (this.cards.length <= 0) {
                 return null;
             }
             var info:MjFetchInfo;
             if (!reverse) {
-                info = new MjFetchInfo(0, cards.shift(), null);
+                info = new MjFetchInfo(0, this.cards.shift(), null);
             } else {
-                info = new MjFetchInfo(0, cards.pop(), null)
+                info = new MjFetchInfo(0, this.cards.pop(), null)
             }
             dispatchEvent(new Event(MjRound.CNT_CHANGE));
             return info
@@ -53,11 +60,11 @@ module engine {
          * @return
          */
         public hasCard():boolean {
-            return cards.length > 0;
+            return this.cards.length > 0;
         }
 
-        public get players():Vector.<MjPlayer> {
-            return _players;
+        public get players() {
+            return this._players;
         }
 
         /**
@@ -85,7 +92,7 @@ module engine {
             //
             var temp:MjCard[];
             if(cardLib==null) {
-                if (_playType == MjConst.playtype_2) {
+                if (this._playType == MjConst.playtype_2) {
                     temp = MjConst.Total2();
                 }
                 else {
@@ -104,7 +111,7 @@ module engine {
             }
             var lib:MjCard[] = [];
             while (temp.length > 0) {
-                var i2:number = int(Math.random() * temp.length);
+                var i2:number = Math.floor(Math.random() * temp.length);
                 lib.push(temp.splice(i2, 1)[0]);
             }
             //凑足13张
@@ -123,19 +130,19 @@ module engine {
             //
             csLast = csLast.concat(lib);
             csLast = csLast.concat(csLastReverse.reverse());
-            _players[0].updateShowCards(cs1);
-            _players[1].updateShowCards(cs2);
-            _players[2].updateShowCards(cs3);
-            _players[3].updateShowCards(cs4);
+            this._players[0].updateShowCards(cs1);
+            this._players[1].updateShowCards(cs2);
+            this._players[2].updateShowCards(cs3);
+            this._players[3].updateShowCards(cs4);
             this.cards = csLast;
         }
 
         public get playType():number {
-            return _playType;
+            return this._playType;
         }
 
         public getCardCnt():number {
-            return cards.length
+            return this.cards.length
         }
 
         /**
@@ -145,8 +152,8 @@ module engine {
          */
         public getOpenCardCnt(target:MjCard):number {
             var cnt:number = 0;
-            for (var i:number = 0; i < players.length; i++) {
-                var player:MjPlayer = players[i];
+            for (var i:number = 0; i < this.players.length; i++) {
+                var player:MjPlayer = this.players[i];
                 var pendCards:MjCard[] = player.getPengCards();
                 for (var j:number = 0; j < pendCards.length; j++) {
                     if (pendCards[j].equal(target)) {
@@ -161,7 +168,7 @@ module engine {
                         break;
                     }
                 }
-                var chiInfos:Vector.<MjChiInfo> = player.getChiInfos();
+                var chiInfos = player.getChiInfos();
                 for (var k:number = 0; k < chiInfos.length; k++) {
                     var info:MjChiInfo = chiInfos[k];
                     for (var kk:number = 0; kk < info.cards.length; kk++) {

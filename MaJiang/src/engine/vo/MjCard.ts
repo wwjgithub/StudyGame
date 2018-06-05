@@ -5,7 +5,6 @@
  * Time: 下午4:22
  */
 module engine.vo {
-    //import engine.*;
 
     /**
      * 麻将牌

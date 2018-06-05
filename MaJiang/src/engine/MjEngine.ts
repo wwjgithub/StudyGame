@@ -1,8 +1,8 @@
 /**
  * Created by IntelliJ IDEA.
- * User: wwj
- * Date: 13-3-14
- * Time: 下午2:20
+ * User wwj
+ * Date 13-3-14
+ * Time 下午2:20
  */
 
 
@@ -10,6 +10,11 @@ module engine {
 
     import MjCard = engine.vo.MjCard;
     import HuInfo = engine.vo.HuInfo;
+    import MjChiInfo = engine.vo.MjChiInfo;
+    import MjFanInfo = engine.vo.MjFanInfo;
+    import MjTingInfo = engine.vo.MjTingInfo;
+    import SplitTypeInfo = engine.vo.SplitTypeInfo;
+    import MjPlayerThinkStatus = engine.vo.MjPlayerThinkStatus;
 
     export class MjEngine {
 
@@ -17,10 +22,10 @@ module engine {
          * 是否有可胡的牌型
          * @return
          */
-        public static getHuInfos(cs:MjCard[], maxCnt:number = 100):HuInfo[] {
-            var infos:HuInfo[] = new Vector.<HuInfo>();
-            var cards:MjCard[] = cs.slice();
-            cards.sort(sortCardByTypeNum);
+        static getHuInfos(cs, maxCnt = 100) {
+            var infos = [];
+            var cards = cs.slice();
+            cards.sort(MjEngine.sortCardByTypeNum);
             var b:boolean;
             //前面这是特殊牌型.
             b = MjFan.is七对(cards);
@@ -49,61 +54,61 @@ module engine {
                 if (infos.length > maxCnt)return infos;
             }
             //下面这是普通牌型
-            var duis:MjCard[] = getDouble(cards);
+            var duis = MjEngine.getDouble(cards);
             //先把将拿出来.因为有的作用可能不是将.需要挨个比较
             var i:number;
             var retStatus:HuInfo;
             for (i = 0; i < duis.length; i++) {
-                var tss:MjCard[] = cards.slice();
-                tss.sort(sortCardByTypeNum);
-                var jiang:MjCard = duis[i];
-                subSpecialCnt(tss, jiang, 2);
+                var tss = cards.slice();
+                tss.sort(MjEngine.sortCardByTypeNum);
+                var jiang = duis[i];
+                MjEngine.subSpecialCnt(tss, jiang, 2);
                 //
                 retStatus = new HuInfo();
                 retStatus.jiang = jiang;
-                var ts1:MjCard[] = tss.slice();
-                retStatus.anShun = retStatus.anShun.concat(subLine(ts1));
+                var ts1 = tss.slice();
+                retStatus.anShun = retStatus.anShun.concat(MjEngine.subLine(ts1));
                 //subSame(ts1, 4);
-                retStatus.anKe = retStatus.anKe.concat(subSameCnt(ts1, 3));
+                retStatus.anKe = retStatus.anKe.concat(MjEngine.subSameCnt(ts1, 3));
                 if (ts1.length == 0) {
                     infos.push(retStatus);
                     if (infos.length > maxCnt)return infos;
                 }
                 retStatus = new HuInfo();
                 retStatus.jiang = jiang;
-                var ts2:MjCard[] = tss.slice();
-                retStatus.anShun = retStatus.anShun.concat(subLineReverse(ts2));
+                var ts2 = tss.slice();
+                retStatus.anShun = retStatus.anShun.concat(MjEngine.subLineReverse(ts2));
                 //subSame(ts2, 4);
-                retStatus.anKe = retStatus.anKe.concat(subSameCnt(ts2, 3));
+                retStatus.anKe = retStatus.anKe.concat(MjEngine.subSameCnt(ts2, 3));
                 if (ts2.length == 0) {
                     infos.push(retStatus);
                     if (infos.length > maxCnt)return infos;
                 }
                 retStatus = new HuInfo();
                 retStatus.jiang = jiang;
-                var ts3:MjCard[] = tss.slice();
+                var ts3 = tss.slice();
                 //subSame(ts3, 4);
-                retStatus.anKe = retStatus.anKe.concat(subSameCnt(ts3, 3));
-                retStatus.anShun = retStatus.anShun.concat(subLine(ts3));
+                retStatus.anKe = retStatus.anKe.concat(MjEngine.subSameCnt(ts3, 3));
+                retStatus.anShun = retStatus.anShun.concat(MjEngine.subLine(ts3));
                 if (ts3.length == 0) {
                     infos.push(retStatus);
                     if (infos.length > maxCnt)return infos;
                 }
                 retStatus = new HuInfo();
                 retStatus.jiang = jiang;
-                var ts4:MjCard[] = tss.slice();
+                var ts4 = tss.slice();
                 //subSame(ts4, 4);
-                retStatus.anKe = retStatus.anKe.concat(subSameCnt(ts4, 3));
-                retStatus.anShun = retStatus.anShun.concat(subLineReverse(ts4));
+                retStatus.anKe = retStatus.anKe.concat(MjEngine.subSameCnt(ts4, 3));
+                retStatus.anShun = retStatus.anShun.concat(MjEngine.subLineReverse(ts4));
                 if (ts4.length == 0) {
                     infos.push(retStatus);
                     if (infos.length > maxCnt)return infos;
                 }
             }
-            for (var j:number = 0; j < infos.length; j++) {
-                var info:HuInfo = infos[j];
-                for (var k:number = j + 1; k < infos.length; k++) {
-                    var info1:HuInfo = infos[k];
+            for (var j = 0; j < infos.length; j++) {
+                var info = infos[j];
+                for (var k = j + 1; k < infos.length; k++) {
+                    var info1 = infos[k];
                     if (info1.toString() == info.toString()) {
                         infos.splice(k, 1);
                         k--;
@@ -113,20 +118,20 @@ module engine {
             return infos;
         }
 
-        public static getMaxHuInfo(infos:Vector.<HuInfo>, player:MjPlayer, mingTarget:MjCard, anTarget:MjCard):HuInfo {
+        static getMaxHuInfo(infos, player, mingTarget, anTarget) {
             if (infos == null || infos.length == 0) {
                 return null;
             }
-            for (var j:number = 0; j < infos.length; j++) {
-                var info:HuInfo = infos[j];
+            for (var j = 0; j < infos.length; j++) {
+                var info = infos[j];
                 if (mingTarget != null) {
                     info.mingTarget = mingTarget;
                 } else {
                     info.anTarget = anTarget;
                 }
-                info.fan = getFan(player, info);
+                info.fan = MjEngine.getFan(player, info);
             }
-            var f = function (f1:HuInfo, f2:HuInfo):number {
+            var f = function (f1, f2) {
                 if (f1.fan > f2.fan) {
                     return -1;
                 } else if (f1.fan == f2.fan) {
@@ -145,13 +150,13 @@ module engine {
          * @param huInfo
          * @return
          */
-        public static getFan(player:MjPlayer, huInfo:HuInfo):number {
-            var fans:Vector.<MjFanInfo> = getFans(player, huInfo);
+        static getFan(player, huInfo) {
+            var fans = MjEngine.getFans(player, huInfo);
             //计算番数
-            var fanCnt:number = 0;
-            var j:number = 0;
+            var fanCnt = 0;
+            var j = 0;
             for (j = 0; j < fans.length; j++) {
-                var mjFanInfo:MjFanInfo = fans[j];
+                var mjFanInfo = fans[j];
                 if (mjFanInfo.valid) {
                     fanCnt += mjFanInfo.fan;
                 }
@@ -165,15 +170,15 @@ module engine {
          * @param huInfo
          * @return
          */
-        public static getFans(status:MjPlayer, huInfo:HuInfo):Vector.<MjFanInfo> {
-            var fans:Vector.<MjFanInfo> = new Vector.<MjFanInfo>();
+        static getFans(status, huInfo) {
+            var fans = [];
             var ignores = [];
-            var map:Dictionary = MjFan.fanmap;
+            var map = MjFan.fanmap;
             MjFan.status = status;
             MjFan.huInfo = huInfo;
-            for (var m:string in map) {
+            for (var m in map) {
                 if (map[m]["a" + MjRound.instance.playType] == true && map[m].func != null) {
-                    var fanCnt:number = map[m].func();
+                    var fanCnt = map[m].func();
                     if (fanCnt > 0) {
                         fans.push(new MjFanInfo(m, fanCnt));
                         if (map[m].ignore != null) {
@@ -183,9 +188,9 @@ module engine {
                 }
             }
             //下面设置无效番形
-            var i:number = 0;
+            var i = 0;
             for (i = 0; i < fans.length; i++) {
-                var fan:MjFanInfo = fans[i];
+                var fan = fans[i];
                 if (ignores.indexOf(fan.name) != -1) {
                     fan.valid = false;
                 }
@@ -203,9 +208,9 @@ module engine {
          * @param card
          * @param _cnt
          */
-        public static subSpecialCnt(cards:MjCard[], card:MjCard, _cnt:number) {
-            var j:number = 0;
-            var cnt:number = 0;
+        static subSpecialCnt(cards, card, _cnt) {
+            var j = 0;
+            var cnt = 0;
             for (j = 0; j < cards.length; j++) {
                 if (cards[j].equal(card)) {
                     cards.splice(j, 1);
@@ -223,10 +228,10 @@ module engine {
          * @param ts
          * @return
          */
-        public static getDouble(ts:MjCard[]):MjCard[] {
-            ts.sort(sortCardByTypeNum);
-            var duis:MjCard[] = [];
-            var i:number = 0;
+        static getDouble(ts) {
+            ts.sort(MjEngine.sortCardByTypeNum);
+            var duis = [];
+            var i = 0;
             for (i = 0; i < ts.length - 1; i++) {
                 if (ts[i].equal(ts[i + 1])) {
                     if (duis.length > 0) {
@@ -242,26 +247,26 @@ module engine {
             return duis;
         }
 
-        private static function subLine_use(ts:MjCard[], vs:Vector.<MjCard[]>) {
+        static subLine_use(ts, vs) {
             if (ts.length < 3) {
                 return;
             }
-            var startIndex:number = 0;
+            var startIndex = 0;
             while (true) {
                 if (startIndex >= ts.length - 2) {
                     return;
                 }
-                var curCard:MjCard = ts[startIndex];
+                var curCard = ts[startIndex];
                 if (!curCard.isNumCard()) {
                     return;
                 }
-                var t2:MjCard = null;
-                var i2:number = 0;
-                var t3:MjCard = null;
-                var i3:number = 0;
-                var i:number = 0;
+                var t2 = null;
+                var i2 = 0;
+                var t3 = null;
+                var i3 = 0;
+                var i = 0;
                 for (i = startIndex + 1; i < ts.length; i++) {
-                    var cur:MjCard = ts[i];
+                    var cur = ts[i];
                     if (t2 == null) {//先与第一张牌比较
                         if (cur.equal(curCard)) {//如果这张牌与目标牌一样.略过.
                             if (i >= ts.length - 2) {
@@ -299,7 +304,7 @@ module engine {
                     }
                 }
                 if (t3 != null) {
-                    var vv:MjCard[] = [];
+                    var vv = [];
                     vv.push(ts.splice(i3, 1)[0]);
                     vv.push(ts.splice(i2, 1)[0]);
                     vv.push(ts.splice(startIndex, 1)[0]);
@@ -312,10 +317,10 @@ module engine {
          * 删除顺
          * @param ts
          */
-        public static subLine(ts:MjCard[]):Vector.<MjCard[]> {
-            var vs:Vector.<MjCard[]> = new Vector.<MjCard[]>();
-            ts.sort(sortCardByTypeNum);
-            subLine_use(ts, vs);
+        static subLine(ts) {
+            var vs = [];
+            ts.sort(MjEngine.sortCardByTypeNum);
+            MjEngine.subLine_use(ts, vs);
             return vs;
         }
 
@@ -325,14 +330,14 @@ module engine {
          * @param child
          * @return
          */
-        public static subContain(froms:MjCard[], child:MjCard[]):boolean {
+        static subContain(froms, child) {
             var index = [];
-            var vs:MjCard[] = froms.slice();
-            var i:number = 0;
+            var vs = froms.slice();
+            var i = 0;
             for (i = 0; i < child.length; i++) {
-                var mjCard:MjCard = child[i];
-                var j:number = 0;
-                var ind:number = -1;
+                var mjCard = child[i];
+                var j = 0;
+                var ind = -1;
                 for (j = 0; j < vs.length; j++) {
                     if (vs[j].equal(mjCard)) {
                         vs.splice(j, 1);
@@ -346,32 +351,32 @@ module engine {
                     index.push(ind);
                 }
             }
-            for (var k:number = 0; k < index.length; k++) {
+            for (var k = 0; k < index.length; k++) {
                 froms.splice(index[k], 1);
             }
             return true;
         }
 
-        private static function subLineReverse_use(ts:MjCard[], vs:Vector.<MjCard[]>) {
+        static subLineReverse_use(ts, vs) {
             if (ts.length < 3) {
                 return;
             }
-            var startIndex:number = ts.length - 1;
+            var startIndex = ts.length - 1;
             while (true) {
                 if (startIndex < 2) {
                     return;
                 }
-                var curCard:MjCard = ts[startIndex];
+                var curCard = ts[startIndex];
                 if (!curCard.isNumCard()) {
                     return;
                 }
-                var t2:MjCard = null;
-                var i2:number = 0;
-                var t3:MjCard = null;
-                var i3:number = 0;
-                var i:number = 0;
+                var t2 = null;
+                var i2 = 0;
+                var t3 = null;
+                var i3 = 0;
+                var i = 0;
                 for (i = startIndex - 1; i > -1; i--) {
-                    var cur:MjCard = ts[i];
+                    var cur = ts[i];
                     if (t2 == null) {//先与第一张牌比较
                         if (cur.equal(curCard)) {//如果这张牌与目标牌一样.略过.
                             if (i < 2) {
@@ -409,7 +414,7 @@ module engine {
                     }
                 }
                 if (t3 != null) {
-                    var vv:MjCard[] = [];
+                    var vv = [];
                     //
                     vv.push(ts.splice(startIndex, 1)[0]);
                     vv.push(ts.splice(i2, 1)[0]);
@@ -424,10 +429,10 @@ module engine {
          * 反向删除顺
          * @param ts
          */
-        public static subLineReverse(ts:MjCard[]):Vector.<MjCard[]> {
-            var vs:Vector.<MjCard[]> = new Vector.<MjCard[]>();
-            ts.sort(sortCardByTypeNum);
-            subLineReverse_use(ts, vs);
+        static subLineReverse(ts) {
+            var vs = [];
+            ts.sort(MjEngine.sortCardByTypeNum);
+            MjEngine.subLineReverse_use(ts, vs);
             return vs;
         }
 
@@ -437,11 +442,11 @@ module engine {
          * @param ts
          * @param num
          */
-        public static subSameCnt(ts:MjCard[], num:number):MjCard[] {
-            var vs:MjCard[] = [];
-            ts.sort(sortCardByTypeNum);
-            var i:number = 0;
-            var index:number = 0;
+        static subSameCnt(ts, num) {
+            var vs = [];
+            ts.sort(MjEngine.sortCardByTypeNum);
+            var i = 0;
+            var index = 0;
             for (i = 1; i < ts.length; i++) {
                 if (ts[i].equal(ts[i - 1])) {//如果此牌与前一张牌一样
                     if (i == index + (num - 1)) {//如果到了num个牌
@@ -464,12 +469,12 @@ module engine {
          * @param t2
          * @return
          */
-        public static sortCardByTypeNum(t1:MjCard, t2:MjCard):number {
+        static sortCardByTypeNum(t1, t2) {
             if (t1.type < t2.type) {
                 return -1;
             }
             else if (t1.type == t2.type) {
-                return sortCardByNum(t1, t2);
+                return MjEngine.sortCardByNum(t1, t2);
             }
             else {
                 return 1;
@@ -482,7 +487,7 @@ module engine {
          * @param t2
          * @return
          */
-        public static sortCardByNum(t1:MjCard, t2:MjCard):number {
+        static sortCardByNum(t1, t2) {
             if (t1.num < t2.num) {
                 return -1;
             }
@@ -497,14 +502,14 @@ module engine {
          * @param ts
          * @param cnt   >1
          */
-        public static subSameSpecialCnt(ts:MjCard[], cnt:number) {
-            ts.sort(sortCardByTypeNum);
-            var i:number = 0;
+        static subSameSpecialCnt(ts, cnt) {
+            ts.sort(MjEngine.sortCardByTypeNum);
+            var i = 0;
             for (i = 0; i <= ts.length - cnt; i++) {
-                var last:MjCard = ts[i];
-                var curCnt:number = 1;
-                for (var f:number = i + 1; f < ts.length; f++) {
-                    var mjCard:MjCard = ts[f];
+                var last = ts[i];
+                var curCnt = 1;
+                for (var f = i + 1; f < ts.length; f++) {
+                    var mjCard = ts[f];
                     if (mjCard.equal(last)) {
                         curCnt++;
                         if (f == ts.length - 1) {
@@ -536,12 +541,12 @@ module engine {
          * @param num
          * @return
          */
-        public static getCardCnt(show:MjCard[], t:number, num:number):number {
-            return getCards(show, t, num).length;
+        static getCardCnt(show, t, num) {
+            return MjEngine.getCards(show, t, num).length;
         }
 
-        public static getCardCntByCard(show:MjCard[], card:MjCard):number {
-            return getCards(show, card.type, card.num).length;
+        static getCardCntByCard(show, card) {
+            return MjEngine.getCards(show, card.type, card.num).length;
         }
 
         /**
@@ -551,11 +556,11 @@ module engine {
          * @param num
          * @return
          */
-        private static function getCards(show:MjCard[], t:number, num:number):MjCard[] {
-            var v:MjCard[] = [];
-            var i:number = 0;
+        private static getCards(show, t, num) {
+            var v = [];
+            var i = 0;
             for (i = 0; i < show.length; i++) {
-                var mjCard:MjCard = show[i];
+                var mjCard = show[i];
                 if (mjCard.type == t && mjCard.num == num) {
                     v.push(mjCard);
                 }
@@ -569,7 +574,7 @@ module engine {
          * @param v2
          * @return
          */
-        public static sortShunsByTypeNum(v1:MjCard[], v2:MjCard[]):number {
+        static sortShunsByTypeNum(v1, v2) {
             v1.sort(MjEngine.sortCardByNum);
             v2.sort(MjEngine.sortCardByNum);
             if (v1[0].type < v2[0].type) {
@@ -595,7 +600,7 @@ module engine {
          * @param v2
          * @return
          */
-        public static sortShunsByNum(v1:MjCard[], v2:MjCard[]):number {
+        static sortShunsByNum(v1, v2) {
             if (v1[0].num < v2[0].num) {
                 return -1;
             }
@@ -609,11 +614,11 @@ module engine {
          * 使cards中的牌保持唯一
          * @param cards
          */
-        private static function subSame(cards:MjCard[]) {
-            cards.sort(sortCardByTypeNum);
-            var i:number = 0;
+        static subSame(cards) {
+            cards.sort(MjEngine.sortCardByTypeNum);
+            var i = 0;
             for (i = 1; i < cards.length; i++) {
-                var mjCard:MjCard = cards[i];
+                var mjCard = cards[i];
                 if (mjCard.equal(cards[i - 1])) {
                     cards.splice(i, 1);
                     i--;
@@ -621,16 +626,16 @@ module engine {
             }
         }
 
-        public static thinkChi(card:MjCard, showCards:MjCard[]):Vector.<MjChiInfo> {
-            var ret:Vector.<MjChiInfo> = new Vector.<MjChiInfo>();
+        static thinkChi(card, showCards) {
+            var ret = [];
             if (!card.isNumCard()) {
                 return ret;
             }
             var v:MjChiInfo;
-            var s:MjCard[] = showCards.slice();
+            var s = showCards.slice();
             if (card.num > 2) {
-                if (getCardCnt(s, card.type, card.num - 2) > 0) {
-                    if (getCardCnt(s, card.type, card.num - 1) > 0) {
+                if (MjEngine.getCardCnt(s, card.type, card.num - 2) > 0) {
+                    if (MjEngine.getCardCnt(s, card.type, card.num - 1) > 0) {
                         v = new MjChiInfo();
                         v.target = card;
                         v.cards.push(new MjCard(card.type, card.num - 2));
@@ -641,8 +646,8 @@ module engine {
                 }
             }
             if (card.num > 1 && card.num < 9) {
-                if (getCardCnt(s, card.type, card.num - 1) > 0) {
-                    if (getCardCnt(s, card.type, card.num + 1) > 0) {
+                if (MjEngine.getCardCnt(s, card.type, card.num - 1) > 0) {
+                    if (MjEngine.getCardCnt(s, card.type, card.num + 1) > 0) {
                         v = new MjChiInfo();
                         v.target = card;
                         v.cards.push(new MjCard(card.type, card.num - 1));
@@ -653,8 +658,8 @@ module engine {
                 }
             }
             if (card.num < 8) {
-                if (getCardCnt(s, card.type, card.num + 1) > 0) {
-                    if (getCardCnt(s, card.type, card.num + 2) > 0) {
+                if (MjEngine.getCardCnt(s, card.type, card.num + 1) > 0) {
+                    if (MjEngine.getCardCnt(s, card.type, card.num + 2) > 0) {
                         v = new MjChiInfo();
                         v.target = card;
                         v.cards.push(card);
@@ -667,31 +672,31 @@ module engine {
             return ret;
         }
 
-        public static thinkPeng(card:MjCard, s:MjCard[]):MjCard[] {
-            var vv:MjCard[] = [];
-            if (getCardCnt(s, card.type, card.num) >= 2) {
+        static thinkPeng(card, s) {
+            var vv = [];
+            if (MjEngine.getCardCnt(s, card.type, card.num) >= 2) {
                 vv.push(card);
             }
             return vv;
         }
 
-        public static thinkMingGang(card:MjCard, s:MjCard[]):MjCard[] {
-            var vv:MjCard[] = [];
-            if (getCardCnt(s, card.type, card.num) == 3) {
+        static thinkMingGang(card, s) {
+            var vv = [];
+            if (MjEngine.getCardCnt(s, card.type, card.num) == 3) {
                 vv.push(card);
             }
             return vv;
         }
 
-        public static thinkAnGang(s:MjCard[]):MjCard[] {
-            var gans:MjCard[] = subSameCnt(s.slice(), 4);
+        static thinkAnGang(s) {
+            var gans = MjEngine.subSameCnt(s.slice(), 4);
             return gans;
         }
 
-        public static thinkBuGang(card:MjCard, pengCards:MjCard[]):MjCard[] {
-            var vv:MjCard[] = [];
-            for (var i:number = 0; i < pengCards.length; i++) {
-                var card1:MjCard = pengCards[i];
+        static thinkBuGang(card, pengCards) {
+            var vv = [];
+            for (var i = 0; i < pengCards.length; i++) {
+                var card1 = pengCards[i];
                 if (card1.equal(card)) {
                     vv.push(card);
                     break;
@@ -704,8 +709,8 @@ module engine {
          * 判断是否听牌
          * @return
          */
-        public static thinkIsTing(showCards:MjCard[]):boolean {
-            return getTingInfos(showCards, 1).length > 0;
+        static thinkIsTing(showCards) {
+            return MjEngine.getTingInfos(showCards, 1).length > 0;
         }
 
         /**
@@ -714,18 +719,17 @@ module engine {
          * @param minCnt        最多听牌方法数.如果超过这个数量,就直接return
          * @return
          */
-        public static getTingInfos(showCards:MjCard[], minCnt:number = 100):Vector.<MjTingInfo> {
-            var tingInfos:Vector.<MjTingInfo> = new Vector.<MjTingInfo>();
+        static getTingInfos(showCards, minCnt = 100) {
+            var tingInfos = [];
             //
-            var st:number = getTimer();
-            var discardCards:MjCard[] = showCards.slice();
-            subSame(discardCards);
+            var discardCards = showCards.slice();
+            MjEngine.subSame(discardCards);
             //这是会听的牌
-            for (var i:number = 0; i < discardCards.length; i++) {
-                var tCards:MjCard[] = showCards.slice();
-                subSpecialCnt(tCards, discardCards[i], 1);
+            for (var i = 0; i < discardCards.length; i++) {
+                var tCards = showCards.slice();
+                MjEngine.subSpecialCnt(tCards, discardCards[i], 1);
                 //现在已经删除一张要打的牌.再测试所有牌能否是胡牌型
-                var tingCards:MjCard[] = getTingCards(tCards);
+                var tingCards = MjEngine.getTingCards(tCards);
                 if (tingCards.length > 0) {
                     tingInfos.push(new MjTingInfo(discardCards[i], tingCards));
                 }
@@ -736,10 +740,10 @@ module engine {
             return tingInfos;
         }
 
-        private static function getCntByType(ts:MjCard[], t:number):number {
-            var cnt:number = 0;
-            for (var i:number = 0; i < ts.length; i++) {
-                var card:MjCard = ts[i];
+        static getCntByType(ts, t) {
+            var cnt = 0;
+            for (var i = 0; i < ts.length; i++) {
+                var card = ts[i];
                 if (card.type == t) {
                     cnt++;
                 }
@@ -752,23 +756,23 @@ module engine {
          * @param showCards
          * @return
          */
-        public static getTingCards(showCards:MjCard[]):MjCard[] {
-            var tCards:MjCard[];
+        static getTingCards(showCards){
+            var tCards;
             //如果有13张牌,则有可能会是特殊牌型
-            tCards = getNormalTingCards(showCards);
+            tCards = MjEngine.getNormalTingCards(showCards);
             if (tCards.length == 0) {
-                return getSpecialTingCards(showCards);
+                return MjEngine.getSpecialTingCards(showCards);
             } else {
                 return tCards;
             }
         }
 
-        private static function getNormalTingCards(showCards:MjCard[]):MjCard[] {
-            showCards = subComponentType(showCards);
-            var tCards:MjCard[] = [];
-            for (var i:number = 0; i < MjConst.All4Type.length; i++) {
-                var ls:MjCard[] = showCards.slice();
-                var needCard:MjCard = MjConst.All4Type[i];
+        static getNormalTingCards(showCards) {
+            showCards = MjEngine.subComponentType(showCards);
+            var tCards = [];
+            for (var i = 0; i < MjConst.All4Type.length; i++) {
+                var ls = showCards.slice();
+                var needCard = MjConst.All4Type[i];
                 ls.push(needCard);
                 if (ls.length == 11 || ls.length == 14) {
                     //组合龙
@@ -776,7 +780,7 @@ module engine {
                     if (array != null) {
                         //是组合龙.则检查除去组合龙后的牌
                         MjFan.sub组合龙(ls, array);
-                        if (isValidNormalCardComponents(ls)) {
+                        if (MjEngine.isValidNormalCardComponents(ls)) {
                             tCards.push(needCard);
                             continue;
                         }
@@ -786,14 +790,14 @@ module engine {
                 ls.pop();
                 //不是特殊番型.则判断是否跟手中的牌有关联.比如单张风色,以及比较远的字牌都略过
                 if (!needCard.isNumCard()) {//是风和色牌,且牌中没有同牌.则忽略
-                    if (getCardCntByCard(ls, needCard) == 0) {
+                    if (MjEngine.getCardCntByCard(ls, needCard) == 0) {
                         continue;
                     }
                 } else {
                     //如果是字牌,看同类有没有相近的.没有忽略
-                    var isNear:boolean = false;
-                    for (var j:number = 0; j < ls.length; j++) {
-                        var card:MjCard = ls[j];
+                    var isNear = false;
+                    for (var j = 0; j < ls.length; j++) {
+                        var card = ls[j];
                         if (card.type == needCard.type) {
                             if (Math.abs(card.num - needCard.num) <= 1) {
                                 isNear = true;
@@ -806,7 +810,7 @@ module engine {
                     }
                 }
                 ls.push(needCard);
-                if (isValidNormalCardComponents(ls)) {
+                if (MjEngine.isValidNormalCardComponents(ls)) {
                     tCards.push(needCard);
                 }
             }
@@ -818,29 +822,29 @@ module engine {
          * @param ts
          * @return
          */
-        private static function subComponentType(ts:MjCard[]):MjCard[] {
-            var info:SplitTypeInfo = new SplitTypeInfo(ts);
-            var allType:Vector.<MjCard[]> = info.getAllTypeCards();
-            var ss:MjCard[] = [];
-            for (var i:number = 0; i < allType.length; i++) {
-                var obj:MjCard[] = allType[i];
-                if (obj.length % 3 != 0 || !isComponents(obj)) {
+        static subComponentType(ts) {
+            var info = new SplitTypeInfo(ts);
+            var allType = info.getAllTypeCards();
+            var ss = [];
+            for (var i = 0; i < allType.length; i++) {
+                var obj = allType[i];
+                if (obj.length % 3 != 0 || !MjEngine.isComponents(obj)) {
                     ss = ss.concat(obj);
                 }
             }
             return ss;
         }
 
-        private static function getSpecialTingCards(showCards:MjCard[]):MjCard[] {
-            var tCards:MjCard[] = [];
+        static getSpecialTingCards(showCards) {
+            var tCards = [];
             if (showCards.length != 13) {
                 return tCards;
             }
-            for (var i:number = 0; i < MjConst.All4Type.length; i++) {
-                var ls:MjCard[] = showCards.slice();
-                var needCard:MjCard = MjConst.All4Type[i];
+            for (var i = 0; i < MjConst.All4Type.length; i++) {
+                var ls = showCards.slice();
+                var needCard = MjConst.All4Type[i];
                 ls.push(needCard);
-                var lastCnt:number = tCards.length;
+                var lastCnt = tCards.length;
                 if (MjFan.is七对(ls)) {
                     tCards.push(needCard);
                     continue;
@@ -862,24 +866,24 @@ module engine {
          * @param cards
          * @return
          */
-        private static function isValidNormalCardComponents(cards:MjCard[]):boolean {
+        static isValidNormalCardComponents(cards) {
             //下面这是普通牌型
-            var duis:MjCard[] = getDouble(cards);
+            var duis = MjEngine.getDouble(cards);
             //先把将拿出来.因为有的作用可能不是将.需要挨个比较
             var i:number;
             for (i = 0; i < duis.length; i++) {
-                var jiang:MjCard = duis[i];
-                var tss:MjCard[] = cards.slice();
-                subSpecialCnt(tss, jiang, 2);
+                var jiang = duis[i];
+                var tss = cards.slice();
+                MjEngine.subSpecialCnt(tss, jiang, 2);
                 if (tss.length == 0) {
                     return true;
                 }
-                tss.sort(sortCardByTypeNum);
+                tss.sort(MjEngine.sortCardByTypeNum);
                 //
                 var valid:boolean=true;
-                var info:SplitTypeInfo = new SplitTypeInfo(tss);
-                var allTypes:Vector.<MjCard[]> = info.getAllTypeCards();
-                for (var j:number = 0; j < allTypes.length; j++) {
+                var info = new SplitTypeInfo(tss);
+                var allTypes = info.getAllTypeCards();
+                for (var j = 0; j < allTypes.length; j++) {
                     if (allTypes[j].length % 3 != 0) {
                         valid=false;
                         continue;
@@ -889,9 +893,9 @@ module engine {
                     continue;
                 }
                 //
-                for (var k:number = 0; k < allTypes.length; k++) {
+                for (var k = 0; k < allTypes.length; k++) {
                     if (allTypes[k].length >0) {
-                        if(!isComponents(allTypes[k])){
+                        if(!MjEngine.isComponents(allTypes[k])){
                             valid=false;
                             continue;
                         }
@@ -910,38 +914,38 @@ module engine {
          * @param tss
          * @return
          */
-        private static function isComponents(tss:MjCard[]):boolean {
-            var ts1:MjCard[] = tss.slice();
-            subLine(ts1);
-            subSameCnt(ts1, 3);
+        static isComponents(tss) {
+            var ts1 = tss.slice();
+            MjEngine.subLine(ts1);
+            MjEngine.subSameCnt(ts1, 3);
             if (ts1.length == 0) {
                 return true;
             }
-            var ts2:MjCard[] = tss.slice();
-            subLineReverse(ts2);
-            subSameCnt(ts2, 3);
+            var ts2 = tss.slice();
+            MjEngine.subLineReverse(ts2);
+            MjEngine.subSameCnt(ts2, 3);
             if (ts2.length == 0) {
                 return true;
             }
-            var ts3:MjCard[] = tss.slice();
-            subSameCnt(ts3, 3);
-            subLine(ts3);
+            var ts3 = tss.slice();
+            MjEngine.subSameCnt(ts3, 3);
+            MjEngine.subLine(ts3);
             if (ts3.length == 0) {
                 return true;
             }
-            var ts4:MjCard[] = tss.slice();
-            subSameCnt(ts4, 3);
-            subLineReverse(ts4);
+            var ts4 = tss.slice();
+            MjEngine.subSameCnt(ts4, 3);
+            MjEngine.subLineReverse(ts4);
             if (ts4.length == 0) {
                 return true;
             }
             return false;
         }
 
-        public static thinkHu(card:MjCard, s:MjCard[], player:MjPlayer):HuInfo {
-            var ss:MjCard[] = s.slice();
+        static thinkHu(card, s, player) {
+            var ss = s.slice();
             ss.push(card);
-            var huInfo:HuInfo = getMaxHuInfo(getHuInfos(ss), player, card, null);
+            var huInfo = MjEngine.getMaxHuInfo(MjEngine.getHuInfos(ss), player, card, null);
             if (huInfo != null) {
                 huInfo.mingTarget = card;
             }
@@ -951,31 +955,31 @@ module engine {
         /**
          * 得到打出的牌
          */
-        public static getDiscardCard(cs:MjCard[]):MjCard {
-            var v:MjCard[] = cs.slice();
+        static getDiscardCard(cs) {
+            var v = cs.slice();
             v.sort(MjEngine.sortCardByTypeNum);
             var card:MjCard;
-            card = getSingleFengSeCard(v.slice());
+            card = MjEngine.getSingleFengSeCard(v.slice());
             //去掉单个风牌
             if (card != null) {
                 return card;
             }
-            card = getSingTypeCard(v.slice());
+            card = MjEngine.getSingTypeCard(v.slice());
             //去掉单个字牌
             if (card != null) {
                 return card;
             }
-            card = getFarawayCard(v.slice(), 2);
+            card = MjEngine.getFarawayCard(v.slice(), 2);
             //去除间隔2个空位的不连续单牌
             if (card != null) {
                 return card;
             }
-            card = getFarawayCard(v.slice(), 1);
+            card = MjEngine.getFarawayCard(v.slice(), 1);
             //去除间隔1个空位的不连续单牌
             if (card != null) {
                 return card;
             }
-            card = getDiscardCardSequence4(v.slice());
+            card = MjEngine.getDiscardCardSequence4(v.slice());
             //去除连续牌数为4、7、10、13中的一张牌，让牌型成为无将胡牌型。如2344条，去除4条。
             if (card != null) {
                 return card;
@@ -983,9 +987,9 @@ module engine {
             return v[0];
         }
 
-        private static function getSingTypeCard(v:MjCard[]):MjCard {
-            for (var i:number = 1; i < v.length - 1; i++) {
-                var card:MjCard = v[i];
+        static getSingTypeCard(v) {
+            for (var i = 1; i < v.length - 1; i++) {
+                var card = v[i];
                 if (card.type != v[i - 1].type && card.type != v[i + 1].type) {
                     return card;
                 }
@@ -993,11 +997,11 @@ module engine {
             return null;
         }
 
-        private static function getDiscardCardSequence4(v:MjCard[]):MjCard {
+        static getDiscardCardSequence4(v) {
             //删除风和色
             MjEngine.deleteByType(v, [MjConst.type_feng, MjConst.type_se]);
             //删除顺的
-            var vv:MjCard[] = v.slice();
+            var vv = v.slice();
             MjEngine.subLine(vv);
             if (vv.length > 0) {
                 return vv[0];
@@ -1011,10 +1015,10 @@ module engine {
          * @param distance
          * @return
          */
-        private static function getFarawayCard(v:MjCard[], distance:number):MjCard {
+        static getFarawayCard(v, distance) {
             MjEngine.deleteByType(v, [MjConst.type_feng, MjConst.type_se]);
             var card:MjCard;
-            for (var i:number = 0; i < v.length; i++) {
+            for (var i = 0; i < v.length; i++) {
                 card = v[i];
                 if (i == 0) {
                     if (v.length == 1) {
@@ -1031,7 +1035,7 @@ module engine {
                         }
                     }
                 } else if (i == v.length - 1) {
-                    var pCard:MjCard = v[i - 1];
+                    var pCard = v[i - 1];
                     if (!(card.type == pCard.type)) {
                         //最后一张与其他类型不同
                         return card;
@@ -1041,8 +1045,8 @@ module engine {
                         }
                     }
                 } else {
-                    var prevCard:MjCard = v[i - 1];
-                    var nextCard:MjCard = v[i + 1];
+                    var prevCard = v[i - 1];
+                    var nextCard = v[i + 1];
                     if (card.type == prevCard.type && card.type == nextCard.type) {
                         if (Math.abs(card.num - prevCard.num) > distance && Math.abs(card.num - nextCard.num) > distance) {
                             return card;
@@ -1066,7 +1070,7 @@ module engine {
          * @param v
          * @return
          */
-        private static function getSingleFengSeCard(v:MjCard[]):MjCard {
+        static getSingleFengSeCard(v) {
             var ars = [
                 [MjConst.type_feng, MjConst.type_feng_dong],
                 [MjConst.type_feng, MjConst.type_feng_nan],
@@ -1078,11 +1082,11 @@ module engine {
             ];
             var aa = [];
             while (ars.length > 0) {
-                aa.push(ars.splice(int(ars.length * Math.random()), 1)[0]);
+                aa.push(ars.splice(Math.floor(ars.length * Math.random()), 1)[0]);
             }
-            for (var i:number = 0; i < aa.length; i++) {
+            for (var i = 0; i < aa.length; i++) {
                 var ar = aa[i];
-                var cards:MjCard[] = getCards(v, ar[0], ar[1]);
+                var cards = MjEngine.getCards(v, ar[0], ar[1]);
                 if (cards.length == 1) {
                     return cards[0];
                 }
@@ -1090,9 +1094,9 @@ module engine {
             return null
         }
 
-        public static deleteByType(v:MjCard[], p) {
-            for (var i:number = 0; i < v.length; i++) {
-                var card:MjCard = v[i];
+        static deleteByType(v, p) {
+            for (var i = 0; i < v.length; i++) {
+                var card = v[i];
                 if (p.indexOf(card.type) != -1) {
                     v.splice(i, 1);
                     i--;
@@ -1107,18 +1111,18 @@ module engine {
          * @param reverse
          * @return
          */
-        public static thinkOptFetchAfterTing(player:MjPlayer, reverse:boolean):MjPlayerThinkStatus {
-            var status:MjPlayerThinkStatus = new MjPlayerThinkStatus();
+        static thinkOptFetchAfterTing(player, reverse) {
+            var status = new MjPlayerThinkStatus();
             status.anGangCards = MjEngine.thinkAnGang(player.cloneShowCards());
             if (status.anGangCards.length > 0) {
                 //如果听时还能暗杠,需要判断是否影响了听的牌
-                var effTing:boolean = false;
-                for (var i:number = 0; i < status.anGangCards.length; i++) {
-                    var ccc:MjCard = status.anGangCards[i];
-                    var cs:MjCard[] = player.cloneShowCards();
+                var effTing = false;
+                for (var i = 0; i < status.anGangCards.length; i++) {
+                    var ccc = status.anGangCards[i];
+                    var cs = player.cloneShowCards();
                     MjEngine.subSpecialCnt(cs, ccc, 4);
-                    for (var j:number = 0; j < player.tingInfo.tingCards.length; j++) {
-                        var cs1:MjCard[] = cs.slice();
+                    for (var j = 0; j < player.tingInfo.tingCards.length; j++) {
+                        var cs1 = cs.slice();
                         cs1.push(player.tingInfo.tingCards[j]);
                         if (MjEngine.getHuInfos(cs1).length == 0) {
                             effTing = true;
@@ -1132,8 +1136,8 @@ module engine {
                 }
             }
             status.buGangCards = MjEngine.thinkBuGang(player.lastFetchCard, player.getPengCards());
-            var huInfos:Vector.<HuInfo> = MjEngine.getHuInfos(player.cloneShowCards());
-            var huInfo:HuInfo = MjEngine.getMaxHuInfo(huInfos, player, null, player.lastFetchCard);
+            var huInfos = MjEngine.getHuInfos(player.cloneShowCards());
+            var huInfo = MjEngine.getMaxHuInfo(huInfos, player, null, player.lastFetchCard);
             if (huInfo != null) {
                 huInfo.anTarget = player.lastFetchCard;
                 if (reverse) {
@@ -1151,12 +1155,12 @@ module engine {
          * @param reverse
          * @return
          */
-        public static thinkOptFetch(player:MjPlayer, reverse:boolean):MjPlayerThinkStatus {
-            var st:MjPlayerThinkStatus = new MjPlayerThinkStatus();
+        static thinkOptFetch(player, reverse) {
+            var st = new MjPlayerThinkStatus();
             st.anGangCards = MjEngine.thinkAnGang(player.cloneShowCards());
             st.buGangCards = MjEngine.thinkBuGang(player.lastFetchCard, player.getPengCards());
-            var huInfos:Vector.<HuInfo> = MjEngine.getHuInfos(player.cloneShowCards());
-            var huInfo:HuInfo = MjEngine.getMaxHuInfo(huInfos, player, null, player.lastFetchCard);
+            var huInfos = MjEngine.getHuInfos(player.cloneShowCards());
+            var huInfo = MjEngine.getMaxHuInfo(huInfos, player, null, player.lastFetchCard);
             if (huInfo != null) {
                 huInfo.anTarget = player.lastFetchCard;
                 if (reverse) {
@@ -1172,14 +1176,14 @@ module engine {
             return st;
         }
 
-        public static thinkOptAfterOpt(round:MjPlayer):MjPlayerThinkStatus {
-            var status:MjPlayerThinkStatus = new MjPlayerThinkStatus();
+        static thinkOptAfterOpt(round) {
+            var status = new MjPlayerThinkStatus();
             status.isTing = MjEngine.thinkIsTing(round.cloneShowCards());
             return status;
         }
 
-        public static thinkOptAfterOtherDiscard(player:MjPlayer, card:MjCard, prevPlayer:boolean):MjPlayerThinkStatus {
-            var status:MjPlayerThinkStatus = new MjPlayerThinkStatus();
+        static thinkOptAfterOtherDiscard(player, card, prevPlayer) {
+            var status = new MjPlayerThinkStatus();
             //吃,碰,明杠,暗杠,补杠,报听,胡,自摸
             //如果还没听牌.
             if (player.tingInfo == null) {
@@ -1190,7 +1194,7 @@ module engine {
                 status.mingGangCards = MjEngine.thinkMingGang(card, player.cloneShowCards());
             } else {
             }
-            var huInfo:HuInfo = MjEngine.thinkHu(card, player.cloneShowCards(), player);
+            var huInfo = MjEngine.thinkHu(card, player.cloneShowCards(), player);
             status.huInfo = huInfo;
             return status;
         }
@@ -1202,31 +1206,31 @@ module engine {
          * @return
          * @param prevPlayer 是不是上家.能不能吃
          */
-        public static thinkOptAfterOtherDiscardAi(player:MjPlayer, card:MjCard, prevPlayer:boolean):MjPlayerThinkStatus {
-            var status:MjPlayerThinkStatus = new MjPlayerThinkStatus();
+        static thinkOptAfterOtherDiscardAi(player, card, prevPlayer) {
+            var status = new MjPlayerThinkStatus();
             //吃,碰,明杠,暗杠,补杠,报听,胡,自摸
             //如果还没听牌.
             if (player.tingInfo == null) {
                 if (prevPlayer) {
                     //防止吃6万.打6万
-                    var sc:MjCard[] = player.cloneShowCards();
+                    var sc = player.cloneShowCards();
                     sc.push(card);
-                    subLine(sc);
+                    MjEngine.subLine(sc);
                     status.chiInfos = MjEngine.thinkChi(card, sc);
                 }
                 status.pengCards = MjEngine.thinkPeng(card, player.cloneShowCards());
                 status.mingGangCards = MjEngine.thinkMingGang(card, player.cloneShowCards());
             } else {
             }
-            var huInfo:HuInfo = MjEngine.thinkHu(card, player.cloneShowCards(), player);
+            var huInfo = MjEngine.thinkHu(card, player.cloneShowCards(), player);
             status.huInfo = huInfo;
             return status;
         }
 
-        public static thinkOptOnOtherBuGang(player:MjPlayer, card:MjCard):MjPlayerThinkStatus {
-            var status:MjPlayerThinkStatus = new MjPlayerThinkStatus();
+        static thinkOptOnOtherBuGang(player, card) {
+            var status = new MjPlayerThinkStatus();
             //吃,碰,明杠,暗杠,补杠,报听,胡,自摸
-            var huInfo:HuInfo = MjEngine.thinkHu(card, player.cloneShowCards(), player);
+            var huInfo = MjEngine.thinkHu(card, player.cloneShowCards(), player);
             if (huInfo != null) {
                 huInfo.qiangGang = true;
             }
@@ -1234,25 +1238,25 @@ module engine {
             return status;
         }
 
-        public static hasNum(cards:MjCard[], nums):boolean {
+        static hasNum(cards, nums) {
             if (cards.length <= 0) {
                 return false;
             }
-            for (var i:number = 0; i < nums.length; i++) {
-                var num:number = nums[i];
-                if (getCardCnt(cards, cards[0].type, num) == 0) {
+            for (var i = 0; i < nums.length; i++) {
+                var num = nums[i];
+                if (MjEngine.getCardCnt(cards, cards[0].type, num) == 0) {
                     return false;
                 }
             }
             return true;
         }
 
-        public static isSameType(cards:MjCard[]):boolean {
+        static isSameType(cards) {
             if (cards.length <= 0) {
                 return true;
             }
-            var t:number = cards[0].type;
-            for (var i:number = 1; i < cards.length; i++) {
+            var t = cards[0].type;
+            for (var i = 1; i < cards.length; i++) {
                 if (cards[i].type != t) {
                     return false;
                 }
@@ -1260,9 +1264,9 @@ module engine {
             return true;
         }
 
-        public static getBuKao():Vector.<MjCard[]> {
-            var shape:Vector.<MjCard[]> = new Vector.<MjCard[]>();
-            shape.push(new <MjCard>[
+        static getBuKao() {
+            var shape = [];
+            shape.push([
                 new MjCard(1, 1),
                 new MjCard(1, 4),
                 new MjCard(1, 7),
@@ -1273,7 +1277,7 @@ module engine {
                 new MjCard(3, 6),
                 new MjCard(3, 9)
             ]);
-            shape.push(new <MjCard>[
+            shape.push([
                 new MjCard(1, 1),
                 new MjCard(1, 4),
                 new MjCard(1, 7),
@@ -1284,7 +1288,7 @@ module engine {
                 new MjCard(2, 6),
                 new MjCard(2, 9)
             ]);
-            shape.push(new <MjCard>[
+            shape.push([
                 new MjCard(2, 1),
                 new MjCard(2, 4),
                 new MjCard(2, 7),
@@ -1295,7 +1299,7 @@ module engine {
                 new MjCard(3, 6),
                 new MjCard(3, 9)
             ]);
-            shape.push(new <MjCard>[
+            shape.push([
                 new MjCard(2, 1),
                 new MjCard(2, 4),
                 new MjCard(2, 7),
@@ -1306,7 +1310,7 @@ module engine {
                 new MjCard(1, 6),
                 new MjCard(1, 9)
             ]);
-            shape.push(new <MjCard>[
+            shape.push([
                 new MjCard(3, 1),
                 new MjCard(3, 4),
                 new MjCard(3, 7),
@@ -1317,7 +1321,7 @@ module engine {
                 new MjCard(2, 6),
                 new MjCard(2, 9)
             ]);
-            shape.push(new <MjCard>[
+            shape.push([
                 new MjCard(3, 1),
                 new MjCard(3, 4),
                 new MjCard(3, 7),
