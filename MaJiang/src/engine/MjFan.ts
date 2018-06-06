@@ -1561,7 +1561,7 @@ module engine {
         /**
          *
          */
-        static func_七星不靠() {
+        public static func_七星不靠(): number {
             if (!MjFan.is七星不靠(MjFan.getShowAndTarget())) {
                 return 0;
             }

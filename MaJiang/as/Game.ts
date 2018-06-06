@@ -5,44 +5,11 @@
  * Time: 11:10
  */
 module {
-    //import assets.Asset;
-    //import assets.AssetFont;
-    //import assets.AssetSound;
-
-    //import engine.vo.HuInfo;
-
-    //import flash.desktop.NativeApplication;
-    //import flash.events.Event;
-    //import flash.events.KeyboardEvent;
-    //import flash.media.SoundMixer;
-    //import flash.media.SoundTransform;
-    //import flash.ui.Keyboard;
-
-    //import mjp.DownMenu;
-    //import mjp.HomePage;
-    //import mjp.IPlayer;
-    //import mjp.PlayerHero;
-    //import mjp.ResultPanel;
-    //import mjp.StorageData;
-    //import mjp.Table;
-
-    //import starling.display.Image;
-    //import starling.display.Quad;
-    //import starling.display.Sprite;
-    //import starling.events.EnterFrameEvent;
-    //import starling.events.Event;
-    //import starling.events.TouchEvent;
-    //import starling.events.TouchPhase;
-    //import starling.textures.TextureSmoothing;
-
-    //import utils.ScreenShotUtil;
-
     export class Game extends Sprite {
         private table:Table;
         private homePage:HomePage;
         public static var instance:Game;
         private downBtn:Sprite;
-        public static SHOW_AD:string = "Game.SHOW_AD";
 
         constructor() {
             instance = this;

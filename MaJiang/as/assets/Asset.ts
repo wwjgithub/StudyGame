@@ -1,19 +1,4 @@
 module assets {
-    //import engine.MjConst;
-    //import engine.vo.MjCard;
-
-    //import flash.display.Bitmap;
-
-    //import mjp.CardSprite;
-    //import mjp.UserConst;
-
-    //import starling.display.Image;
-    //import starling.display.Sprite;
-    //import starling.textures.Texture;
-    //import starling.textures.TextureAtlas;
-    //import starling.textures.TextureSmoothing;
-    //import starling.utils.AssetManager;
-
     /**
      * @author fq3
      */
