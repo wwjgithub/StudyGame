@@ -1,17 +1,4 @@
 module mjp {
-    //import assets.Asset;
-
-    //import starling.display.DisplayObject;
-    //import starling.display.Image;
-    //import starling.display.Quad;
-    //import starling.display.Sprite;
-    //import starling.events.Event;
-    //import starling.events.TouchEvent;
-    //import starling.events.TouchPhase;
-    //import starling.utils.Color;
-
-    //import utils.CButton;
-
     /**
      * @author fq3
      */

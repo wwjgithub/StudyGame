@@ -1,4 +1,4 @@
-import {Game} from "./Game";
+import Game = game.Game;
 
 class Main extends egret.DisplayObjectContainer {
 
@@ -10,6 +10,8 @@ class Main extends egret.DisplayObjectContainer {
 
     private onAddToStage(event: egret.Event) {
 
+        Global.stage_w = this.stage.stageWidth;
+        Global.stage_h = this.stage.stageHeight;
         egret.lifecycle.addLifecycleListener((context) => {
             // custom lifecycle plugin
 
@@ -34,18 +36,24 @@ class Main extends egret.DisplayObjectContainer {
     }
 
     private async runGame() {
-        await this.loadResource()
-        this.createGameScene();
 
+        RES.loadConfig("resource/default.res.json", "resource/");
+        RES.addEventListener(RES.ResourceEvent.CONFIG_COMPLETE, this.onConfigComplete, this);
     }
 
-    private async loadResource() {
-        try {
-            await RES.loadConfig("resource/default.res.json", "resource/");
-        }
-        catch (e) {
-            console.error(e);
-        }
+    private onConfigComplete(e: RES.ResourceEvent) {
+        console.log("onConfigComplete");
+        RES.removeEventListener(RES.ResourceEvent.CONFIG_COMPLETE, this.onConfigComplete, this);
+        //添加资源组加载完成事件
+        RES.addEventListener(RES.ResourceEvent.GROUP_COMPLETE, this.onResourceLoadComplete, this);
+        //开始加载 preload 资源组
+        RES.loadGroup("all");
+    }
+
+    private onResourceLoadComplete(event: RES.ResourceEvent): void {
+        RES.removeEventListener(RES.ResourceEvent.GROUP_COMPLETE, this.onResourceLoadComplete, this);
+        this.createGameScene();
+
     }
 
     /**
@@ -53,7 +61,8 @@ class Main extends egret.DisplayObjectContainer {
      * Create a game scene
      */
     private createGameScene() {
-        this.addChild(new Game())
+        let game = new Game();
+        this.addChild(game)
 
     }
 

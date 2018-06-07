@@ -9,6 +9,7 @@
 	],
 	"game": [
 		"bin-debug/engine/vo/MjFetchInfo.js",
+		"bin-debug/Game.js",
 		"bin-debug/engine/vo/SplitTypeInfo.js",
 		"bin-debug/engine/vo/OptTing.js",
 		"bin-debug/engine/vo/OptFetch.js",
@@ -19,18 +20,19 @@
 		"bin-debug/engine/vo/MjFanInfo.js",
 		"bin-debug/engine/vo/MjCard.js",
 		"bin-debug/engine/vo/MjChiInfo.js",
-		"bin-debug/engine/vo/OptChi.js",
+		"bin-debug/engine/vo/OptDiscard.js",
 		"bin-debug/engine/vo/IOpt.js",
 		"bin-debug/engine/MjRound.js",
 		"bin-debug/engine/MjGenerator.js",
 		"bin-debug/engine/MjFan.js",
 		"bin-debug/engine/vo/OptAnGang.js",
-		"bin-debug/Main.js",
-		"bin-debug/engine/vo/OptDiscard.js",
+		"bin-debug/engine/vo/OptChi.js",
+		"bin-debug/Global.js",
 		"bin-debug/engine/MjEngine.js",
 		"bin-debug/engine/vo/OptMingGang.js",
 		"bin-debug/engine/vo/OptPeng.js",
 		"bin-debug/engine/MjConst.js",
-		"bin-debug/Game.js"
+		"bin-debug/Main.js",
+		"bin-debug/mjp/HomePage.js"
 	]
 }

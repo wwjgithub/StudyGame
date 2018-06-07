@@ -1,8 +1,18 @@
-import Sprite = egret.Sprite;
+module game {
+    import Sprite = egret.Sprite;
 
-export class Game extends Sprite{
+    export class Game extends egret.Sprite {
+        private homePage: HomePage;
 
-    constructor() {
-        super()
+        constructor() {
+            super();
+            this.homePage = new HomePage();
+            this.addChild(this.homePage);
+            this.homePage.addEventListener(HomePage.START, this.onExitHomePage, this)
+        }
+
+        private onExitHomePage(e: egret.Event) {
+
+        }
     }
 }
