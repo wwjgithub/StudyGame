@@ -1,8 +1,10 @@
 module game {
     import Sprite = egret.Sprite;
+    import Table = mjp.Table;
 
     export class Game extends egret.Sprite {
         private homePage: HomePage;
+        private table: Table;
 
         constructor() {
             super();
@@ -12,7 +14,14 @@ module game {
         }
 
         private onExitHomePage(e: egret.Event) {
+            this.homePage.removeEventListener(HomePage.START, this.onExitHomePage, this);
+            this.homePage.destroy();
+            this.removeChild(this.homePage);
+            //
 
+            this.table=new Table();
+            this.addChild(this.table);
+            this.table.startFirst();
         }
     }
 }

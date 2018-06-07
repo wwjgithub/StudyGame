@@ -4,30 +4,9 @@
  * Date: 2014/10/23
  * Time: 11:32
  */
+
 module mjp {
-    //import engine.MjConst;
-    //import engine.MjEngine;
-    //import engine.MjGenerator;
-    //import engine.MjRound;
-    //import engine.vo.HuInfo;
-    //import engine.vo.MjCard;
-    //import engine.vo.MjChiInfo;
-
-    //import flash.desktop.NativeApplication;
-    //import flash.events.KeyboardEvent;
-    //import flash.geom.Point;
-    //import flash.ui.Keyboard;
-    //import flash.utils.Dictionary;
-
-    //import starling.animation.Transitions;
-    //import starling.animation.Tween;
-    //import starling.display.DisplayObject;
-    //import starling.display.Sprite;
-    //import starling.events.Event;
-    //import starling.events.TouchEvent;
-    //import starling.events.TouchPhase;
-
-    //import utils.util.MethodUtil;
+    import Sprite = egret.Sprite;
 
     export class Table extends Sprite {
         private curPlayerInfos:Vector.<PlayerInfo>;
