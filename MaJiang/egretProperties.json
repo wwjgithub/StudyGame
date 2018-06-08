@@ -1,10 +1,14 @@
 {
-  "engineVersion": "5.2.0",
-  "compilerVersion": "5.2.0",
-  "template": {},
-  "target": {
-    "current": "web"
+  "native": {
+    "path_ignore": []
   },
+  "publish": {
+    "web": 0,
+    "native": 1,
+    "path": "bin-release"
+  },
+  "egret_version": "5.0.15",
+  "template": {},
   "modules": [
     {
       "name": "egret"
@@ -16,10 +20,11 @@
       "name": "tween"
     },
     {
-      "name": "assetsmanager"
+      "name": "res"
     },
     {
-      "name": "promise"
+      "name": "promise",
+      "path": "./promise"
     }
   ]
 }

@@ -3,6 +3,9 @@ namespace game{
     import Bitmap = egret.Bitmap;
 
     export class IPlayer extends Sprite{
+        public playerInfo:PlayerInfo;
+        public next:IPlayer;
+
         private static zhuangMc: Bitmap;
 
         static init() {

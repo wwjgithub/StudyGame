@@ -11,6 +11,7 @@ module game {
             this.homePage = new HomePage();
             this.addChild(this.homePage);
             this.homePage.addEventListener(HomePage.START, this.onExitHomePage, this)
+            this.homePage.dispatchEvent(new egret.Event(HomePage.START));
         }
 
         private onExitHomePage(e: egret.Event) {
@@ -19,6 +20,8 @@ module game {
             this.removeChild(this.homePage);
             //
 
+
+            //todo:SoundManager.getInstance().playBg(true);
             this.table=new Table();
             this.addChild(this.table);
             this.table.startFirst();

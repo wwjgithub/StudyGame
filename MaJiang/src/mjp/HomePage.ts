@@ -11,8 +11,7 @@ module game {
             super();
             this.img = new Bitmap();
             this.img.texture = Global.getRes("homePage");
-            this.img.width = Global.stage_w;
-            this.img.height = Global.stage_h;
+            Global.scaleToStageSize(this.img)
             this.addChild(this.img);
             const title: Bitmap = new Bitmap();
             title.texture = Global.getRes("title");

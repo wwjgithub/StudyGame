@@ -2,19 +2,17 @@ namespace mjp {
     import Sprite = egret.Sprite;
     import Bitmap = egret.Bitmap;
     import BitmapText = egret.BitmapText;
-    import TextField = egret.TextField;
-    import BitmapFont = egret.BitmapFont;
 
     export class Decorate extends Sprite {
         private diTxt: egret.BitmapText;
+        private lastCntText: egret.BitmapText;
 
         constructor() {
             super();
 
             var desktopImage: Bitmap = new Bitmap();
-            desktopImage.texture = Global.getRes("zhuomian_guest1_png");
-            desktopImage.anchorOffsetX = desktopImage.width / 2;
-            desktopImage.anchorOffsetY = desktopImage.height / 2;
+            desktopImage.texture = Global.getRes("zhuomian");
+            Global.scaleToStageSize(desktopImage);
             this.addChild(desktopImage);
             //
             var directMc0: Bitmap = new Bitmap();
@@ -44,17 +42,47 @@ namespace mjp {
             directMc3.anchorOffsetY = directMc3.height / 2;
             directMc3.x = -Global.stage_w / 4;
             this.addChild(directMc3);
+            //
+            let mcs = [directMc0, directMc1, directMc2, directMc3];
+            mcs.forEach((v, index) => {
+                v.x += Global.stage_w / 2;
+                v.y += Global.stage_h / 2;
+            })
             //////
             this.diTxt = new BitmapText();
-
-            this.diTxt.font = new BitmapFont(Global.getRes("shengyuwenzi_qs"), RES.getRes("shengyuwenzi_qs_fnt"));
-
-            // this.diTxt = new TextField(100, 40, "", , 30, Color.WHITE);
             this.addChild(this.diTxt);
+            this.diTxt.font = RES.getRes("shengyuwenzi_qs_fnt");
             this.diTxt.text = "底 " + Global.money_di;
-            this.diTxt.x = 100;
-            this.diTxt.y = -this.diTxt.height / 2;
+            this.diTxt.x = Global.stage_w / 2 + 100;
+            this.diTxt.height = 40;
+            this.diTxt.y = Global.stage_h / 2 - this.diTxt.height / 2;
             this.diTxt.visible = true;
+            /////////
+            this.lastCntText = new BitmapText();
+            this.addChild(this.lastCntText);
+            this.lastCntText.font = RES.getRes("shengyuwenzi_qs_fnt");
+            this.lastCntText.height = 40;
+            this.lastCntText.x = Global.stage_w / 2 - this.lastCntText.width - 100;
+            this.lastCntText.y = Global.stage_h / 2 - this.lastCntText.height / 2;
+            //////
+            this.touchChildren = false;
+            this.touchEnabled = false;
+            ////
+            this.showLastCardCnt(0);
+
+
+        }
+
+        private showLastCardCnt(cardCnt: number) {
+            this.diTxt.visible = true;
+            this.lastCntText.visible = true;
+            this.lastCntText.text = "余" + cardCnt + "张";
+            this.lastCntText.x = Global.stage_w / 2 - this.lastCntText.width - 100;
+        }
+
+        public hideCardCnt(): void {
+            this.lastCntText.visible = false;
+            this.diTxt.visible = false;
         }
     }
 }
