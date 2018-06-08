@@ -4,6 +4,6 @@ module Global {
     export let money_di:number = 10;
 
     export function getRes(s: string) {
-        return RES.getRes("all_json." + s);
+        return RES.getRes("all." + s);
     }
 }

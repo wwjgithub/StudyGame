@@ -1,7 +1,7 @@
 {
 	"groups":[{
 			"keys":"all,m9tiao,mchat6,m36,m9tong,m37,mchat7,m4wan,m35,mchat5,m8wan,mting,mzimo,mhu,mgang,mchat4,m34,m1tiao,mchat0,m6wan,mchat1,m31,m1tong,m8tiao,mchat3,m33,m8tong,m32,mchat2,m3tiao,m2wan,m3tong,mangang,mbuhua,m2tiao,m2tong,m7tong,mpeng,m5wan,m7tiao,m9wan,m6tong,m6tiao,m7wan,m3wan,m4tong,m4tiao,m1wan,m5tong,mchi,m5tiao,newrecord,start,dealmahjong,refreshkeepwin,clickbutton,getcoins,clickbackbutton,hallbtnjump,down,changepage,changesexy,uiwin,fly,select,sendtile,leaveseat,tuoguan_cancel,rain,comeseat,dice,bgmusic,tablemusic,knock,win,tileclick,wind,lose,tuoguan,tileout,receive,itr_emo2,itr_emo3,ready,itr_emo1,w7wan,w5tiao,w5tong,w9wan,w5wan,w4tiao,wpeng,w4tong,w35,w34,whu,w36,w6tiao,w1wan,w6tong,w37,w7tiao,w33,w7tong,wbibi,w3wan,w32,w31,wbuhua,w2tong,w2tiao,w6wan,w3tong,wgang,wzimo,wting,w8wan,w3tiao,w4wan,wchat1,w1tong,w1tiao,wchat0,wchat2,w8tong,wchi,w8tiao,w1bing,wchat3,w9tong,wchat7,w9tiao,wchat6,wchat4,w2wan,wangang,wchat5,itr_emo0,coin_num_fnt,fanshu_fnt,queshenjifen_fnt,shengyuwenzi_gb_fnt,shengyuwenzi_qs_fnt",
-			"name":"all"
+			"name":"allRes"
 		}],
 	"resources":[
 		{

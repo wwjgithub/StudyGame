@@ -10,12 +10,12 @@ module game {
         constructor() {
             super();
             this.img = new Bitmap();
-            this.img.texture = RES.getRes("all_json.homePage");
+            this.img.texture = Global.getRes("homePage");
             this.img.width = Global.stage_w;
             this.img.height = Global.stage_h;
             this.addChild(this.img);
             const title: Bitmap = new Bitmap();
-            title.texture = RES.getRes("all_json.title");
+            title.texture = Global.getRes("title");
             title.width = Global.stage_w * .8;
             title.scaleY = title.scaleX;
             title.x = (Global.stage_w - title.width) / 2;
