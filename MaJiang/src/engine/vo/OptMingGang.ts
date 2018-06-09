@@ -4,7 +4,7 @@
  * Date: 2014/11/4
  * Time: 12:18
  */
-module engine.vo {
+namespace game {
     export class OptMingGang implements IOpt{
         private _card:MjCard;
         public get card():MjCard {

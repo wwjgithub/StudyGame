@@ -15,21 +15,35 @@ namespace game{
             return SoundManager.instance;
         }
 
-        private bgChannel:SoundChannel;
+        public static bgChannel:SoundChannel;
         public playBg(b:boolean):void{
 
             if (b) {
-                if(this.bgChannel==null){
+                if(SoundManager.bgChannel==null){
                     let bgSound: Sound = RES.getRes('bgmusic');
-                    this.bgChannel = bgSound.play(0, -1);
+                    SoundManager.bgChannel = bgSound.play(0, -1);
                 }
             }else{
-                if (this.bgChannel != null) {
-                    this.bgChannel.stop();
-                    this.bgChannel=null;
+                if (SoundManager.bgChannel != null) {
+                    SoundManager.bgChannel.stop();
+                    SoundManager.bgChannel=null;
                 }
             }
         }
+        public static playOpt(sex:number, ss:string):void {
+            var s:String = "";
+            if (sex == Global.MAN) {
+                s = "man_m";
+            } else {
+                s = "woman_w";
+            }
+            SoundManager.play(s + ss);
+        }
 
+        public static play(s:string):void {
+            var cla:Sound = RES.getRes(s);
+            let c:SoundChannel=cla.play(0,1);
+            c.volume=StorageData.sfxVolume/10;
+        }
     }
 }

@@ -1,7 +1,6 @@
 namespace game {
     import Sprite = egret.Sprite;
     import Bitmap = egret.Bitmap;
-    import BitmapFont = egret.BitmapFont;
     import BitmapText = egret.BitmapText;
     import Timer = egret.Timer;
     import TimerEvent = egret.TimerEvent;
@@ -48,43 +47,43 @@ namespace game {
             this.arrowMc.addChild(this.pDown);
             this.addChild(this.arrowMc);
             //
-            egret.Tween.get(this.arrowMc,{loop:true}).to({"alpha":0},500).to({"alpha":1},500)
+            egret.Tween.get(this.arrowMc, {loop: true}).to({"alpha": 0}, 500).to({"alpha": 1}, 500)
             ///////
             this.moneyT = new BitmapText();
             this.moneyT.font = RES.getRes('coin_num_fnt');
-            this.moneyT.x=(this.bg.width-this.moneyT.width)/2;
-            this.moneyT.y=(this.bg.height-this.moneyT.height)/2;
-            this.moneyT.text="10";
+            this.moneyT.x = (this.bg.width - this.moneyT.width) / 2;
+            this.moneyT.y = (this.bg.height - this.moneyT.height) / 2;
+            this.moneyT.text = "10";
             this.addChild(this.moneyT);
             //
-            this.anchorOffsetX=this.width/2;
-            this.anchorOffsetY=this.height/2;
-            this.scaleX=this.scaleY=.7;
+            this.anchorOffsetX = this.width / 2;
+            this.anchorOffsetY = this.height / 2;
+            this.scaleX = this.scaleY = .7;
 
             ////
-            this.cntTimer=new Timer(1000,10);
+            this.cntTimer = new Timer(1000, 10);
             this.cntTimer.addEventListener(TimerEvent.TIMER, this.updateNum1, this);
         }
 
-        private update():void {
+        private update(): void {
             this.cntTimer.reset();
             this.updateNum1(null);
             this.cntTimer.start();
         }
 
-        private updateNum1(e):void {
-            this.moneyT.text = (this.cntTimer.repeatCount-this.cntTimer.currentCount) + "";
+        private updateNum1(e): void {
+            this.moneyT.text = (this.cntTimer.repeatCount - this.cntTimer.currentCount) + "";
             this.moneyT.x = (this.bg.width - this.moneyT.width) / 2;
             this.moneyT.y = (this.bg.height - this.moneyT.height) / 2;
         }
 
-        public pointUp():void {
+        public pointUp(): void {
             this.hideArrow();
             this.pUp.visible = true;
             this.update()
         }
 
-        private hideArrow():void {
+        private hideArrow(): void {
             this.arrowMc.alpha = 0;
             this.pDown.visible = false;
             this.pUp.visible = false;
@@ -92,19 +91,19 @@ namespace game {
             this.pRight.visible = false;
         }
 
-        public pointDown():void {
+        public pointDown(): void {
             this.hideArrow();
             this.pDown.visible = true;
             this.update()
         }
 
-        public pointLeft():void {
+        public pointLeft(): void {
             this.hideArrow();
             this.pLeft.visible = true;
             this.update()
         }
 
-        public pointRight():void {
+        public pointRight(): void {
             this.hideArrow();
             this.pRight.visible = true;
             this.update()

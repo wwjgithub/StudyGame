@@ -4,7 +4,7 @@
  * Date: 13-4-3
  * Time: 上午10:46
  */
-module engine.vo {
+namespace game {
     export class MjTingInfo {
         //打出去的牌
         public target:MjCard;

@@ -5,9 +5,7 @@
  * Time: 17:07
  */
 
-module engine {
-
-    import MjCard = engine.vo.MjCard;
+namespace game {
 
     export class MjGenerator  {
         constructor() {

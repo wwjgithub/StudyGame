@@ -4,7 +4,7 @@
  * Date: 13-4-3
  * Time: 下午5:47
  */
-module engine.vo {
+namespace game {
     export class MjFanInfo {
         public name:string;
         public valid:boolean = true;

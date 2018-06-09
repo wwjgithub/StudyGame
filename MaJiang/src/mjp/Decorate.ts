@@ -1,4 +1,4 @@
-namespace mjp {
+namespace game {
     import Sprite = egret.Sprite;
     import Bitmap = egret.Bitmap;
     import BitmapText = egret.BitmapText;
@@ -73,7 +73,7 @@ namespace mjp {
 
         }
 
-        private showLastCardCnt(cardCnt: number) {
+        public showLastCardCnt(cardCnt: number) {
             this.diTxt.visible = true;
             this.lastCntText.visible = true;
             this.lastCntText.text = "余" + cardCnt + "张";

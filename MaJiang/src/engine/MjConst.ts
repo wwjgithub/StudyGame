@@ -5,9 +5,9 @@
  * Time: 上午10:24
  */
 
-module engine {
+namespace game {
 
-    import MjCard = engine.vo.MjCard;
+    import MjCard = engine.MjCard;
 
     export class MjConst {
         public static playtype_4:number = 4;

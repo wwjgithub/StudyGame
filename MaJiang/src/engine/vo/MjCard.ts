@@ -4,7 +4,7 @@
  * Date: 13-3-11
  * Time: 下午4:22
  */
-module engine.vo {
+namespace game {
 
     /**
      * 麻将牌

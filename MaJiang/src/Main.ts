@@ -1,3 +1,4 @@
+import Global = game.Global;
 import Game = game.Game;
 
 class Main extends egret.DisplayObjectContainer {

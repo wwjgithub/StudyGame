@@ -4,7 +4,7 @@
  * Date: 2014/10/23
  * Time: 14:26
  */
-module engine.vo {
+namespace game {
     export class MjFetchInfo {
         private _fromPlayer:MjPlayer;
         private _cardIndex:number;

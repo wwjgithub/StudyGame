@@ -1,7 +1,7 @@
 /**
  * Created by Administrator on 2015/3/12.
  */
-module engine.vo {
+namespace game {
 
     export class SplitTypeInfo {
         private _dongCards:MjCard[] = [];

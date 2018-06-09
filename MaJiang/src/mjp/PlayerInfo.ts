@@ -2,7 +2,7 @@ namespace game {
     export class PlayerInfo {
         public win: number = 0;
         public lose: number = 0;
-        public name: String;
+        public name: string;
         public money: number;
         public sex: number;
 
@@ -10,7 +10,7 @@ namespace game {
         constructor() {
         }
 
-        public init(s: String) {
+        public init(s: string) {
             var ar: Array<string> = s.split("_");
             this.name = ar[0];
             this.sex = parseInt(ar[1]);
@@ -19,7 +19,7 @@ namespace game {
             this.lose = parseInt(ar[4]);
         }
 
-        public getSaveStr(): String {
+        public getSaveStr(): string {
             return [this.name, this.sex, this.money, this.win, this.lose].join("_");
         }
     }

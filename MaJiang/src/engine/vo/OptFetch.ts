@@ -4,7 +4,7 @@
  * Date: 2014/11/27
  * Time: 17:16
  */
-module engine.vo {
+namespace game {
     export class OptFetch implements IOpt {
         constructor() {
         }

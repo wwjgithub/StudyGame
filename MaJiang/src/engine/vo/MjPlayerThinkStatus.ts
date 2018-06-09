@@ -4,7 +4,7 @@
  * Date: 13-3-19
  * Time: 下午5:34
  */
-module engine.vo {
+namespace game {
     export class MjPlayerThinkStatus {
         public chiInfos:MjChiInfo[] = [];
         public pengCards:MjCard[] = [];

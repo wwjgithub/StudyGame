@@ -1,6 +1,4 @@
-module game {
-    import Sprite = egret.Sprite;
-    import Table = mjp.Table;
+namespace game {
 
     export class Game extends egret.Sprite {
         private homePage: HomePage;
@@ -22,7 +20,7 @@ module game {
 
 
             //todo:SoundManager.getInstance().playBg(true);
-            this.table=new Table();
+            this.table = new Table();
             this.addChild(this.table);
             this.table.startFirst();
         }

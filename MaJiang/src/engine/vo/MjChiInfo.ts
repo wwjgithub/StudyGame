@@ -4,7 +4,7 @@
  * Date: 13-4-7
  * Time: 下午5:29
  */
-module engine.vo {
+namespace game {
     export class MjChiInfo {
         public target:MjCard;
         //已经从大到小排序

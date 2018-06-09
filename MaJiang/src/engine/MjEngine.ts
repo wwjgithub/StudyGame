@@ -6,15 +6,7 @@
  */
 
 
-module engine {
-
-    import MjCard = engine.vo.MjCard;
-    import HuInfo = engine.vo.HuInfo;
-    import MjChiInfo = engine.vo.MjChiInfo;
-    import MjFanInfo = engine.vo.MjFanInfo;
-    import MjTingInfo = engine.vo.MjTingInfo;
-    import SplitTypeInfo = engine.vo.SplitTypeInfo;
-    import MjPlayerThinkStatus = engine.vo.MjPlayerThinkStatus;
+namespace game {
 
     export class MjEngine {
 
@@ -26,38 +18,38 @@ module engine {
             var infos = [];
             var cards = cs.slice();
             cards.sort(MjEngine.sortCardByTypeNum);
-            var b:boolean;
+            var b: boolean;
             //前面这是特殊牌型.
             b = MjFan.is七对(cards);
             if (b) {
                 infos.push(new HuInfo());
-                if (infos.length > maxCnt)return infos;
+                if (infos.length > maxCnt) return infos;
             }
             b = MjFan.is组合龙(cards);
             if (b) {
                 infos.push(new HuInfo());
-                if (infos.length > maxCnt)return infos;
+                if (infos.length > maxCnt) return infos;
             }
             b = MjFan.is七星不靠(cards);
             if (b) {
                 infos.push(new HuInfo());
-                if (infos.length > maxCnt)return infos;
+                if (infos.length > maxCnt) return infos;
             }
             b = MjFan.is十三幺(cards);
             if (b) {
                 infos.push(new HuInfo());
-                if (infos.length > maxCnt)return infos;
+                if (infos.length > maxCnt) return infos;
             }
             b = MjFan.is全不靠(cards);
             if (b) {
                 infos.push(new HuInfo());
-                if (infos.length > maxCnt)return infos;
+                if (infos.length > maxCnt) return infos;
             }
             //下面这是普通牌型
             var duis = MjEngine.getDouble(cards);
             //先把将拿出来.因为有的作用可能不是将.需要挨个比较
-            var i:number;
-            var retStatus:HuInfo;
+            var i: number;
+            var retStatus: HuInfo;
             for (i = 0; i < duis.length; i++) {
                 var tss = cards.slice();
                 tss.sort(MjEngine.sortCardByTypeNum);
@@ -72,7 +64,7 @@ module engine {
                 retStatus.anKe = retStatus.anKe.concat(MjEngine.subSameCnt(ts1, 3));
                 if (ts1.length == 0) {
                     infos.push(retStatus);
-                    if (infos.length > maxCnt)return infos;
+                    if (infos.length > maxCnt) return infos;
                 }
                 retStatus = new HuInfo();
                 retStatus.jiang = jiang;
@@ -82,7 +74,7 @@ module engine {
                 retStatus.anKe = retStatus.anKe.concat(MjEngine.subSameCnt(ts2, 3));
                 if (ts2.length == 0) {
                     infos.push(retStatus);
-                    if (infos.length > maxCnt)return infos;
+                    if (infos.length > maxCnt) return infos;
                 }
                 retStatus = new HuInfo();
                 retStatus.jiang = jiang;
@@ -92,7 +84,7 @@ module engine {
                 retStatus.anShun = retStatus.anShun.concat(MjEngine.subLine(ts3));
                 if (ts3.length == 0) {
                     infos.push(retStatus);
-                    if (infos.length > maxCnt)return infos;
+                    if (infos.length > maxCnt) return infos;
                 }
                 retStatus = new HuInfo();
                 retStatus.jiang = jiang;
@@ -102,7 +94,7 @@ module engine {
                 retStatus.anShun = retStatus.anShun.concat(MjEngine.subLineReverse(ts4));
                 if (ts4.length == 0) {
                     infos.push(retStatus);
-                    if (infos.length > maxCnt)return infos;
+                    if (infos.length > maxCnt) return infos;
                 }
             }
             for (var j = 0; j < infos.length; j++) {
@@ -631,7 +623,7 @@ module engine {
             if (!card.isNumCard()) {
                 return ret;
             }
-            var v:MjChiInfo;
+            var v: MjChiInfo;
             var s = showCards.slice();
             if (card.num > 2) {
                 if (MjEngine.getCardCnt(s, card.type, card.num - 2) > 0) {
@@ -756,7 +748,7 @@ module engine {
          * @param showCards
          * @return
          */
-        static getTingCards(showCards){
+        static getTingCards(showCards) {
             var tCards;
             //如果有13张牌,则有可能会是特殊牌型
             tCards = MjEngine.getNormalTingCards(showCards);
@@ -870,7 +862,7 @@ module engine {
             //下面这是普通牌型
             var duis = MjEngine.getDouble(cards);
             //先把将拿出来.因为有的作用可能不是将.需要挨个比较
-            var i:number;
+            var i: number;
             for (i = 0; i < duis.length; i++) {
                 var jiang = duis[i];
                 var tss = cards.slice();
@@ -880,23 +872,23 @@ module engine {
                 }
                 tss.sort(MjEngine.sortCardByTypeNum);
                 //
-                var valid:boolean=true;
+                var valid: boolean = true;
                 var info = new SplitTypeInfo(tss);
                 var allTypes = info.getAllTypeCards();
                 for (var j = 0; j < allTypes.length; j++) {
                     if (allTypes[j].length % 3 != 0) {
-                        valid=false;
+                        valid = false;
                         continue;
                     }
                 }
-                if(!valid){
+                if (!valid) {
                     continue;
                 }
                 //
                 for (var k = 0; k < allTypes.length; k++) {
-                    if (allTypes[k].length >0) {
-                        if(!MjEngine.isComponents(allTypes[k])){
-                            valid=false;
+                    if (allTypes[k].length > 0) {
+                        if (!MjEngine.isComponents(allTypes[k])) {
+                            valid = false;
                             continue;
                         }
                     }
@@ -958,7 +950,7 @@ module engine {
         static getDiscardCard(cs) {
             var v = cs.slice();
             v.sort(MjEngine.sortCardByTypeNum);
-            var card:MjCard;
+            var card: MjCard;
             card = MjEngine.getSingleFengSeCard(v.slice());
             //去掉单个风牌
             if (card != null) {
@@ -1017,7 +1009,7 @@ module engine {
          */
         static getFarawayCard(v, distance) {
             MjEngine.deleteByType(v, [MjConst.type_feng, MjConst.type_se]);
-            var card:MjCard;
+            var card: MjCard;
             for (var i = 0; i < v.length; i++) {
                 card = v[i];
                 if (i == 0) {

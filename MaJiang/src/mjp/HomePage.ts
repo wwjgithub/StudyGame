@@ -1,6 +1,5 @@
-module game {
+namespace game {
     import Bitmap = egret.Bitmap;
-    import DisplayObject = egret.DisplayObject;
 
     export class HomePage extends egret.Sprite {
         public static START: string = "START";
@@ -23,7 +22,7 @@ module game {
             title.visible = false;
             //////
             let b1 = new Bitmap();
-            b1.touchEnabled=true;
+            b1.touchEnabled = true;
             b1.texture = Global.getRes("开始游戏1");
             this.addChild(b1);
             b1.addEventListener(egret.TouchEvent.TOUCH_TAP, this.btn1_Handle, this);

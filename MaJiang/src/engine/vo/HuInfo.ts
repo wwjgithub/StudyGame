@@ -4,7 +4,7 @@
  * Date: 2014/11/24
  * Time: 11:13
  */
-module engine.vo {
+namespace game {
     //import engine.MjEngine;
 
     export class HuInfo {

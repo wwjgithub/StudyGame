@@ -4,7 +4,7 @@
  * Date: 2014/11/27
  * Time: 17:15
  */
-module engine.vo {
+namespace game {
     export class OptDiscard implements IOpt {
         public card:MjCard;
         constructor(card:MjCard) {

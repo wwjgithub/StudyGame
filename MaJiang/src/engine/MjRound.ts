@@ -7,14 +7,11 @@
 
 
 
-module engine {
+namespace game {
 
-    import MjPlayer = engine.vo.MjPlayer;
-    import MjCard = engine.vo.MjCard;
-    import MjFetchInfo = engine.vo.MjFetchInfo;
-    import MjChiInfo = engine.vo.MjChiInfo;
+    import EventDispatcher = egret.EventDispatcher;
 
-    export class MjRound {
+    export class MjRound extends EventDispatcher{
         private _players:MjPlayer[] = [];
         private _playType:number;
         private cards:MjCard[] = [];
@@ -28,6 +25,7 @@ module engine {
         }
 
         constructor(playType:number) {
+            super();
             this._playType = playType;
             this._players = [];
             var i:number = 0;
