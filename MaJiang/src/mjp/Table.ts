@@ -306,7 +306,7 @@ namespace game {
             this.nextPlayerDecideForOtherDiscard(this._curPlayer.next, card);
         }
 
-        private onDecideForOtherDiscard(e: egret.Event, player: IPlayer, card: MjCard): void {
+        private onDecideForOtherDiscard(player: IPlayer, card: MjCard,e: egret.Event): void {
             if (e.type != MjEvent.PASS) {
                 this.decideForOtherDiscardDic.push([player.hashCode,e]);
             }
@@ -315,7 +315,7 @@ namespace game {
 
         private nextPlayerDecideForOtherDiscard(player: IPlayer, card: MjCard): void {
             if (player != this._curPlayer) {
-                player.decideOnOtherDiscard(card, this._curPlayer.next == player, MethodUtil.create(this.onDecideForOtherDiscard, player, card))
+                player.decideOnOtherDiscard(card, this._curPlayer.next == player, this.onDecideForOtherDiscard.bind(this, player, card))
             } else {
                 for (let i = 0; i < this.decideForOtherDiscardDic.length; i++) {
                     let ar = this.decideForOtherDiscardDic[i];
@@ -387,7 +387,7 @@ namespace game {
 
         private nextPlayerDecideForOtherWantBuGang(player: IPlayer, card: MjCard): void {
             if (player != this._curPlayer) {
-                player.decideOnOtherBuGang(card, MethodUtil.create(this.nextPlayerDecideForOtherWantBuGang, player.next, card));
+                player.decideOnOtherBuGang(card, this.nextPlayerDecideForOtherWantBuGang.bind(this, player.next, card));
             } else {
                 this._curPlayer.buGang(card);
             }

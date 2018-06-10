@@ -157,6 +157,19 @@ namespace game {
             this.showCardsMc.visible = true;
         }
 
+        /**
+         * 别人补杠时,英雄能胡.问胡不胡
+         * @param mjCard
+         * @param passFunc
+         */
+        public decideOnOtherBuGang(mjCard:MjCard, passFunc:Function):void {
+            var status:MjPlayerThinkStatus = MjEngine.thinkOptOnOtherBuGang(this.core, mjCard);
+            if (status.hasTrue()) {
+                this.opt.update(this, status, this.hu.bind(this), passFunc);
+            } else {
+                passFunc();
+            }
+        }
 
         /**
          * 别人打牌,我可能的操作
@@ -172,7 +185,7 @@ namespace game {
                     var e: egret.Event = new egret.Event(arg[arg.length - 1], false, arg[0]);
                     callBack(e);
                 };
-                this.opt.update(this, status, this.hu,
+                this.opt.update(this, status, this.hu.bind(this),
                     MethodUtil.create(func, MjEvent.PASS),
                     null,
                     MethodUtil.create(func, MjEvent.CHI),
