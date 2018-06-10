@@ -181,7 +181,7 @@ namespace game {
             var p: Point = new Point(globalX, globalY);
             for (var i = 0; i < this.showCardMcs.length; i++) {
                 var mc: CardSprite = this.showCardMcs[i];
-                var rec: Rectangle = mc.getBounds();
+                var rec: Rectangle = mc.getTransformedBounds(Global.stage);
                 if (rec.containsPoint(p)) {
                     return mc;
                 }

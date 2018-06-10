@@ -16,7 +16,7 @@ namespace game {
 
         public removeFilter(): void {
             for (var j: number = 0; j < this.showCardMcs.length; j++) {
-                //todo:this.showCardMcs[j].filter = null;
+                this.showCardMcs[j].filters = [];
             }
         }
 

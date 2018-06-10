@@ -11,7 +11,7 @@ class Main extends egret.DisplayObjectContainer {
     }
 
     private onTouchStage(e:egret.TouchEvent):void{
-        log("onTouchStage",e.target)
+        log("  onTouchStage ",e.target)
     }
     private onAddToStage(event: egret.Event) {
 

@@ -36,9 +36,9 @@ namespace game {
         public static playMj(sex: number, lastDiscardCard: MjCard): void {
             var s: string = "";
             if (sex == Global.MAN) {
-                s = "man_m";
+                s = "m";
             } else {
-                s = "woman_w";
+                s = "w";
             }
             SoundManager.play(s + SoundManager.getSoundByCard(lastDiscardCard));
         }
@@ -73,9 +73,9 @@ namespace game {
         public static playOpt(sex: number, ss: string): void {
             var s: String = "";
             if (sex == Global.MAN) {
-                s = "man_m";
+                s = "m";
             } else {
-                s = "woman_w";
+                s = "w";
             }
             SoundManager.play(s + ss);
         }

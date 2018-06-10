@@ -22,7 +22,6 @@ namespace game {
             super.updateIcon(isZhuang);
             this.head.x = this.showCardsMc.x + this.head.width / 2;
             this.head.y = this.head.height / 2 + 4;
-            log("player up",this.head.x,this.head.y)
 
             if (this.isZhuang) {
                 IPlayer.zhuangMc.x = this.head.x + this.head.width / 2 + IPlayer.zhuangMc.width / 2;
