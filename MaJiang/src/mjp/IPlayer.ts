@@ -4,6 +4,7 @@ namespace game {
     import Event = egret.Event;
     import Bitmap = egret.Bitmap;
     import TextField = egret.TextField;
+    import Point = egret.Point;
 
 
     export class IPlayer extends Sprite {
@@ -17,7 +18,7 @@ namespace game {
         public showCardsMc: IShowMc = new IShowMc();
         public discardCardsMc: IDiscardMc = new IDiscardMc();
 
-        private static zhuangMc: Bitmap;
+        public static zhuangMc: Bitmap;
 
         static init() {
             IPlayer.zhuangMc = new Bitmap();
@@ -76,7 +77,21 @@ namespace game {
         }
 
         public static SHOW_HEAD_TIP: string = "SHOW_HEAD_TIP";
+        public showDiscardAnim(card:MjCard, x:number, y:number):void {
+            var startPos:Point = new Point(x, y);
+            startPos = this.showCardsMc.localToGlobal(startPos.x,startPos.y);
+            startPos = Anim.instance.globalToLocal(startPos.x,startPos.y);
+            var endPos:Point = this.discardCardsMc.getNextPos();
+            endPos = this.discardCardsMc.localToGlobal(endPos.x,endPos.y);
+            endPos = Anim.instance.globalToLocal(endPos.x,endPos.y);
+            Anim.instance.showDiscardAnim(this, card, startPos, endPos);
+            SoundManager.playMj(this.playerInfo.sex, card);
+        }
 
+        public ting(tingInfo:MjTingInfo):void {
+            this.core.tingInfo = tingInfo;
+            Anim.instance.showTing(this);
+        }
         private onClickHead(event): void {
             this.dispatchEvent(new egret.Event(IPlayer.SHOW_HEAD_TIP));
         }

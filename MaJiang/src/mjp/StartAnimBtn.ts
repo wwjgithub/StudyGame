@@ -13,7 +13,7 @@ namespace game {
             super();
             this.mc = new Bitmap(Global.getRes("startgame1"));
             this.mc.anchorOffsetX = this.mc.width / 2;
-            this.mc.anchorOffsetY = this.height / 2;
+            this.mc.anchorOffsetY = this.mc.height / 2;
             this.addChild(this.mc);
             this.img = new Bitmap(Global.getRes("startgame"));
             this.img.anchorOffsetX = this.img.width / 2;

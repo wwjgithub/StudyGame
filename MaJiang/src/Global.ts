@@ -1,8 +1,9 @@
-module game {
+namespace game {
     import DisplayObject = egret.DisplayObject;
     import Stage = egret.Stage;
 
     export class Global {
+        static UP_CARD_WIDTH: number = 42;
 
         static stage: Stage;
         static stage_w: number;
@@ -12,6 +13,12 @@ module game {
         static INIT_MONEY = 1000;
 
         static show_card_width: number = 69;
+
+        static removeMe(m:DisplayObject){
+            if(m.parent!=null){
+                m.parent.removeChild(m);
+            }
+        }
 
         static getRes(s: string): any {
             return RES.getRes("all." + s);

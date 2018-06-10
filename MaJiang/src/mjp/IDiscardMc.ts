@@ -10,13 +10,55 @@ namespace game {
         private fromBottom: boolean;
         private static _discardCardSize: Rectangle;
 
-        public static CNT_HOR: Number = 8;
-        public static CNT_VER: Number = 7;
+        public static CNT_HOR: number = 8;
+        public static CNT_VER: number = 7;
 
         constructor() {
             super();
         }
+        public initRight():void {
+            this.fromBottom = true;
+            for (var i = 0; i < IDiscardMc.CNT_VER * 4; i++) {
+                var p:Point = new Point();
+                p.x = -Math.floor(i / IDiscardMc.CNT_VER) * IDiscardMc.discardCardSize.width;
+                p.y = -i % IDiscardMc.CNT_VER * (IDiscardMc.discardCardSize.height);
+                this.positions.push(p);
+            }
+        }
 
+        public  initUp():void {
+            for (var i = 0; i < IDiscardMc.CNT_HOR * 3; i++) {
+                var p:Point = new Point();
+                p.x = -i % IDiscardMc.CNT_HOR * IDiscardMc.discardCardSize.width;
+                p.y = Math.floor(i / IDiscardMc.CNT_HOR) * (IDiscardMc.discardCardSize.height);
+                this.positions.push(p);
+            }
+        }
+
+        public initLeft():void {
+            for (var i:number = 0; i < IDiscardMc.CNT_VER * 4; i++) {
+                var p:Point = new Point();
+                p.x = Math.floor(i / IDiscardMc.CNT_VER) * IDiscardMc.discardCardSize.width;
+                p.y = i % IDiscardMc.CNT_VER * (IDiscardMc.discardCardSize.height);
+                this.positions.push(p);
+            }
+        }
+        public initDown():void {
+            this.fromBottom = true;
+            for (var i = 0; i < IDiscardMc.CNT_HOR * 3; i++) {
+                var p:Point = new Point();
+                p.x = i % IDiscardMc.CNT_HOR * IDiscardMc.discardCardSize.width;
+                p.y = -Math.floor(i / IDiscardMc.CNT_HOR) * (IDiscardMc.discardCardSize.height);
+                this.positions.push(p);
+            }
+        }
+        public getNextPos():Point {
+            return this.positions[this.cur];
+        }
+
+        public static get YY():number {
+            return (Global.stage_h - IDiscardMc.discardCardSize.height * IDiscardMc.CNT_VER) / 5 * 2;
+        }
         public removeLastDiscardCard(): void {
             this.cur--;
             this.removeChild(this.cardSprite);

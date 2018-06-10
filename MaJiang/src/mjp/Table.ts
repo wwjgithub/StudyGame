@@ -52,11 +52,11 @@ namespace game {
             this.playerRight = new PlayerRight();
             this.addChild(this.playerRight);
             this.playerUp = new PlayerUp();
-            this.addChild(this.playerRight);
+            this.addChild(this.playerUp);
             this.playerLeft = new PlayerLeft();
-            this.addChild(this.playerRight);
+            this.addChild(this.playerLeft);
             this.playerHero = new PlayerHero();
-            this.addChild(this.playerRight);
+            this.addChild(this.playerHero);
             /////
             this.playerHero.next = this.playerRight;
             this.playerRight.next = this.playerUp;

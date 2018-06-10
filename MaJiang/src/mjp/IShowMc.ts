@@ -1,60 +1,94 @@
-namespace game{
+namespace game {
     import Sprite = egret.Sprite;
     import Point = egret.Point;
 
-     export class IShowMc extends Sprite{
-        protected showCardMcs:Array<CardSprite> = new Array<CardSprite>();
-        private startPosition: egret.Point;
-        public fetchCardPosition:Point;
-        public enable:Boolean = true;
-        private  _updateFunc:Function;
-        private  _putFetchCardFunc:Function;
+    export class IShowMc extends Sprite {
+        protected showCardMcs: Array<CardSprite> = new Array<CardSprite>();
+        public startPosition: egret.Point;
+        public fetchCardPosition: Point;
+        public enable: Boolean = true;
+        private _updateFunc: Function;
+        private _putFetchCardFunc: Function;
 
         constructor() {
             super();
         }
 
-        public removeFilter():void {
-            for (var j:number = 0; j < this.showCardMcs.length; j++) {
+        public removeFilter(): void {
+            for (var j: number = 0; j < this.showCardMcs.length; j++) {
                 //todo:this.showCardMcs[j].filter = null;
             }
         }
 
-        private appendCard(mc:CardSprite):void {
+        private appendCard(mc: CardSprite): void {
             this.addChild(mc);
             this.showCardMcs.push(mc);
-            mc.addEventListener(egret.TouchEvent.TOUCH_BEGIN, this.onClickCard,this);
-            mc.addEventListener(egret.TouchEvent.TOUCH_END, this.onClickCard,this);
-            mc.addEventListener(egret.Event.REMOVED_FROM_STAGE, this.onCardRemove,this);
+            mc.addEventListener(egret.TouchEvent.TOUCH_BEGIN, this.onClickCard, this);
+            mc.addEventListener(egret.TouchEvent.TOUCH_END, this.onClickCard, this);
+            mc.addEventListener(egret.Event.REMOVED_FROM_STAGE, this.onCardRemove, this);
         }
 
 
-        private onCardRemove(event:egret.Event):void {
-            var mc:CardSprite = <CardSprite>(event.currentTarget);
-            mc.removeEventListener(egret.TouchEvent.TOUCH_BEGIN, this.onClickCard,this);
-            mc.removeEventListener(egret.TouchEvent.TOUCH_END, this.onClickCard,this);
-            mc.removeEventListener(egret.Event.REMOVED_FROM_STAGE, this.onCardRemove,this);
+        public initUp(): void {
+            this._updateFunc = this.showUp;
+            this._putFetchCardFunc = this.onFetchUp;
         }
 
-        protected onClickCard(event:egret.TouchEvent):void {
-            if (!this.enable)return;
-            var mc:CardSprite = <CardSprite>(event.currentTarget);
+        private showUp(r: MjPlayer): void {
+            this.clear();
+            var xx: number = Global.UP_CARD_WIDTH * 3;
+            for (var j: number = 0; j < r.opts.length; j++) {
+                var opt: IOpt = r.opts[j];
+                var mcc: MjComponent = IShowMc.createComponent(opt);
+                if (mcc != null) {
+                    this.startPosition.x -= xx;
+                    mcc.x = this.startPosition.x;
+                    mcc.y = this.startPosition.y;
+                    this.addChild(mcc);
+                }
+            }
+            this.startPosition.x -= 10;
+            var mjCards: Array<MjCard> = r.cloneShowCards();
+            for (var i: number = 0; i < mjCards.length; i++) {
+                var card: MjCard = mjCards[i];
+                var mc: CardSprite = Asset.getUpStandCard(card);
+                this.startPosition.x -= mc.width;
+                //mc.x = -(mc.width - 2) * i + 70;
+                mc.x = this.startPosition.x;
+                mc.y = this.startPosition.y;
+                this.appendCard(mc);
+                if (i == mjCards.length - 1) {
+                    this.fetchCardPosition = new Point(mc.x - mc.width - 10, mc.y)
+                }
+            }
+        }
 
-            if (event.type==egret.TouchEvent.TOUCH_END) {
+        private onCardRemove(event: egret.Event): void {
+            var mc: CardSprite = <CardSprite>(event.currentTarget);
+            mc.removeEventListener(egret.TouchEvent.TOUCH_BEGIN, this.onClickCard, this);
+            mc.removeEventListener(egret.TouchEvent.TOUCH_END, this.onClickCard, this);
+            mc.removeEventListener(egret.Event.REMOVED_FROM_STAGE, this.onCardRemove, this);
+        }
+
+        protected onClickCard(event: egret.TouchEvent): void {
+            if (!this.enable) return;
+            var mc: CardSprite = <CardSprite>(event.currentTarget);
+
+            if (event.type == egret.TouchEvent.TOUCH_END) {
                 this.discard(mc);
-            } else if (event.type===egret.TouchEvent.TOUCH_BEGIN) {
+            } else if (event.type === egret.TouchEvent.TOUCH_BEGIN) {
                 SoundManager.play("select");
                 mc.oriY = mc.y;
                 mc.y -= 30;
             }
         }
 
-        protected discard(mc:CardSprite):void {
+        protected discard(mc: CardSprite): void {
             this.showCardMcs.splice(this.showCardMcs.indexOf(mc), 1);
-            this.dispatchEvent(new MjEvent(MjEvent.DISCARD_SHOWMC, false, false,mc));
+            this.dispatchEvent(new MjEvent(MjEvent.DISCARD_SHOWMC, false, false, mc));
         }
 
-        private appendFetchCard(cardMc:CardSprite):void {
+        private appendFetchCard(cardMc: CardSprite): void {
             SoundManager.play("receive");
             cardMc.x = this.fetchCardPosition.x;
             cardMc.y = this.fetchCardPosition.y - 50;
@@ -62,41 +96,43 @@ namespace game{
 //            var fetchTween:Tween = new Tween(cardMc, 0.5, Transitions.EASE_OUT_BOUNCE);
 //            fetchTween.animate("y", fetchCardPosition.y);
             //juggler.add(fetchTween);
-            cardMc.addEventListener(MjEvent.FETCH_COMPLETE, this.onFetchComplete,this);
+            cardMc.addEventListener(MjEvent.FETCH_COMPLETE, this.onFetchComplete, this);
             cardMc.moveY(this.fetchCardPosition.y);
             //TweenLite.to(cardMc, .5, {y: fetchCardPosition.y, ease: Bounce.easeOut})
         }
-        private onFetchComplete(event:MjEvent):void {
-            event.currentTarget.removeEventListener(event.type, this.onFetchComplete,this);
+
+        private onFetchComplete(event: MjEvent): void {
+            event.currentTarget.removeEventListener(event.type, this.onFetchComplete, this);
             this.dispatchEvent(event)
         }
 
-        private  onFetchDown(card:MjCard):void {
-            var cardMc:CardSprite = Asset.getFrontStandCard(card);
+        private onFetchDown(card: MjCard): void {
+            var cardMc: CardSprite = Asset.getFrontStandCard(card);
             this.appendFetchCard(cardMc);
         }
 
-        private  onFetchUp(card:MjCard):void {
-            var cardMc:CardSprite = Asset.getUpStandCard(card);
+        private onFetchUp(card: MjCard): void {
+            var cardMc: CardSprite = Asset.getUpStandCard(card);
             this.appendFetchCard(cardMc);
         }
 
-        private  onFetchRight(card:MjCard):void {
-            var cardMc:CardSprite = Asset.getRightStandCard(card);
+        private onFetchRight(card: MjCard): void {
+            var cardMc: CardSprite = Asset.getRightStandCard(card);
             this.appendFetchCard(cardMc);
             this.addChildAt(cardMc, 0);
         }
 
-        private  onFetchLeft(card:MjCard):void {
-            var cardMc:CardSprite = Asset.getLeftStandCard(card);
+        private onFetchLeft(card: MjCard): void {
+            var cardMc: CardSprite = Asset.getLeftStandCard(card);
             this.appendFetchCard(cardMc);
         }
 
-        public initRight():void {
+        public initRight(): void {
             this._updateFunc = this.showRight;
             this._putFetchCardFunc = this.onFetchRight;
         }
-        private static createComponent(opt:IOpt):MjComponent {
+
+        private static createComponent(opt: IOpt): MjComponent {
             if (opt instanceof OptAnGang) {
                 return ComponentFactory.createAnGangForOther((opt as OptAnGang).card);
             }
@@ -112,12 +148,12 @@ namespace game{
             return null;
         }
 
-        private showRight(r:MjPlayer):void {
+        private showRight(r: MjPlayer): void {
             this.clear();
             var yy = 50;
             for (var j = 0; j < r.opts.length; j++) {
-                var opt:IOpt = r.opts[j];
-                var mcc:MjComponent = IShowMc.createComponent(opt);
+                var opt: IOpt = r.opts[j];
+                var mcc: MjComponent = IShowMc.createComponent(opt);
                 if (mcc != null) {
                     mcc.x = this.startPosition.x;
                     mcc.y = this.startPosition.y;
@@ -125,11 +161,11 @@ namespace game{
                     this.startPosition.y -= yy;
                 }
             }
-            var i:number = 0;
-            var mjCards:Array<MjCard> = r.cloneShowCards();
+            var i: number = 0;
+            var mjCards: Array<MjCard> = r.cloneShowCards();
             for (i = 0; i < mjCards.length; i++) {
-                var card:MjCard = mjCards[i];
-                var mc:CardSprite = Asset.getRightStandCard(card);
+                var card: MjCard = mjCards[i];
+                var mc: CardSprite = Asset.getRightStandCard(card);
                 mc.y = -25 * i - 20;
                 mc.x = 40;
                 mc.x += this.startPosition.x;
@@ -142,19 +178,21 @@ namespace game{
             }
         }
 
-        public initDown():void {
+        public initDown(): void {
             this._updateFunc = this.showDown;
             this._putFetchCardFunc = this.onFetchDown;
         }
-        private showDown(r:MjPlayer):void {
+
+        private showDown(r: MjPlayer): void {
             this.clear();
             this.updateHeroShowOnly(r)
         }
-        public updateHeroShowOnly(r:MjPlayer):void {
-            var mjCards:Array<MjCard> = r.cloneShowCards();
+
+        public updateHeroShowOnly(r: MjPlayer): void {
+            var mjCards: Array<MjCard> = r.cloneShowCards();
             for (var i = 0; i < mjCards.length; i++) {
-                var card:MjCard = mjCards[i];
-                var mc:CardSprite = Asset.getFrontStandCard(card);
+                var card: MjCard = mjCards[i];
+                var mc: CardSprite = Asset.getFrontStandCard(card);
                 mc.x = mc.width * i;
                 mc.x += this.startPosition.x;
                 mc.y += this.startPosition.y;
@@ -165,16 +203,17 @@ namespace game{
             }
         }
 
-        public initLeft():void {
+        public initLeft(): void {
             this._updateFunc = this.showLeft;
             this._putFetchCardFunc = this.onFetchLeft;
         }
-        private showLeft(r:MjPlayer):void {
+
+        private showLeft(r: MjPlayer): void {
             this.clear();
             var yy = 50;
             for (var j = 0; j < r.opts.length; j++) {
-                var opt:IOpt = r.opts[j];
-                var mcc:MjComponent = IShowMc.createComponent(opt);
+                var opt: IOpt = r.opts[j];
+                var mcc: MjComponent = IShowMc.createComponent(opt);
                 if (mcc != null) {
                     mcc.x = this.startPosition.x;
                     mcc.y = this.startPosition.y;
@@ -182,10 +221,10 @@ namespace game{
                     this.startPosition.y += yy;
                 }
             }
-            var mjCards:Array<MjCard> = r.cloneShowCards();
+            var mjCards: Array<MjCard> = r.cloneShowCards();
             for (var i = 0; i < mjCards.length; i++) {
-                var card:MjCard = mjCards[i];
-                var mc:CardSprite = Asset.getLeftStandCard(card);
+                var card: MjCard = mjCards[i];
+                var mc: CardSprite = Asset.getLeftStandCard(card);
                 mc.y = 25 * i + 10;
                 mc.x = 80;
                 mc.x += this.startPosition.x;
@@ -197,43 +236,45 @@ namespace game{
             }
         }
 
-        public get updateFunc():Function {
+        public get updateFunc(): Function {
             return this._updateFunc;
         }
-        public hideForDistribute():void {
-            for (var i:number = 0; i < this.showCardMcs.length; i++) {
-                var sp:CardSprite = this.showCardMcs[i];
+
+        public hideForDistribute(): void {
+            for (var i: number = 0; i < this.showCardMcs.length; i++) {
+                var sp: CardSprite = this.showCardMcs[i];
                 sp.alpha = 0;
             }
         }
-        public showDistributeAnim(cardIndex:number):void {
-            var cc:Array<CardSprite> = this.showCardMcs.slice(cardIndex, cardIndex + 4);
-            var p:Point = new Point(Global.stage_w / 2, Global.stage_h / 2);
-            p = this.globalToLocal(p.x,p.y);
+
+        public showDistributeAnim(cardIndex: number): void {
+            var cc: Array<CardSprite> = this.showCardMcs.slice(cardIndex, cardIndex + 4);
+            var p: Point = new Point(Global.stage_w / 2, Global.stage_h / 2);
+            p = this.globalToLocal(p.x, p.y);
             for (var i = 0; i < cc.length; i++) {
-                var sprite:CardSprite = cc[i];
-                var px:Number = sprite.x;
-                var py:Number = sprite.y;
-                var psx:Number = sprite.scaleX;
-                var psy:Number = sprite.scaleY;
+                var sprite: CardSprite = cc[i];
+                var px: number = sprite.x;
+                var py: number = sprite.y;
+                var psx: number = sprite.scaleX;
+                var psy: number = sprite.scaleY;
                 sprite.x = p.x;
                 sprite.y = p.y;
                 sprite.scaleX = sprite.scaleY = .5;
-                egret.Tween.get(sprite).to({x:px,y:py,alpha:1,scaleX:psx,scaleY:psy},300).play()
+                egret.Tween.get(sprite).to({x: px, y: py, alpha: 1, scaleX: psx, scaleY: psy}, 300).play()
             }
         }
 
-        public get putFetchCardFunc():Function {
+        public get putFetchCardFunc(): Function {
             return this._putFetchCardFunc;
         }
 
         clear() {
 
-                this.startPosition = new Point();
-                while (this.numChildren > 0) {
-                    this.removeChildAt(0);
-                }
-                this.showCardMcs = new Array<CardSprite>();
+            this.startPosition = new Point();
+            while (this.numChildren > 0) {
+                this.removeChildAt(0);
+            }
+            this.showCardMcs = new Array<CardSprite>();
 
         }
     }
