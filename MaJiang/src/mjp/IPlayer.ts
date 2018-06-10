@@ -20,6 +20,19 @@ namespace game {
 
         public static zhuangMc: Bitmap;
 
+        constructor() {
+            super();
+            this.discardCardsMc.addEventListener(MjEvent.DISCARD, this.onAppendDiscard,this);
+
+        }
+        public zimo(info:HuInfo):void {
+            this.dispatchEvent(new MjEvent(MjEvent.HU_ZIMO, false, false,info))
+        }
+
+        private onAppendDiscard(event:MjEvent):void {
+            egret.setTimeout(this.dispatchEvent, this,200 * StorageData.getSpeedPercent(), new MjEvent(MjEvent.DISCARD, false, false,event.data));
+        }
+
         static init() {
             IPlayer.zhuangMc = new Bitmap();
             IPlayer.zhuangMc.texture = Global.getRes("zhuang");
@@ -37,7 +50,6 @@ namespace game {
         public updateIcon(isZhuang: boolean): void {
             this.isZhuang = isZhuang;
             if (this.head != null) {
-                //todo:this.head.removeEventListeners();
                 this.removeChild(this.head);
                 this.head = null;
             }

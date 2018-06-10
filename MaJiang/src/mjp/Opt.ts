@@ -1,7 +1,6 @@
 namespace game {
     import Sprite = egret.Sprite;
     import clear = egret.localStorage.clear;
-    import TextField = egret.TextField;
     import Bitmap = egret.Bitmap;
     import BitmapText = egret.BitmapText;
 
@@ -60,7 +59,7 @@ namespace game {
             this.anGangFunc = anGangFunc;
             this.wantBuGangFunc = wantBuGangFunc;
             clear();
-            var i: number=0;
+            var i: number = 0;
             var btns: Array<Sprite> = new Array<Sprite>();
             //
             if (status.chiInfos.length > 0) {
@@ -103,7 +102,7 @@ namespace game {
                 var sp = btns[j];
                 var btn: CButton = new CButton(sp);
                 btn.anchorOffsetX = btn.width;
-                btn.addEventListener(egret.TouchEvent.TOUCH_TAP, this.onOpt,this);
+                btn.addEventListener(egret.TouchEvent.TOUCH_TAP, this.onOpt, this);
                 btn.x = -j % 3 * (btn.width + 10) - 10;
                 btn.y = -Math.floor(j / 3) * (btn.height + 5) - 20;
                 this.addChild(btn);
@@ -120,7 +119,7 @@ namespace game {
         private onOpt(event: egret.Event): void {
             var btn: CButton = <CButton>(event.currentTarget);
             var sp: OptSprite = <OptSprite>(btn.mUpState);
-            clear();
+            this.clear();
             if (sp.isTing) {
                 this.selectTingInfoFunc();
                 return;
