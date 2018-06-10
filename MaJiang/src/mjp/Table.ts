@@ -6,17 +6,20 @@
  */
 
 
-import Dictionary from "../collections/Dictionary";
+namespace game {
+
 
     import Sprite = egret.Sprite;
     import Point = egret.Point;
     import Event = egret.Event;
-import StorageData = game.StorageData;
-import PlayerInfo = game.PlayerInfo;
-import IPlayer = game.IPlayer;
-import Decorate = game.Decorate;
-import Pointer = game.Pointer;
-import PlayerRight = game.PlayerRight;
+    import StorageData = game.StorageData;
+    import PlayerInfo = game.PlayerInfo;
+    import IPlayer = game.IPlayer;
+    import Decorate = game.Decorate;
+    import Pointer = game.Pointer;
+    import PlayerRight = game.PlayerRight;
+    import Ease = egret.Ease;
+    import DisplayObject = egret.DisplayObject;
 
     export class Table extends Sprite {
         private _curPlayer: IPlayer;
@@ -291,7 +294,7 @@ import PlayerRight = game.PlayerRight;
             egret.setTimeout(this.showResult, this, 2000, event.data, player)
         }
 
-        private decideForOtherDiscardDic = new Dictionary<IPlayer, egret.Event>()
+        private decideForOtherDiscardDic=[]
 
         /**
          * 当一个人刚打了牌之后
@@ -299,13 +302,12 @@ import PlayerRight = game.PlayerRight;
          */
         private onOneJustDiscard(event: egret.Event): void {
             var card: MjCard = <MjCard>(event.data);
-            this.decideForOtherDiscardDic = new Dictionary<IPlayer, egret.Event>()
             this.nextPlayerDecideForOtherDiscard(this._curPlayer.next, card);
         }
 
         private onDecideForOtherDiscard(e: egret.Event, player: IPlayer, card: MjCard): void {
             if (e.type != MjEvent.PASS) {
-                this.decideForOtherDiscardDic[player.hashCode] = e;
+                this.decideForOtherDiscardDic.push([player.hashCode,e]);
             }
             this.nextPlayerDecideForOtherDiscard(player.next, card);
         }
@@ -314,25 +316,27 @@ import PlayerRight = game.PlayerRight;
             if (player != this._curPlayer) {
                 player.decideOnOtherDiscard(card, this._curPlayer.next == player, MethodUtil.create(this.onDecideForOtherDiscard, player, card))
             } else {
-                this.decideForOtherDiscardDic.forEach((key: IPlayer, e: egret.Event) => {
-                    if (e.type == MjEvent.MINGGANG) {
-                        key.mingGang(<MjCard>(e.data));
+                for (let i = 0; i < this.decideForOtherDiscardDic.length; i++) {
+                    let ar = this.decideForOtherDiscardDic[i];
+                    if (ar[1].type == MjEvent.MINGGANG) {
+                        ar[0].mingGang(<MjCard>(ar[1].data));
                         return;
                     }
-                })
-                this.decideForOtherDiscardDic.forEach((key: IPlayer, e: egret.Event) => {
-                    if (e.type == MjEvent.PENG) {
-                        key.peng(<MjCard>(e.data));
+                }
+                for (let i = 0; i < this.decideForOtherDiscardDic.length; i++) {
+                    let ar = this.decideForOtherDiscardDic[i];
+                    if (ar[1].type == MjEvent.PENG) {
+                        ar[0].peng(<MjCard>(ar[1].data));
                         return;
                     }
-                })
-
-                this.decideForOtherDiscardDic.forEach((key: IPlayer, e: egret.Event) => {
-                    if (e.type == MjEvent.CHI) {
-                        key.chi(e.data);
+                }
+                for (let i = 0; i < this.decideForOtherDiscardDic.length; i++) {
+                    let ar = this.decideForOtherDiscardDic[i];
+                    if (ar[1].type == MjEvent.CHI) {
+                        ar[0].chi(ar[1].data);
                         return;
                     }
-                })
+                }
 
                 //如果都没有动作.就下个玩家抓牌
                 this.curPlayer = this._curPlayer.next;
@@ -525,3 +529,4 @@ import PlayerRight = game.PlayerRight;
         }
 
     }
+}

@@ -2,41 +2,72 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="ee1e23a0-adfe-4962-b683-603802c80056" name="Default" comment="">
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/mjp/HuInfo.ts" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/mjp/MjCard.ts" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/mjp/MjChiInfo.ts" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/mjp/MjConst.ts" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/mjp/MjEngine.ts" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/mjp/MjFan.ts" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/mjp/MjFanInfo.ts" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/mjp/MjFetchInfo.ts" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/mjp/MjGenerator.ts" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/mjp/MjPlayer.ts" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/mjp/MjPlayerThinkStatus.ts" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/mjp/MjRound.ts" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/mjp/MjTingInfo.ts" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/mjp/OptAnGang.ts" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/mjp/OptChi.ts" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/mjp/OptDiscard.ts" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/mjp/OptFetch.ts" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/mjp/OptMingGang.ts" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/mjp/OptPeng.ts" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/mjp/OptTing.ts" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/mjp/SplitTypeInfo.ts" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change beforePath="$PROJECT_DIR$/manifest.json" afterPath="$PROJECT_DIR$/manifest.json" />
       <change beforePath="$PROJECT_DIR$/src/Game.ts" afterPath="$PROJECT_DIR$/src/Game.ts" />
-      <change beforePath="$PROJECT_DIR$/src/Global.ts" afterPath="$PROJECT_DIR$/src/Global.ts" />
-      <change beforePath="$PROJECT_DIR$/src/Main.ts" afterPath="$PROJECT_DIR$/src/Main.ts" />
-      <change beforePath="$PROJECT_DIR$/src/engine/MjConst.ts" afterPath="$PROJECT_DIR$/src/engine/MjConst.ts" />
-      <change beforePath="$PROJECT_DIR$/src/engine/MjEngine.ts" afterPath="$PROJECT_DIR$/src/engine/MjEngine.ts" />
-      <change beforePath="$PROJECT_DIR$/src/engine/MjFan.ts" afterPath="$PROJECT_DIR$/src/engine/MjFan.ts" />
-      <change beforePath="$PROJECT_DIR$/src/engine/MjGenerator.ts" afterPath="$PROJECT_DIR$/src/engine/MjGenerator.ts" />
-      <change beforePath="$PROJECT_DIR$/src/engine/MjRound.ts" afterPath="$PROJECT_DIR$/src/engine/MjRound.ts" />
-      <change beforePath="$PROJECT_DIR$/src/engine/vo/HuInfo.ts" afterPath="$PROJECT_DIR$/src/engine/vo/HuInfo.ts" />
-      <change beforePath="$PROJECT_DIR$/src/engine/vo/IOpt.ts" afterPath="$PROJECT_DIR$/src/engine/vo/IOpt.ts" />
-      <change beforePath="$PROJECT_DIR$/src/engine/vo/MjCard.ts" afterPath="$PROJECT_DIR$/src/engine/vo/MjCard.ts" />
-      <change beforePath="$PROJECT_DIR$/src/engine/vo/MjChiInfo.ts" afterPath="$PROJECT_DIR$/src/engine/vo/MjChiInfo.ts" />
-      <change beforePath="$PROJECT_DIR$/src/engine/vo/MjFanInfo.ts" afterPath="$PROJECT_DIR$/src/engine/vo/MjFanInfo.ts" />
-      <change beforePath="$PROJECT_DIR$/src/engine/vo/MjFetchInfo.ts" afterPath="$PROJECT_DIR$/src/engine/vo/MjFetchInfo.ts" />
-      <change beforePath="$PROJECT_DIR$/src/engine/vo/MjPlayer.ts" afterPath="$PROJECT_DIR$/src/engine/vo/MjPlayer.ts" />
-      <change beforePath="$PROJECT_DIR$/src/engine/vo/MjPlayerThinkStatus.ts" afterPath="$PROJECT_DIR$/src/engine/vo/MjPlayerThinkStatus.ts" />
-      <change beforePath="$PROJECT_DIR$/src/engine/vo/MjTingInfo.ts" afterPath="$PROJECT_DIR$/src/engine/vo/MjTingInfo.ts" />
-      <change beforePath="$PROJECT_DIR$/src/engine/vo/OptAnGang.ts" afterPath="$PROJECT_DIR$/src/engine/vo/OptAnGang.ts" />
-      <change beforePath="$PROJECT_DIR$/src/engine/vo/OptChi.ts" afterPath="$PROJECT_DIR$/src/engine/vo/OptChi.ts" />
-      <change beforePath="$PROJECT_DIR$/src/engine/vo/OptDiscard.ts" afterPath="$PROJECT_DIR$/src/engine/vo/OptDiscard.ts" />
-      <change beforePath="$PROJECT_DIR$/src/engine/vo/OptFetch.ts" afterPath="$PROJECT_DIR$/src/engine/vo/OptFetch.ts" />
-      <change beforePath="$PROJECT_DIR$/src/engine/vo/OptMingGang.ts" afterPath="$PROJECT_DIR$/src/engine/vo/OptMingGang.ts" />
-      <change beforePath="$PROJECT_DIR$/src/engine/vo/OptPeng.ts" afterPath="$PROJECT_DIR$/src/engine/vo/OptPeng.ts" />
-      <change beforePath="$PROJECT_DIR$/src/engine/vo/OptTing.ts" afterPath="$PROJECT_DIR$/src/engine/vo/OptTing.ts" />
-      <change beforePath="$PROJECT_DIR$/src/engine/vo/SplitTypeInfo.ts" afterPath="$PROJECT_DIR$/src/engine/vo/SplitTypeInfo.ts" />
-      <change beforePath="$PROJECT_DIR$/src/mjp/Decorate.ts" afterPath="$PROJECT_DIR$/src/mjp/Decorate.ts" />
-      <change beforePath="$PROJECT_DIR$/src/mjp/HomePage.ts" afterPath="$PROJECT_DIR$/src/mjp/HomePage.ts" />
-      <change beforePath="$PROJECT_DIR$/src/mjp/IPlayer.ts" afterPath="$PROJECT_DIR$/src/mjp/IPlayer.ts" />
-      <change beforePath="$PROJECT_DIR$/src/mjp/PlayerHero.ts" afterPath="$PROJECT_DIR$/src/mjp/PlayerHero.ts" />
-      <change beforePath="$PROJECT_DIR$/src/mjp/PlayerInfo.ts" afterPath="$PROJECT_DIR$/src/mjp/PlayerInfo.ts" />
-      <change beforePath="$PROJECT_DIR$/src/mjp/Pointer.ts" afterPath="$PROJECT_DIR$/src/mjp/Pointer.ts" />
-      <change beforePath="$PROJECT_DIR$/src/mjp/SoundManager.ts" afterPath="$PROJECT_DIR$/src/mjp/SoundManager.ts" />
+      <change beforePath="$PROJECT_DIR$/src/collections/BSTree.ts" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/src/collections/BSTreeKV.ts" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/src/collections/Bag.ts" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/src/collections/Dictionary.ts" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/src/collections/FactoryDictionary.ts" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/src/collections/Heap.ts" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/src/collections/LinkedDictionary.ts" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/src/collections/LinkedList.ts" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/src/collections/MultiDictionary.ts" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/src/collections/MultiRootTree.ts" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/src/collections/PriorityQueue.ts" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/src/collections/Queue.ts" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/src/collections/Set.ts" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/src/collections/Stack.ts" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/src/collections/arrays.ts" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/src/collections/index.ts" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/src/collections/util.ts" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/src/engine/MjConst.ts" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/src/engine/MjEngine.ts" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/src/engine/MjFan.ts" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/src/engine/MjGenerator.ts" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/src/engine/MjRound.ts" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/src/engine/vo/HuInfo.ts" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/src/engine/vo/IOpt.ts" afterPath="$PROJECT_DIR$/src/mjp/IOpt.ts" />
+      <change beforePath="$PROJECT_DIR$/src/engine/vo/MjCard.ts" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/src/engine/vo/MjChiInfo.ts" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/src/engine/vo/MjFanInfo.ts" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/src/engine/vo/MjFetchInfo.ts" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/src/engine/vo/MjPlayer.ts" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/src/engine/vo/MjPlayerThinkStatus.ts" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/src/engine/vo/MjTingInfo.ts" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/src/engine/vo/OptAnGang.ts" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/src/engine/vo/OptChi.ts" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/src/engine/vo/OptDiscard.ts" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/src/engine/vo/OptFetch.ts" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/src/engine/vo/OptMingGang.ts" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/src/engine/vo/OptPeng.ts" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/src/engine/vo/OptTing.ts" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/src/engine/vo/SplitTypeInfo.ts" afterPath="" />
       <change beforePath="$PROJECT_DIR$/src/mjp/Table.ts" afterPath="$PROJECT_DIR$/src/mjp/Table.ts" />
+      <change beforePath="$PROJECT_DIR$/src/mjp/UserImageTip.ts" afterPath="$PROJECT_DIR$/src/mjp/UserImageTip.ts" />
+      <change beforePath="$PROJECT_DIR$/tsconfig.json" afterPath="$PROJECT_DIR$/tsconfig.json" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -50,81 +81,101 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="Game.ts" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/Game.ts">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="140">
-              <caret line="7" column="20" lean-forward="true" selection-start-line="7" selection-start-column="20" selection-end-line="7" selection-end-column="20" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Table.ts" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/mjp/Table.ts">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="240">
-              <caret line="25" column="29" lean-forward="false" selection-start-line="25" selection-start-column="29" selection-end-line="25" selection-end-column="29" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="egret.d.ts" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/libs/modules/egret/egret.d.ts">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="222">
-              <caret line="8484" column="4" lean-forward="false" selection-start-line="8484" selection-start-column="4" selection-end-line="8484" selection-end-column="4" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="arrays.ts" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/collections/arrays.ts">
+      <file leaf-file-name="Main.ts" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/Main.ts">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="0">
-              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+              <caret line="0" column="28" lean-forward="false" selection-start-line="0" selection-start-column="28" selection-end-line="0" selection-end-column="28" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Bag.ts" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/collections/Bag.ts">
+      <file leaf-file-name="Asset.ts" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/mjp/Asset.ts">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="60">
+              <caret line="3" column="0" lean-forward="false" selection-start-line="3" selection-start-column="0" selection-end-line="3" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Global.ts" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/Global.ts">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="0">
-              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+              <caret line="0" column="13" lean-forward="false" selection-start-line="0" selection-start-column="13" selection-end-line="0" selection-end-column="13" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="BSTree.ts" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/collections/BSTree.ts">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="BSTreeKV.ts" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/collections/BSTreeKV.ts">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Dictionary.ts" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/collections/Dictionary.ts">
+      <file leaf-file-name="tsconfig.json" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/tsconfig.json">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="280">
-              <caret line="14" column="15" lean-forward="true" selection-start-line="14" selection-start-column="15" selection-end-line="14" selection-end-column="15" />
+              <caret line="14" column="22" lean-forward="false" selection-start-line="14" selection-start-column="22" selection-end-line="14" selection-end-column="22" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Game.ts" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/Game.ts">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="380">
+              <caret line="19" column="0" lean-forward="false" selection-start-line="19" selection-start-column="0" selection-end-line="19" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="index.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/index.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="0">
+              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="manifest.json" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/manifest.json">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="0">
+              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Table.ts" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/mjp/Table.ts">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="198">
+              <caret line="182" column="26" lean-forward="true" selection-start-line="182" selection-start-column="26" selection-end-line="182" selection-end-column="26" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="UserImageTip.ts" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/mjp/UserImageTip.ts">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="483">
+              <caret line="78" column="17" lean-forward="false" selection-start-line="78" selection-start-column="17" selection-end-line="78" selection-end-column="17" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="egretProperties.json" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/egretProperties.json">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="183">
+              <caret line="10" column="17" lean-forward="false" selection-start-line="10" selection-start-column="17" selection-end-line="10" selection-end-column="17" />
               <folding />
             </state>
           </provider>
@@ -219,12 +270,10 @@
         <option value="$PROJECT_DIR$/as/mjp/HomePage.ts" />
         <option value="$PROJECT_DIR$/as/Game.ts" />
         <option value="$PROJECT_DIR$/egretProperties.json" />
-        <option value="$PROJECT_DIR$/tsconfig.json" />
         <option value="$PROJECT_DIR$/src/mjp/package.json" />
         <option value="$PROJECT_DIR$/src/mjp/Image.ts" />
         <option value="$PROJECT_DIR$/src/collections/LiuJuMc.ts" />
         <option value="$PROJECT_DIR$/libs/modules/egret/egret.d.ts" />
-        <option value="$PROJECT_DIR$/src/Game.ts" />
         <option value="$PROJECT_DIR$/src/mjp/CButton.ts" />
         <option value="$PROJECT_DIR$/src/mjp/Decorate.ts" />
         <option value="$PROJECT_DIR$/src/mjp/DiscardPointer.ts" />
@@ -238,7 +287,6 @@
         <option value="$PROJECT_DIR$/src/mjp/PlayerUp.ts" />
         <option value="$PROJECT_DIR$/src/mjp/Pointer.ts" />
         <option value="$PROJECT_DIR$/src/mjp/StartAnimBtn.ts" />
-        <option value="$PROJECT_DIR$/src/mjp/UserImageTip.ts" />
         <option value="$PROJECT_DIR$/src/engine/vo/MjFanInfo.ts" />
         <option value="$PROJECT_DIR$/src/engine/MjConst.ts" />
         <option value="$PROJECT_DIR$/src/engine/MjEngine.ts" />
@@ -247,7 +295,6 @@
         <option value="$PROJECT_DIR$/src/engine/MjRound.ts" />
         <option value="$PROJECT_DIR$/src/engine/vo/MjPlayer.ts" />
         <option value="$PROJECT_DIR$/src/Global.ts" />
-        <option value="$PROJECT_DIR$/src/Main.ts" />
         <option value="$PROJECT_DIR$/src/mjp/IShowMc.ts" />
         <option value="$PROJECT_DIR$/src/mjp/IPlayer.ts" />
         <option value="$PROJECT_DIR$/src/mjp/PlayerHero.ts" />
@@ -263,6 +310,10 @@
         <option value="$PROJECT_DIR$/src/mjp/StorageData.ts" />
         <option value="$PROJECT_DIR$/src/mjp/Anim.ts" />
         <option value="$PROJECT_DIR$/src/mjp/IDiscardMc.ts" />
+        <option value="$PROJECT_DIR$/tsconfig.json" />
+        <option value="$PROJECT_DIR$/src/Main.ts" />
+        <option value="$PROJECT_DIR$/src/Game.ts" />
+        <option value="$PROJECT_DIR$/src/mjp/UserImageTip.ts" />
         <option value="$PROJECT_DIR$/src/mjp/Table.ts" />
       </list>
     </option>
@@ -278,10 +329,10 @@
   </component>
   <component name="PhpWorkspaceProjectConfiguration" backward_compatibility_performed="true" />
   <component name="ProjectFrameBounds">
-    <option name="x" value="956" />
+    <option name="x" value="1024" />
     <option name="y" value="23" />
-    <option name="width" value="962" />
-    <option name="height" value="1152" />
+    <option name="width" value="896" />
+    <option name="height" value="1177" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
@@ -299,8 +350,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="AndroidView" />
-      <pane id="Scratches" />
+      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -317,27 +367,15 @@
               <item name="MaJiang" type="b2602c69:ProjectViewProjectNode" />
               <item name="MaJiang" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="collections" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="MaJiang" type="b2602c69:ProjectViewProjectNode" />
-              <item name="MaJiang" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="engine" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="MaJiang" type="b2602c69:ProjectViewProjectNode" />
-              <item name="MaJiang" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="engine" type="462c0819:PsiDirectoryNode" />
-              <item name="vo" type="462c0819:PsiDirectoryNode" />
+              <item name="mjp" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
         </subPane>
       </pane>
+      <pane id="Scratches" />
       <pane id="Scope" />
-      <pane id="PackagesPane" />
+      <pane id="AndroidView" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -460,27 +498,26 @@
     <option name="totallyTimeSpent" value="16109000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="956" y="23" width="962" height="1152" extended-state="0" />
+    <frame x="1024" y="23" width="896" height="1177" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32923368" sideWeight="0.5076087" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.25785583" sideWeight="0.47423887" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25223437" sideWeight="0.49305555" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.30961183" sideWeight="0.49099836" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="TypeScript" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="true" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.22608696" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.28922716" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32923368" sideWeight="0.49239132" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="true" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Theme Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25827813" sideWeight="0.53114754" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.25785583" sideWeight="0.5257611" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -488,6 +525,7 @@
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Docker" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32923368" sideWeight="0.49239132" order="1" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -501,7 +539,7 @@
       <breakpoints-dialog>
         <breakpoints-dialog />
       </breakpoints-dialog>
-      <option name="time" value="68" />
+      <option name="time" value="69" />
     </breakpoint-manager>
     <watches-manager />
   </component>
@@ -540,126 +578,14 @@
     </expressions>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/engine/vo/OptChi.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/engine/vo/OptDiscard.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/engine/vo/OptFetch.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/engine/vo/OptMingGang.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/engine/vo/OptPeng.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/engine/vo/OptTing.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/engine/vo/SplitTypeInfo.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/engine/MjEngine.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="84">
-          <caret line="10" column="0" lean-forward="false" selection-start-line="10" selection-start-column="0" selection-end-line="10" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/engine/MjFan.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="200">
-          <caret line="10" column="4" lean-forward="false" selection-start-line="10" selection-start-column="4" selection-end-line="10" selection-end-column="4" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/engine/MjConst.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="180">
-          <caret line="9" column="27" lean-forward="false" selection-start-line="9" selection-start-column="27" selection-end-line="9" selection-end-column="27" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/engine/MjRound.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/engine/MjGenerator.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="180">
-          <caret line="9" column="0" lean-forward="false" selection-start-line="9" selection-start-column="0" selection-end-line="9" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Global.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="true" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Main.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="60">
-          <caret line="3" column="6" lean-forward="false" selection-start-line="3" selection-start-column="6" selection-end-line="3" selection-end-column="6" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/engine/vo/MjPlayer.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="140">
-          <caret line="7" column="0" lean-forward="true" selection-start-line="7" selection-start-column="0" selection-end-line="7" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/src/engine/vo/OptTing.ts" />
+    <entry file="file://$PROJECT_DIR$/src/engine/vo/SplitTypeInfo.ts" />
+    <entry file="file://$PROJECT_DIR$/src/engine/MjEngine.ts" />
+    <entry file="file://$PROJECT_DIR$/src/engine/MjFan.ts" />
+    <entry file="file://$PROJECT_DIR$/src/engine/MjConst.ts" />
+    <entry file="file://$PROJECT_DIR$/src/engine/MjRound.ts" />
+    <entry file="file://$PROJECT_DIR$/src/engine/MjGenerator.ts" />
+    <entry file="file://$PROJECT_DIR$/src/engine/vo/MjPlayer.ts" />
     <entry file="file://$PROJECT_DIR$/src/mjp/SoundManager.ts">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="244">
@@ -700,14 +626,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/mjp/Asset.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="60">
-          <caret line="3" column="0" lean-forward="true" selection-start-line="3" selection-start-column="0" selection-end-line="3" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/mjp/CardSprite.ts">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="40">
@@ -741,14 +659,6 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/mjp/DiscardPointer.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/mjp/HomePage.ts">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
@@ -919,31 +829,96 @@
     <entry file="file://$PROJECT_DIR$/src/collections/Dictionary.ts">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="280">
-          <caret line="14" column="15" lean-forward="true" selection-start-line="14" selection-start-column="15" selection-end-line="14" selection-end-column="15" />
+          <caret line="14" column="15" lean-forward="false" selection-start-line="14" selection-start-column="15" selection-end-line="14" selection-end-column="15" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/mjp/Table.ts">
+    <entry file="file://$PROJECT_DIR$/libs/modules/egret/egret.d.ts" />
+    <entry file="file://$PROJECT_DIR$/egretProperties.json">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="240">
-          <caret line="25" column="29" lean-forward="false" selection-start-line="25" selection-start-column="29" selection-end-line="25" selection-end-column="29" />
+        <state relative-caret-position="183">
+          <caret line="10" column="17" lean-forward="false" selection-start-line="10" selection-start-column="17" selection-end-line="10" selection-end-column="17" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/libs/modules/egret/egret.d.ts">
+    <entry file="file://$PROJECT_DIR$/index.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="222">
-          <caret line="8484" column="4" lean-forward="false" selection-start-line="8484" selection-start-column="4" selection-end-line="8484" selection-end-column="4" />
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/manifest.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tsconfig.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="280">
+          <caret line="14" column="22" lean-forward="false" selection-start-line="14" selection-start-column="22" selection-end-line="14" selection-end-column="22" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Global.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="13" lean-forward="false" selection-start-line="0" selection-start-column="13" selection-end-line="0" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/mjp/Asset.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="60">
+          <caret line="3" column="0" lean-forward="false" selection-start-line="3" selection-start-column="0" selection-end-line="3" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/mjp/HomePage.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="80">
+          <caret line="4" column="0" lean-forward="false" selection-start-line="4" selection-start-column="0" selection-end-line="4" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Main.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="28" lean-forward="false" selection-start-line="0" selection-start-column="28" selection-end-line="0" selection-end-column="28" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Game.ts">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="140">
-          <caret line="7" column="20" lean-forward="true" selection-start-line="7" selection-start-column="20" selection-end-line="7" selection-end-column="20" />
+        <state relative-caret-position="380">
+          <caret line="19" column="0" lean-forward="false" selection-start-line="19" selection-start-column="0" selection-end-line="19" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/mjp/UserImageTip.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="483">
+          <caret line="78" column="17" lean-forward="false" selection-start-line="78" selection-start-column="17" selection-end-line="78" selection-end-column="17" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/mjp/Table.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="198">
+          <caret line="182" column="26" lean-forward="true" selection-start-line="182" selection-start-column="26" selection-end-line="182" selection-end-column="26" />
           <folding />
         </state>
       </provider>

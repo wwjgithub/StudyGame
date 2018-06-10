@@ -76,7 +76,7 @@ namespace game {
         }
 
         private n_Handle(e: TouchEvent): void {
-            destroy();
+            this.destroy();
         }
 
         public destroy(): void {

@@ -1,10 +1,9 @@
 namespace game {
-
     export class Game extends egret.Sprite {
         private homePage: HomePage;
         private table: Table;
 
-        constructor() {
+        public constructor() {
             super();
             this.homePage = new HomePage();
             this.addChild(this.homePage);
