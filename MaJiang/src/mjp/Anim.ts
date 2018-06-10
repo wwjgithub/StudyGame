@@ -13,7 +13,7 @@ namespace game {
         private positions2: Array<Point> = new Array<Point>();
         private discardPointer: DiscardPointer;
         public static instance: Anim;
-        private cur: number;
+        private cur: number=0;
         private nn: Array<any>;
         private nnMc: CardSprite;
         private nnPlayer: IPlayer;
