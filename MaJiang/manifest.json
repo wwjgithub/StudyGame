@@ -19,6 +19,7 @@
 		"bin-debug/mjp/Pointer.js",
 		"bin-debug/mjp/StorageData.js",
 		"bin-debug/mjp/DiscardPointer.js",
+		"bin-debug/mjp/FilterUtil.js",
 		"bin-debug/mjp/HomePage.js",
 		"bin-debug/mjp/HuInfo.js",
 		"bin-debug/mjp/IDiscardMc.js",

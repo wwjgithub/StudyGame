@@ -11,6 +11,8 @@ namespace game {
 
         constructor() {
             super();
+            this.touchChildren=false;
+            this.touchEnabled=true;
             this.mc = new Bitmap(Global.getRes("startgame1"));
             this.mc.anchorOffsetX = this.mc.width / 2;
             this.mc.anchorOffsetY = this.mc.height / 2;

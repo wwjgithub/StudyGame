@@ -82,6 +82,12 @@ namespace game {
                 mc.y -= 30;
             }
         }
+        public setEnable():void {
+            this.enable = true;
+        }
+        public discardLastFetchCard():void {
+            this.discard(this.showCardMcs[this.showCardMcs.length - 1]);
+        }
 
         protected discard(mc: CardSprite): void {
             this.showCardMcs.splice(this.showCardMcs.indexOf(mc), 1);

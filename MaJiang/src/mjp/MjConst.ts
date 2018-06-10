@@ -32,7 +32,7 @@ class MjConst {
     public static All4Type: MjCard[] = [];
     public static All2Type: MjCard[] = [];
 
-    private static initAll() {
+    public static initAll() {
         var t: number = 0;
         var i: number = 0;
         var card: MjCard;
@@ -68,7 +68,7 @@ class MjConst {
         }
     }
 
-    private static initTotal() {
+    public static initTotal() {
         var t: number = 0;
         var i: number = 0;
         var j: number = 0;

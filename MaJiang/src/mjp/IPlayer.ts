@@ -139,7 +139,7 @@ namespace game {
             this.lastFetchIsRevers = reverse;
             var fetchInfo: MjFetchInfo = MjRound.instance.fetch(reverse);
             this.core.onFetchedCard(fetchInfo.card);
-            //todo:this.showCardsMc.putFetchCardFunc(fetchInfo.card);
+            this.showCardsMc.putFetchCardFunc(fetchInfo.card);
         }
 
         public showAnim(): void {/*

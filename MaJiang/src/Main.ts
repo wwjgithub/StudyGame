@@ -1,5 +1,6 @@
 import Global = game.Global;
 import Game = game.Game;
+import log = egret.log;
 
 class Main extends egret.DisplayObjectContainer {
 
@@ -9,8 +10,12 @@ class Main extends egret.DisplayObjectContainer {
         this.addEventListener(egret.Event.ADDED_TO_STAGE, this.onAddToStage, this);
     }
 
+    private onTouchStage(e:egret.TouchEvent):void{
+        log("onTouchStage",e.target)
+    }
     private onAddToStage(event: egret.Event) {
 
+        this.stage.addEventListener(egret.TouchEvent.TOUCH_BEGIN,this.onTouchStage,this)
         Global.stage = this.stage;
         Global.stage_w = this.stage.stageWidth;
         Global.stage_h = this.stage.stageHeight;

@@ -1,6 +1,7 @@
 namespace game {
     import DisplayObject = egret.DisplayObject;
     import Stage = egret.Stage;
+    import ColorMatrixFilter = egret.ColorMatrixFilter;
 
     export class Global {
         static UP_CARD_WIDTH: number = 42;
@@ -38,6 +39,9 @@ namespace game {
                 s = 1;
             }
             return s;
+        }
+        public static getComponentWidth():number {
+            return Global.show_card_width * Global.getHeroCardScale() * 3;
         }
 
         static scaleToStageSize(m: DisplayObject, anchor?: boolean): void {

@@ -20,6 +20,7 @@ namespace game {
     import PlayerRight = game.PlayerRight;
     import Ease = egret.Ease;
     import DisplayObject = egret.DisplayObject;
+    import TouchEvent = egret.TouchEvent;
 
     export class Table extends Sprite {
         private _curPlayer: IPlayer;
@@ -93,8 +94,6 @@ namespace game {
                 info.money = Global.INIT_MONEY;
                 this.curPlayerInfos.push(info);
                 this.appendPlayer();
-            } else {
-                this.replacePlayer(false);
             }
             this.quanFeng = MjConst.type_feng_dong;
             this.menFeng = MjConst.type_feng_dong;
@@ -151,6 +150,8 @@ namespace game {
             startAnimBtn.y = (Global.stage_h) / 2;
             this.addChild(startAnimBtn);
             startAnimBtn.addEventListener(egret.TouchEvent.TOUCH_TAP, this.onTouchBtn, this);
+            //todo:
+            startAnimBtn.dispatchEvent(new TouchEvent(egret.TouchEvent.TOUCH_TAP));
         }
 
         private addListener(): void {
@@ -395,6 +396,7 @@ namespace game {
         private onPlayerAnGang(event: MjEvent): void {
             this.anim.showAnGang((event.currentTarget as IPlayer));
             egret.setTimeout(this.nextPalyerFetch, this, .5, true);
+
         }
 
         private onTouchBtn(event: egret.TouchEvent): void {
@@ -428,19 +430,15 @@ namespace game {
                 player.updateIcon(player.core.feng == MjRound.instance.menFeng);
                 player.showCards();
                 player.showCardsMc.hideForDistribute();
-                /*for (var j:int = 0; j < 21; j++) {
-                 player.discardCardsMc.append(MjConst.All4Type[int(MjConst.All4Type.length*Math.random())])
-                 }*/
             }
             //
 //            showResult(null, null);
-//            return;
             //
             egret.setTimeout(this.showDistributeAnim, this, 30, 0);
             egret.setTimeout(this.showDistributeAnim, this, 300, 4);
             egret.setTimeout(this.showDistributeAnim, this, 600, 8);
             egret.setTimeout(this.showDistributeAnim, this, 900, 12);
-            egret.setTimeout(this.playerHero.beforeSortCards, this, 1000);
+            egret.setTimeout(this.playerHero.beforeSortCards, this.playerHero, 1000);
             egret.setTimeout(this.startFetch, this, 2000);
         }
 

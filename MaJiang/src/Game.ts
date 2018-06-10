@@ -5,6 +5,9 @@ namespace game {
 
         public constructor() {
             super();
+
+            MjConst.initTotal();
+            MjConst.initAll();
             this.homePage = new HomePage();
             this.addChild(this.homePage);
             this.homePage.addEventListener(HomePage.START, this.onExitHomePage, this)
