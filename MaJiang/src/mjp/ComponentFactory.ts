@@ -1,5 +1,6 @@
 namespace game {
     import Sprite = egret.Sprite;
+    import ColorMatrixFilter = egret.ColorMatrixFilter;
 
     export class ComponentFactory {
 
@@ -83,18 +84,16 @@ namespace game {
             var mc3: Sprite = Asset.getFreezeCardMcDown(cards[2]);
             mc3.x = mc1.width * 2;
             if (target != null) {
-                //todo:
-                /*var filter: ColorMatrixFilter = new ColorMatrixFilter();
-                filter.adjustBrightness(-0.5);
+                var filter: ColorMatrixFilter = new ColorMatrixFilter(FilterUtil.getBrightnessMatrix(-0.5));
                 if (!cards[0].equal(target)) {
-                    mc1.filter = filter;
+                    mc1.filters = [filter];
                 }
                 if (!cards[1].equal(target)) {
-                    mc2.filter = filter;
+                    mc2.filters = [filter];
                 }
                 if (!cards[2].equal(target)) {
-                    mc3.filter = filter;
-                }*/
+                    mc3.filters = [filter];
+                }
             }
             var mc: MjComponent = new MjComponent();
             mc.chiCards = cards;
