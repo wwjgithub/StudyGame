@@ -1,6 +1,5 @@
 namespace game {
     import Sprite = egret.Sprite;
-    import clear = egret.localStorage.clear;
     import Bitmap = egret.Bitmap;
     import BitmapText = egret.BitmapText;
 
@@ -58,7 +57,7 @@ namespace game {
             this.mingGangFunc = mingGangFunc;
             this.anGangFunc = anGangFunc;
             this.wantBuGangFunc = wantBuGangFunc;
-            clear();
+            this.clear();
             var i: number = 0;
             var btns: Array<Sprite> = new Array<Sprite>();
             //
