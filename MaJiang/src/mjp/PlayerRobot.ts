@@ -3,6 +3,7 @@ namespace game {
     import Sprite = egret.Sprite;
 
     export class PlayerRobot extends IPlayer {
+        private decideCallBack: Function;
 
         constructor() {
             super();
@@ -144,6 +145,7 @@ namespace game {
          */
         public decideOnOtherDiscard(card: MjCard, isPrevDiscard: Boolean, callBack: Function): void {
             //吃,碰,明杠,暗杠,补杠,报听,胡,自摸
+            this.decideCallBack=callBack;
             if (Global.AI) {
                 var status: MjPlayerThinkStatus = MjEngine.thinkOptAfterOtherDiscardAi(this.core, card, isPrevDiscard);
                 if (status.hasTrue()) {
@@ -169,16 +171,12 @@ namespace game {
             } else {
                 var status1:MjPlayerThinkStatus = MjEngine.thinkOptAfterOtherDiscard(this.core, card, isPrevDiscard);
                 if (status1.hasTrue()) {
-                    var func:Function = function (...arg):void {
-                        var e:MjEvent = new MjEvent(arg[arg.length - 1], false, arg[0]);
-                        callBack(e);
-                    };
-                    this.opt.update(this, status1, this.hu,
-                        MethodUtil.create(func, MjEvent.PASS),
+                    this.opt.update(this, status1, this.hu.bind(this),
+                        this.optDecide.bind(this,MjEvent.PASS),
                         null,
-                        MethodUtil.create(func, MjEvent.CHI),
-                        MethodUtil.create(func, MjEvent.PENG),
-                        MethodUtil.create(func, MjEvent.MINGGANG),
+                        this.optDecide.bind(this,MjEvent.CHI),
+                        this.optDecide.bind(this,MjEvent.PENG),
+                        this.optDecide.bind(this,MjEvent.MINGGANG),
                         null,
                         null
                     );
@@ -186,6 +184,10 @@ namespace game {
                     callBack(new MjEvent(MjEvent.PASS));
                 }
             }
+        }
+
+        private optDecide(decide:string,data:any):void{
+            this.decideCallBack(new egret.Event(decide, false, false, data));
         }
 
         public decideOnOtherBuGang(mjCard: MjCard, passFunc: Function): void {
