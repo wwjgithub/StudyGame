@@ -7,6 +7,7 @@ namespace game {
         private tempBackCard: egret.Sprite;
         private showMc: IShowMcForHero;
         private cancelTingBtn: Sprite;
+        private decideCallBack: Function;
 
         constructor() {
             super();
@@ -179,18 +180,15 @@ namespace game {
          */
         public decideOnOtherDiscard(card: MjCard, isPrevDiscard: Boolean, callBack: Function): void {
             //吃,碰,明杠,暗杠,补杠,报听,胡,自摸
+            this.decideCallBack=callBack;
             var status: MjPlayerThinkStatus = MjEngine.thinkOptAfterOtherDiscard(this.core, card, isPrevDiscard);
             if (status.hasTrue()) {
-                var func: Function = function (...arg): void {
-                    var e: egret.Event = new egret.Event(arg[arg.length - 1], false, arg[0]);
-                    callBack(e);
-                };
                 this.opt.update(this, status, this.hu.bind(this),
-                    MethodUtil.create(func, MjEvent.PASS),
+                    this.optDecide.bind(this,MjEvent.PASS),
                     null,
-                    MethodUtil.create(func, MjEvent.CHI),
-                    MethodUtil.create(func, MjEvent.PENG),
-                    MethodUtil.create(func, MjEvent.MINGGANG),
+                    this.optDecide.bind(this,MjEvent.CHI),
+                    this.optDecide.bind(this,MjEvent.PENG),
+                    this.optDecide.bind(this,MjEvent.MINGGANG),
                     null,
                     null
                 );
@@ -199,8 +197,8 @@ namespace game {
             }
         }
 
-        private optDecide(decide:string,data):void{
-
+        private optDecide(decide:string,data:any):void{
+            this.decideCallBack(new egret.Event(decide, false, false, data));
         }
 
         public mingGang(card:MjCard):void {
