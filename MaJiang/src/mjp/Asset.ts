@@ -10,6 +10,15 @@ namespace game {
             back.scaleX = -1;
             sp.addChild(back);
             //
+            if (Global.SHOW_COMPUTER) {
+                var image:Bitmap = new Bitmap(Global.getRes(Asset.getTextureName(card)));
+                image.anchorOffsetX = image.width / 2;
+                image.anchorOffsetY = image.height / 2;
+                sp.addChild(image);
+                image.scaleX = image.scaleY = 0.3;
+                image.x -= 20;
+                image.y += 15;
+            }
             return sp;
         }
 
@@ -18,6 +27,15 @@ namespace game {
             var back: Bitmap = new Bitmap(Global.getRes("pai_cemian"));
             sp.addChild(back);
             //
+            if (Global.SHOW_COMPUTER) {
+                var image:Bitmap = new Bitmap(Global.getRes(Asset.getTextureName(card)));
+                image.anchorOffsetX = image.width / 2;
+                image.anchorOffsetY = image.height / 2;
+                sp.addChild(image);
+                image.scaleX = image.scaleY = 0.3;
+                image.x += 10;
+                image.y += 13;
+            }
             return sp;
         }
 
@@ -26,6 +44,16 @@ namespace game {
             var back: Bitmap = new Bitmap(Global.getRes("pai_shang1"));
             sp.addChild(back);
 //
+            if (Global.SHOW_COMPUTER) {
+                var image:Bitmap = new Bitmap(Global.getRes(Asset.getTextureName(card)));
+                image.anchorOffsetX = image.width / 2;
+                image.anchorOffsetY = image.height / 2;
+                image.x = sp.width / 2;
+                image.y = sp.height / 2 + 7;
+                sp.addChild(image);
+                image.scaleX = image.scaleY = 0.5;
+            }
+
             return sp;
         }
 
@@ -51,6 +79,9 @@ namespace game {
 
         private static getTextureName(card: MjCard): string {
             var s: string = "";
+            if(card==null){
+                log("error")
+            }
             switch (card.type) {
                 case MjConst.type_feng:
                     s = "3" + card.num;

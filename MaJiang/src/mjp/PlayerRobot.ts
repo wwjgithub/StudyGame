@@ -6,9 +6,13 @@ namespace game {
 
         constructor() {
             super();
+            if (Global.AI) {
+                this.showCardsMc.enable = false;
+            } else {
+                this.showCardsMc.enable = true;
+            }
 
             this.showCardsMc.addEventListener(MjEvent.DISCARD_SHOWMC, this.onDiscard, this);
-            this.showCardsMc.enable = false;
             this.showCardsMc.addEventListener(MjEvent.FETCH_COMPLETE, this.onFetchComplete, this);
         }
 
@@ -21,7 +25,7 @@ namespace game {
             if (this.core.tingInfo != null) {
                 //听后,只能暗杠和补杠.暗杠如果改变了之前听的牌,也不能杠
                 status = MjEngine.thinkOptFetchAfterTing(this.core, reverse);
-                if (true) {
+                if (Global.AI) {
                     if (status.hasTrue()) {
                         if (status.huInfo != null) {
                             this.zimo(status.huInfo);
@@ -39,11 +43,16 @@ namespace game {
                         this.decideDiscard(this.core.lastFetchCard);
                     }
                 } else {
+                    if (status.hasTrue()) {
+                        this.opt.update(this, status, this.zimo, null, null, null, null, null, this.anGang, this.wantBuGang);
+                    } else {
+                        egret.setTimeout(this.showCardsMc.discardLastFetchCard,this.showCardsMc, 500);
+                    }
                 }
                 return;
             } else {
                 status = MjEngine.thinkOptFetch(this.core, reverse);
-                if (true) {
+                if (Global.AI) {
                     if (status.hasTrue()) {
                         if (status.huInfo != null) {
                             this.zimo(status.huInfo);
@@ -65,6 +74,10 @@ namespace game {
                         this.decideDiscard(MjEngine.getDiscardCard(this.core.cloneShowCards()));
                     }
                 } else {
+                    if (status.hasTrue()) {
+                        this.opt.update(this, status, this.zimo, null, this.aiTing, null, null, null, this.anGang, this.wantBuGang);
+                    } else {
+                    }
                 }
             }
         }
@@ -97,13 +110,16 @@ namespace game {
          */
         public decideAfterOpt(): void {
             var status: MjPlayerThinkStatus = MjEngine.thinkOptAfterOpt(this.core);
-            if (true) {
+            if (Global.AI) {
                 if (status.isTing) {
                     this.aiTing();
                 } else {
                     this.decideDiscard(MjEngine.getDiscardCard(this.core.cloneShowCards()));
                 }
             } else {
+                if (status.hasTrue()) {
+                    this.opt.update(this, status, null, null, this.aiTing);
+                }
             }
         }
 
@@ -128,7 +144,7 @@ namespace game {
          */
         public decideOnOtherDiscard(card: MjCard, isPrevDiscard: Boolean, callBack: Function): void {
             //吃,碰,明杠,暗杠,补杠,报听,胡,自摸
-            if (true) {
+            if (Global.AI) {
                 var status: MjPlayerThinkStatus = MjEngine.thinkOptAfterOtherDiscardAi(this.core, card, isPrevDiscard);
                 if (status.hasTrue()) {
                     if (status.huInfo != null) {
@@ -151,6 +167,24 @@ namespace game {
                     callBack(new MjEvent(MjEvent.PASS));
                 }
             } else {
+                var status1:MjPlayerThinkStatus = MjEngine.thinkOptAfterOtherDiscard(this.core, card, isPrevDiscard);
+                if (status1.hasTrue()) {
+                    var func:Function = function (...arg):void {
+                        var e:MjEvent = new MjEvent(arg[arg.length - 1], false, arg[0]);
+                        callBack(e);
+                    };
+                    this.opt.update(this, status1, this.hu,
+                        MethodUtil.create(func, MjEvent.PASS),
+                        null,
+                        MethodUtil.create(func, MjEvent.CHI),
+                        MethodUtil.create(func, MjEvent.PENG),
+                        MethodUtil.create(func, MjEvent.MINGGANG),
+                        null,
+                        null
+                    );
+                } else {
+                    callBack(new MjEvent(MjEvent.PASS));
+                }
             }
         }
 

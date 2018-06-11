@@ -1,7 +1,6 @@
 namespace game {
     import DisplayObject = egret.DisplayObject;
     import Stage = egret.Stage;
-    import ColorMatrixFilter = egret.ColorMatrixFilter;
 
     export class Global {
         static UP_CARD_WIDTH: number = 42;
@@ -14,9 +13,11 @@ namespace game {
         static INIT_MONEY = 1000;
 
         static show_card_width: number = 69;
+        static SHOW_COMPUTER: boolean = true;
+        static AI: boolean=false;
 
-        static removeMe(m:DisplayObject){
-            if(m.parent!=null){
+        static removeMe(m: DisplayObject) {
+            if (m.parent != null) {
                 m.parent.removeChild(m);
             }
         }
@@ -40,7 +41,8 @@ namespace game {
             }
             return s;
         }
-        public static getComponentWidth():number {
+
+        public static getComponentWidth(): number {
             return Global.show_card_width * Global.getHeroCardScale() * 3;
         }
 

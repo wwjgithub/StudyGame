@@ -100,6 +100,8 @@ namespace game {
             for (var j: number = 0; j < btns.length; j++) {
                 var sp = btns[j];
                 var btn: CButton = new CButton(sp);
+                btn.touchChildren=false;
+                btn.touchEnabled=true;
                 btn.anchorOffsetX = btn.width;
                 btn.addEventListener(egret.TouchEvent.TOUCH_TAP, this.onOpt, this);
                 btn.x = -j % 3 * (btn.width + 10) - 10;

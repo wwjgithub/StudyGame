@@ -213,7 +213,7 @@ namespace game {
             this._curPlayer.discardCardsMc.removeLastDiscardCard();
             this.curPlayer = <IPlayer>(event.currentTarget);
             this.anim.showChi(this._curPlayer);
-            egret.setTimeout(this._curPlayer.decideAfterOpt, this, 1000);
+            egret.setTimeout(this._curPlayer.decideAfterOpt, this._curPlayer, 1000);
         }
 
         private onPlayerPeng(event: MjEvent): void {
@@ -221,7 +221,7 @@ namespace game {
             this._curPlayer.discardCardsMc.removeLastDiscardCard();
             this.curPlayer = <IPlayer>(event.currentTarget);
             this.anim.showPeng(this._curPlayer);
-            egret.setTimeout(this._curPlayer.decideAfterOpt, this, 1000);
+            egret.setTimeout(this._curPlayer.decideAfterOpt, this._curPlayer, 1000);
         }
 
         public set curPlayer(value: IPlayer) {
@@ -303,12 +303,13 @@ namespace game {
          */
         private onOneJustDiscard(event: egret.Event): void {
             var card: MjCard = <MjCard>(event.data);
+            this.decideForOtherDiscardDic = [];
             this.nextPlayerDecideForOtherDiscard(this._curPlayer.next, card);
         }
 
         private onDecideForOtherDiscard(player: IPlayer, card: MjCard,e: egret.Event): void {
             if (e.type != MjEvent.PASS) {
-                this.decideForOtherDiscardDic.push([player.hashCode,e]);
+                this.decideForOtherDiscardDic.push([player,e]);
             }
             this.nextPlayerDecideForOtherDiscard(player.next, card);
         }
@@ -421,9 +422,15 @@ namespace game {
 
         private startGame(): void {
             //先发好牌
-//            MjRound.instance.fetchCardsImmediate.apply(MjRound.instance, TestInitCards.testForAnGangInit());
-            var cs1 = MjGenerator.gene(Math.floor(Math.random() * 16));
-            MjRound.instance.fetchCardsImmediate(cs1[0], null, null, null, null, null, cs1[1]);
+            let m=1;
+            if(m==1) {
+                let cc=TestInitCards.testForHeroChi();
+                MjRound.instance.fetchCardsImmediate.apply(MjRound.instance, cc);
+            }else{
+
+                let cs1 = MjGenerator.gene(Math.floor(Math.random() * 16));
+                MjRound.instance.fetchCardsImmediate(cs1[0], null, null, null, null, null, cs1[1]);
+            }
             //先显示好牌.并隐藏.为了显示发牌动画
             for (var i: number = 0; i < this.players.length; i++) {
                 var player: IPlayer = this.players[i];

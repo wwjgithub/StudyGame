@@ -65,6 +65,7 @@
 		"bin-debug/mjp/StartAnimBtn.js",
 		"bin-debug/mjp/UserImageTip.js",
 		"bin-debug/mjp/Table.js",
+		"bin-debug/mjp/TestInitCards.js",
 		"bin-debug/mjp/MjFetchInfo.js"
 	]
 }

@@ -199,6 +199,10 @@ namespace game {
             }
         }
 
+        private optDecide(decide:string,data):void{
+
+        }
+
         public mingGang(card:MjCard):void {
             super.mingGang(card);
             this.showMc.showHeroMingGangAnim(card, this.core);

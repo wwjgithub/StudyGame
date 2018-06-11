@@ -8,6 +8,8 @@ namespace game {
         constructor(card:MjCard) {
             super();
             this._card=card;
+            this.touchEnabled=true;
+            this.touchChildren=false;
         }
 
         public get card(): MjCard {
