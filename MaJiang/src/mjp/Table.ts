@@ -82,7 +82,6 @@ namespace game {
 
         }
 
-        private quanFeng;
         private menFeng;
 
         startFirst() {
@@ -95,7 +94,6 @@ namespace game {
                 this.curPlayerInfos.push(info);
                 this.appendPlayer();
             }
-            this.quanFeng = MjConst.type_feng_dong;
             this.menFeng = MjConst.type_feng_dong;
             this.playerHero.updateInfo(this.curPlayerInfos[0]);
             this.playerLeft.updateInfo(this.curPlayerInfos[1]);
@@ -120,7 +118,6 @@ namespace game {
             //
             MjRound.init(MjConst.playtype_4);
             MjRound.instance.addEventListener(MjRound.CNT_CHANGE, this.updateLastCardCnt, this);
-            MjRound.instance.quanFeng = this.quanFeng;
             MjRound.instance.menFeng = this.menFeng;
             //
             this.playerHero.core = MjRound.instance.players[0];

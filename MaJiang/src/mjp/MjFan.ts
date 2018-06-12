@@ -1108,7 +1108,7 @@ class MjFan {
     /**
      */
     static func_圈风刻() {
-        var ke = MjFan.getKe();
+        /*var ke = MjFan.getKe();
         for (var i = 0; i < ke.length; i++) {
             var card = ke[i];
             if (card.isFeng()) {
@@ -1116,7 +1116,7 @@ class MjFan {
                     return 2;
                 }
             }
-        }
+        }*/
         return 0;
     }
 

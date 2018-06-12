@@ -5,7 +5,6 @@ class MjRound extends EventDispatcher {
     private _players: MjPlayer[] = [];
     private _playType: number;
     private cards: MjCard[] = [];
-    public quanFeng: number;
     public static CNT_CHANGE: string = "MjRound.CNT_CHANGE";
     public menFeng: number;
     public static instance: MjRound;
