@@ -6,7 +6,7 @@ namespace game {
         protected showCardMcs: Array<CardSprite> = new Array<CardSprite>();
         public startPosition: egret.Point;
         public fetchCardPosition: Point;
-        public enable: Boolean = true;
+        public enable: Boolean = false;
         private _updateFunc: Function;
         private _putFetchCardFunc: Function;
 
@@ -76,15 +76,19 @@ namespace game {
 
             if (event.type == egret.TouchEvent.TOUCH_END) {
                 this.discard(mc);
+                log("touchend")
             } else if (event.type === egret.TouchEvent.TOUCH_BEGIN) {
+                log("touch begin")
                 SoundManager.play("select");
                 mc.oriY = mc.y;
-                mc.y -= 30;
+                mc.y -= 12;
             }
         }
-        public setEnable():void {
-            this.enable = true;
+
+        public setEnable(b:boolean):void {
+            this.enable = b;
         }
+
         public discardLastFetchCard():void {
             this.discard(this.showCardMcs[this.showCardMcs.length - 1]);
         }

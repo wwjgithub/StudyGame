@@ -16,12 +16,8 @@ namespace game {
             return this._card;
         }
 
-        public CardSprite(card: MjCard) {
-            this._card = card;
-        }
-
         public moveY(y: number): void {
-            egret.Tween.get(this, {}).to({"y": y}, 500).play().call(this.moveComplete, this);
+            egret.Tween.get(this, {}).to({"y": y}, 300).play().call(this.moveComplete, this);
         }
 
         private moveComplete(): void {

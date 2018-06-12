@@ -7,12 +7,6 @@ namespace game {
 
         constructor() {
             super();
-            if (Global.AI) {
-                this.showCardsMc.enable = false;
-            } else {
-                this.showCardsMc.enable = true;
-            }
-
             this.showCardsMc.addEventListener(MjEvent.DISCARD_SHOWMC, this.onDiscard, this);
             this.showCardsMc.addEventListener(MjEvent.FETCH_COMPLETE, this.onFetchComplete, this);
         }
@@ -47,7 +41,7 @@ namespace game {
                     if (status.hasTrue()) {
                         this.opt.update(this, status, this.zimo, null, null, null, null, null, this.anGang, this.wantBuGang);
                     } else {
-                        egret.setTimeout(this.showCardsMc.discardLastFetchCard,this.showCardsMc, 500);
+                        egret.setTimeout(this.showCardsMc.discardLastFetchCard, this.showCardsMc, 500);
                     }
                 }
                 return;
@@ -105,6 +99,18 @@ namespace game {
             return 0;
         }
 
+        public fetch(reverse: boolean): void {
+            super.fetch(reverse);
+            if(Global.AI) {
+
+            }else{
+
+                this.showCardsMc.setEnable(true);
+            }
+        }
+
+
+
         /**
          * Ai选择打哪张牌
          * 操作后还可以听
@@ -121,6 +127,7 @@ namespace game {
                 if (status.hasTrue()) {
                     this.opt.update(this, status, null, null, this.aiTing);
                 }
+                this.showCardsMc.setEnable(true)
             }
         }
 
@@ -128,6 +135,7 @@ namespace game {
             var p: Point = this.showCardsMc.fetchCardPosition.clone();
             this.core.onDiscard(target);
             this.showCards(true);
+            this.showCardsMc.setEnable(false);
             super.showDiscardAnim(target, p.x, p.y);
         }
 
@@ -145,7 +153,7 @@ namespace game {
          */
         public decideOnOtherDiscard(card: MjCard, isPrevDiscard: Boolean, callBack: Function): void {
             //吃,碰,明杠,暗杠,补杠,报听,胡,自摸
-            this.decideCallBack=callBack;
+            this.decideCallBack = callBack;
             if (Global.AI) {
                 var status: MjPlayerThinkStatus = MjEngine.thinkOptAfterOtherDiscardAi(this.core, card, isPrevDiscard);
                 if (status.hasTrue()) {
@@ -169,14 +177,14 @@ namespace game {
                     callBack(new MjEvent(MjEvent.PASS));
                 }
             } else {
-                var status1:MjPlayerThinkStatus = MjEngine.thinkOptAfterOtherDiscard(this.core, card, isPrevDiscard);
+                var status1: MjPlayerThinkStatus = MjEngine.thinkOptAfterOtherDiscard(this.core, card, isPrevDiscard);
                 if (status1.hasTrue()) {
                     this.opt.update(this, status1, this.hu.bind(this),
-                        this.optDecide.bind(this,MjEvent.PASS),
+                        this.optDecide.bind(this, MjEvent.PASS),
                         null,
-                        this.optDecide.bind(this,MjEvent.CHI),
-                        this.optDecide.bind(this,MjEvent.PENG),
-                        this.optDecide.bind(this,MjEvent.MINGGANG),
+                        this.optDecide.bind(this, MjEvent.CHI),
+                        this.optDecide.bind(this, MjEvent.PENG),
+                        this.optDecide.bind(this, MjEvent.MINGGANG),
                         null,
                         null
                     );
@@ -186,7 +194,7 @@ namespace game {
             }
         }
 
-        private optDecide(decide:string,data:any):void{
+        private optDecide(decide: string, data: any): void {
             this.decideCallBack(new egret.Event(decide, false, false, data));
         }
 

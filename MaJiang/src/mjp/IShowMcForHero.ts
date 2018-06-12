@@ -230,7 +230,7 @@ namespace game {
             this.curDiscardCard = mc;
             SoundManager.play("select");
             mc.oriY = mc.y;
-            mc.y -= 30;
+            mc.y -= 12;
             this.touchBeginPoint = new Point(xx, yy);
         }
 
@@ -475,7 +475,7 @@ namespace game {
                         this.curDiscardCard = null;
                     }
                 }
-            } else if (event.type == egret.TouchEvent.TOUCH_MOVE) {
+            } else if (event.type == egret.TouchEvent.TOUCH_MOVE) {/*
                 if (this.dragMc != null) {
                     //缓动
                     this.dragMc.x = event.stageX;
@@ -503,7 +503,7 @@ namespace game {
                         }
                     }
                 }
-            }
+            */}
         }
 
     }

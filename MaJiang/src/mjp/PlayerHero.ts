@@ -28,7 +28,6 @@ namespace game {
             this.addChild(this.discardCardsMc);
             //
             this.addChild(this.showCardsMc);
-            this.showCardsMc.enable = false;
         }
 
         private moneyMc: MoneyMc;
@@ -39,9 +38,9 @@ namespace game {
         public decideAfterOpt(): void {
             var status: MjPlayerThinkStatus = MjEngine.thinkOptAfterOpt(this.core);
             if (status.hasTrue()) {
-                this.opt.update(this, status, null, null, this.selectTingInfo);
+                this.opt.update(this, status, null, null, this.selectTingInfo.bind(this));
             }
-            this.showCardsMc.enable = true;
+            this.showCardsMc.setEnable(true)
         }
 
         public selectTingInfo(): void {
@@ -63,7 +62,7 @@ namespace game {
                 //听后,只能暗杠和补杠.暗杠如果改变了之前听的牌,也不能杠
                 var status: MjPlayerThinkStatus = MjEngine.thinkOptFetchAfterTing(this.core, reverse);
                 if (status.hasTrue()) {
-                    this.opt.update(this, status, this.zimo, this.showCardsMc.discardLastFetchCard, null, null, null, null, this.anGang, this.wantBuGang);
+                    this.opt.update(this, status, this.zimo.bind(this), this.showCardsMc.discardLastFetchCard.bind(this.showCardsMc), null, null, null, null, this.anGang.bind(this), this.wantBuGang.bind(this));
                 } else {
                     egret.setTimeout(this.showCardsMc.discardLastFetchCard, this.showCardsMc, 500);
                 }
@@ -71,9 +70,9 @@ namespace game {
                 //没听时,自己摸牌.可能暗杠,补杠,自摸,报听
                 var st: MjPlayerThinkStatus = MjEngine.thinkOptFetch(this.core, reverse);
                 if (st.hasTrue()) {
-                    this.opt.update(this, st, this.zimo, null, this.selectTingInfo, null, null, null, this.anGang, this.wantBuGang);
+                    this.opt.update(this, st, this.zimo.bind(this), null, this.selectTingInfo.bind(this), null, null, null, this.anGang.bind(this), this.wantBuGang.bind(this));
                 }
-                egret.setTimeout(this.showCardsMc.setEnable, this.showCardsMc, 400);
+                egret.setTimeout(this.showCardsMc.setEnable, this.showCardsMc, 400,true);
             }
         }
 
@@ -118,7 +117,7 @@ namespace game {
         }
 
         private onDiscard(event: egret.Event): void {
-            this.showCardsMc.enable = false;
+            this.showCardsMc.setEnable(false)
             this.opt.clear();
             //删除点的牌
             var cardSprite: CardSprite = <CardSprite>(event.data);
