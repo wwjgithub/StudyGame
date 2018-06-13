@@ -272,6 +272,8 @@ namespace game {
             var p: Point = new Point(Global.stage_w / 2, Global.stage_h / 4 * 3);
             p = this.globalToLocal(p.x, p.y);
             var showTingTipBtn: Sprite = new Sprite();
+            showTingTipBtn.touchEnabled=true;
+            showTingTipBtn.touchChildren=false;
             var img: Bitmap = new Bitmap(Global.getRes("tingicon_myself"));
             showTingTipBtn.addChild(img);
             showTingTipBtn.anchorOffsetX = showTingTipBtn.width / 2;
@@ -283,7 +285,7 @@ namespace game {
             this.tingTip.y = showTingTipBtn.y - 200;
             //
             this.moveTingTip();
-            showTingTipBtn.addEventListener(egret.TouchEvent.TOUCH_END, this.onShowTingTip, this);
+            showTingTipBtn.addEventListener(egret.TouchEvent.TOUCH_TAP, this.onShowTingTip, this);
         }
 
         private onShowTingTip(event: egret.TouchEvent): void {

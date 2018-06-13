@@ -33,22 +33,6 @@ namespace game {
          * @param player
          */
         public update(player: IPlayer, status: MjPlayerThinkStatus, huFunc: Function = null, passFunc: Function = null, selectTingInfoFunc: Function = null, wantChiFunc: Function = null, pengFunc: Function = null, mingGangFunc: Function = null, anGangFunc: Function = null, wantBuGangFunc: Function = null): void {
-            var cc: IPlayer = player.next;
-            if (player.head != null) {
-                //todo:
-                /*var filter: AdvancedFilter = new AdvancedFilter();
-                filter.addA = 1;
-                filter.addR = 255;
-                filter.addG = 0;
-                filter.addB = 0;
-                player.head.filter = filter*/
-            }
-            while (cc != player) {
-                if (cc.head != null) {
-                    // cc.head.filter = null;
-                }
-                cc = cc.next;
-            }
             this.huFunc = huFunc;
             this.passFunc = passFunc;
             this.selectTingInfoFunc = selectTingInfoFunc;
@@ -186,13 +170,13 @@ namespace game {
             return sprite
         }
 
-        private static createOptBtn(opt: String): OptSprite {
+        private static createOptBtn(opt: string): OptSprite {
             var retMc: OptSprite = new OptSprite();
             //
             var bgImage: Bitmap = new Bitmap(Global.getRes("operate_btn_n"));
             retMc.addChild(bgImage);
             //
-            var image: Bitmap = new Bitmap(Global.getRes("opt"));
+            var image: Bitmap = new Bitmap(Global.getRes(opt));
             image.width = 60;
             image.height = 60;
             image.x = 20;
