@@ -80,7 +80,7 @@ namespace game {
         private static getTextureName(card: MjCard): string {
             var s: string = "";
             if(card==null){
-                log("error")
+                throw new Error("Asset.getTextureName null " + card.toString());
             }
             switch (card.type) {
                 case MjConst.type_feng:

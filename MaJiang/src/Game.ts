@@ -18,8 +18,6 @@ namespace game {
             this.homePage.removeEventListener(HomePage.START, this.onExitHomePage, this);
             this.homePage.destroy();
             this.removeChild(this.homePage);
-            //
-
 
             //todo:SoundManager.getInstance().playBg(true);
             this.table = new Table();

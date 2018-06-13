@@ -20,7 +20,6 @@ namespace game{
             super.updateIcon(isZhuang);
             this.head.x = this.head.width / 2 + 2;
             this.head.y = Global.stage_h / 2 + this.head.height / 2;
-             log("player left",this.head.x,this.head.y)
 
              if (this.isZhuang) {
                 IPlayer.zhuangMc.x = this.head.x;

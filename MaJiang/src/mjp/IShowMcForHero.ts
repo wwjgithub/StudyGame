@@ -16,7 +16,6 @@ namespace game {
         private playerHero: PlayerHero;
         private touchBeginPoint: Point;
         private curCardShape: Sprite;
-        private dragMc: CardSprite;
 
         constructor(playerHero) {
             super();
@@ -27,11 +26,12 @@ namespace game {
             this.addEventListener(egret.TouchEvent.TOUCH_MOVE, this.onTouchShow, this)
             this.addEventListener(egret.TouchEvent.TOUCH_END, this.onTouchShow, this)
         }
-        public stopSelectTing():void {
+
+        public stopSelectTing(): void {
             this.removeCurCardShape();
             this.tingInfos = null;
-            for (var m:number = 0; m < this.showCardMcs.length; m++) {
-                var sprite:CardSprite = this.showCardMcs[m];
+            for (var m: number = 0; m < this.showCardMcs.length; m++) {
+                var sprite: CardSprite = this.showCardMcs[m];
                 sprite.filters = [];
             }
             Global.removeMe(this.tingTip);
@@ -41,14 +41,15 @@ namespace game {
             }
             this.curDiscardCard = null;
         }
-        public startSelectTing(tingInfo:Array<MjTingInfo>):void {
+
+        public startSelectTing(tingInfo: Array<MjTingInfo>): void {
             this.tingInfos = tingInfo;
-            var dcards:Array<MjCard> = [];
-            for (var i:number = 0; i < tingInfo.length; i++) {
-                var info:MjTingInfo = tingInfo[i];
-                var has:Boolean = false;
-                for (var j:number = 0; j < dcards.length; j++) {
-                    var card:MjCard = dcards[j];
+            var dcards: Array<MjCard> = [];
+            for (var i: number = 0; i < tingInfo.length; i++) {
+                var info: MjTingInfo = tingInfo[i];
+                var has: Boolean = false;
+                for (var j: number = 0; j < dcards.length; j++) {
+                    var card: MjCard = dcards[j];
                     if (card.equal(info.target)) {
                         has = true;
                     }
@@ -57,37 +58,39 @@ namespace game {
                     dcards.push(info.target);
                 }
             }
-            for (var m:number = 0; m < this.showCardMcs.length; m++) {
-                var sprite:CardSprite = this.showCardMcs[m];
-                var needd:Boolean = false;
-                for (var n:number = 0; n < dcards.length; n++) {
-                    var card1:MjCard = dcards[n];
+            for (var m: number = 0; m < this.showCardMcs.length; m++) {
+                var sprite: CardSprite = this.showCardMcs[m];
+                var needd: Boolean = false;
+                for (var n: number = 0; n < dcards.length; n++) {
+                    var card1: MjCard = dcards[n];
                     if (sprite.card.equal(card1)) {
                         needd = true;
                     }
                 }
                 if (needd) {
                 } else {
-                    var filter:ColorMatrixFilter = new ColorMatrixFilter();
-                    sprite.filters=[new ColorMatrixFilter(FilterUtil.getBrightnessMatrix(-0.5))]
+                    var filter: ColorMatrixFilter = new ColorMatrixFilter();
+                    sprite.filters = [new ColorMatrixFilter(FilterUtil.getBrightnessMatrix(-0.5))]
                 }
             }
         }
-        private addComponentCenter(mcc:MjComponent):void {
-            var p:Point = new Point(Global.stage_w / 2, Global.stage_h / 2);
-            p = this.globalToLocal(p.x,p.y);
+
+        private addComponentCenter(mcc: MjComponent): void {
+            var p: Point = new Point(Global.stage_w / 2, Global.stage_h / 2);
+            p = this.globalToLocal(p.x, p.y);
             mcc.x = p.x - mcc.width / 2;
             mcc.y = p.y - mcc.height / 2;
             this.addChild(mcc);
             //组合动画
-            var left:DisplayObject = mcc.getChildAt(0);
-            var right:DisplayObject = mcc.getChildAt(2);
+            var left: DisplayObject = mcc.getChildAt(0);
+            var right: DisplayObject = mcc.getChildAt(2);
             left.x -= 30;
             right.x += 30;
             egret.Tween.get(left).to({x: left.x + 30}, 100).play();
             egret.Tween.get(right).to({x: right.x - 30}, 100).play();
         }
-        private animComponent(mcc:MjComponent, round:MjPlayer):void {
+
+        private animComponent(mcc: MjComponent, round: MjPlayer): void {
             /*var tween:Tween = new Tween(mcc, 1);
              tween.animate("x", (round.commonOptCnt - 1) * 200);
              tween.animate("y", 0);
@@ -99,11 +102,12 @@ namespace game {
             //
             this.resortShowCards(round, false);
         }
-        private synShowCards():void {
+
+        private synShowCards(): void {
             var mjCards = this.playerHero.core.cloneShowCards();
             //移除不正确的牌,可忽略
-            for (var i:number = 0; i < this.showCardMcs.length; i++) {
-                var mc:CardSprite = this.showCardMcs[i];
+            for (var i: number = 0; i < this.showCardMcs.length; i++) {
+                var mc: CardSprite = this.showCardMcs[i];
                 if (mjCards.indexOf(mc.card) == -1) {
                     Global.removeMe(mc);
                     this.showCardMcs.splice(i, 1);
@@ -111,58 +115,59 @@ namespace game {
                 }
             }
             //同步顺序
-            for (var k:number = 0; k < mjCards.length; k++) {
-                var card:MjCard = mjCards[k];
-                for (var m:number = 0; m < this.showCardMcs.length; m++) {
-                    var sprite:CardSprite = this.showCardMcs[m];
+            for (var k: number = 0; k < mjCards.length; k++) {
+                var card: MjCard = mjCards[k];
+                for (var m: number = 0; m < this.showCardMcs.length; m++) {
+                    var sprite: CardSprite = this.showCardMcs[m];
                     if (sprite.card == card) {
-                        var mcs:CardSprite = this.showCardMcs.splice(m, 1)[0];
+                        var mcs: CardSprite = this.showCardMcs.splice(m, 1)[0];
                         this.showCardMcs.splice(k, 0, mcs);
                     }
                 }
             }
         }
 
-        private insertLastFetchCard(mc:CardSprite, index:number):void {
-            egret.Tween.get(mc).to({y:mc.y-100},100).to({x:mc.width * index + this.startPosition.x},300).to({y:mc.y},100).play()
+        private insertLastFetchCard(mc: CardSprite, index: number): void {
+            egret.Tween.get(mc).to({y: mc.y - 100}, 100).to({x: mc.width * index + this.startPosition.x}, 300).to({y: mc.y}, 100).play()
         }
 
-        public showHeroChiAnim(mjChiInfo:MjChiInfo, round:MjPlayer):void {
-            var mcc:MjComponent = ComponentFactory.createChiForHero(mjChiInfo.cards);
+        public showHeroChiAnim(mjChiInfo: MjChiInfo, round: MjPlayer): void {
+            var mcc: MjComponent = ComponentFactory.createChiForHero(mjChiInfo.cards);
             this.addComponentCenter(mcc);
-            egret.setTimeout(this.animComponent,this, 200, mcc, round);
+            egret.setTimeout(this.animComponent, this, 200, mcc, round);
         }
 
-        public showHeroPengAnim(card:MjCard, round:MjPlayer):void {
-            var mcc:MjComponent = ComponentFactory.createPengForHero(card);
+        public showHeroPengAnim(card: MjCard, round: MjPlayer): void {
+            var mcc: MjComponent = ComponentFactory.createPengForHero(card);
             mcc.card = card;
             this.addComponentCenter(mcc);
-            egret.setTimeout(this.animComponent,this, 200, mcc, round);
+            egret.setTimeout(this.animComponent, this, 200, mcc, round);
         }
 
-        public showHeroMingGangAnim(card:MjCard, round:MjPlayer):void {
-            var mcc:MjComponent = ComponentFactory.createMingGangForHero(card);
+        public showHeroMingGangAnim(card: MjCard, round: MjPlayer): void {
+            var mcc: MjComponent = ComponentFactory.createMingGangForHero(card);
             this.addComponentCenter(mcc);
-            egret.setTimeout(this.animComponent, this,200, mcc, round);
+            egret.setTimeout(this.animComponent, this, 200, mcc, round);
         }
 
-        public showHeroBuGangAnim(card:MjCard, round:MjPlayer):void {
-            for (var i:number = 0; i < this.numChildren; i++) {
-                var mc:DisplayObject = this.getChildAt(i);
+        public showHeroBuGangAnim(card: MjCard, round: MjPlayer): void {
+            for (var i: number = 0; i < this.numChildren; i++) {
+                var mc: DisplayObject = this.getChildAt(i);
                 if (mc instanceof MjComponent) {
-                    var pengComponent:MjComponent = (mc as MjComponent);
+                    var pengComponent: MjComponent = (mc as MjComponent);
                     if (card.equal(pengComponent.card)) {
                         this.removeChild(pengComponent);
-                        var mcc1:MjComponent = ComponentFactory.createMingGangForHero(card);
+                        var mcc1: MjComponent = ComponentFactory.createMingGangForHero(card);
                         this.addComponentCenter(mcc1);
                         //
-                        egret.setTimeout(this.animBuGangComponent, this,200, mcc1, round, pengComponent.x, pengComponent.y);
+                        egret.setTimeout(this.animBuGangComponent, this, 200, mcc1, round, pengComponent.x, pengComponent.y);
                         return;
                     }
                 }
             }
         }
-        private animBuGangComponent(mcc1:MjComponent, round:MjPlayer, x:Number, y:Number):void {
+
+        private animBuGangComponent(mcc1: MjComponent, round: MjPlayer, x: Number, y: Number): void {
             egret.Tween.get(mcc1).wait(500).to({x: x, y: y}, 1000).play();
 
             //
@@ -171,10 +176,10 @@ namespace game {
             this.resortShowCards(round, false);
         }
 
-        public showHeroAnGangAnim(card:MjCard, round:MjPlayer):void {
-            var mcc:MjComponent = ComponentFactory.createAnGangForHero(card);
+        public showHeroAnGangAnim(card: MjCard, round: MjPlayer): void {
+            var mcc: MjComponent = ComponentFactory.createAnGangForHero(card);
             this.addComponentCenter(mcc);
-            egret.setTimeout(this.animComponent,this, 200, mcc, round);
+            egret.setTimeout(this.animComponent, this, 200, mcc, round);
         }
 
         private getCardByGlobalPosition(globalX: number, globalY: number): CardSprite {
@@ -209,15 +214,15 @@ namespace game {
             }
         }
 
-        public updateShowCards():void {
-            var firstX:number = this.showCardMcs[0].x;
+        public updateShowCards(): void {
+            var firstX: number = this.showCardMcs[0].x;
             this.playerHero.core.sort();
-            var mjCards:Array<MjCard> = this.playerHero.core.cloneShowCards();
+            var mjCards: Array<MjCard> = this.playerHero.core.cloneShowCards();
             this.synShowCards();
             //移动牌的位置
-            for (var j:number = 0; j < this.showCardMcs.length; j++) {
-                var mc1:CardSprite = this.showCardMcs[j];
-                var index:number = mjCards.indexOf(mc1.card);
+            for (var j: number = 0; j < this.showCardMcs.length; j++) {
+                var mc1: CardSprite = this.showCardMcs[j];
+                var index: number = mjCards.indexOf(mc1.card);
                 mc1.x = mc1.width * index + this.startPosition.x + firstX;
             }
         }
@@ -437,6 +442,8 @@ namespace game {
             if (event.type == egret.TouchEvent.TOUCH_BEGIN) {
                 let mc: CardSprite = this.getCardByGlobalPosition(event.stageX, event.stageY);
                 if (mc != null && (mc.filters == null || mc.filters.length == 0)) {//能点击的. filter代表听状态
+                    log("IShowMcForHero touch begin")
+
                     var last: CardSprite = this.curDiscardCard;
                     this.changeCurDiscardMc(mc, event.stageX, event.stageY);//先选中这个
                     if (this.tingInfos != null) {//有听牌
@@ -449,31 +456,13 @@ namespace game {
                     }
                 }
             } else if (event.type == egret.TouchEvent.TOUCH_END) {
-                if (this.dragMc != null) {//正在拖动
-                    this.curDiscardCard.filters = [];
-                    if (event.stageY < this.touchBeginPoint.y - 50) {//在上方放开的牌
-                        //拖动打牌
-                        var pp: Point = new Point(this.dragMc.x, this.dragMc.y);
-                        pp = this.globalToLocal(pp.x, pp.y);
-                        this.curDiscardCard.x = pp.x;
-                        this.curDiscardCard.y = pp.y;
+                if (this.tingInfos == null) {
+                    //不听状态
+                    log("IShowMcForHero touch end")
+                    if (this.curDiscardCard != null) {
                         this.discard(this.curDiscardCard);
-                        if (this.tingInfos != null) {
-                            //又点了一次这张牌,就是要打出去
-                            this.selectTingInfo(this.curDiscardCard.card);
-                        }
-                        this.curDiscardCard = null;
                     }
-                    Global.removeMe(this.dragMc);
-                    this.dragMc = null;
-                } else {
-                    if (this.tingInfos == null) {
-                        //不听状态
-                        if (this.curDiscardCard != null) {
-                            this.discard(this.curDiscardCard);
-                        }
-                        this.curDiscardCard = null;
-                    }
+                    this.curDiscardCard = null;
                 }
             } else if (event.type == egret.TouchEvent.TOUCH_MOVE) {/*
                 if (this.dragMc != null) {
@@ -503,7 +492,8 @@ namespace game {
                         }
                     }
                 }
-            */}
+            */
+            }
         }
 
     }

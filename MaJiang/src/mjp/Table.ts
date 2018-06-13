@@ -421,7 +421,8 @@ namespace game {
             //先发好牌
             let m=1;
             if(m==1) {
-                let cc=TestInitCards.testForHeroChi();
+                // MjRound.instance.menFeng=4;
+                let cc=TestInitCards.testForHeroTing();
                 MjRound.instance.fetchCardsImmediate.apply(MjRound.instance, cc);
             }else{
 

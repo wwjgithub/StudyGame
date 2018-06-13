@@ -49,7 +49,6 @@ class Main extends egret.DisplayObjectContainer {
     }
 
     private onConfigComplete(e: RES.ResourceEvent) {
-        console.log("onConfigComplete");
         RES.removeEventListener(RES.ResourceEvent.CONFIG_COMPLETE, this.onConfigComplete, this);
         //添加资源组加载完成事件
         RES.addEventListener(RES.ResourceEvent.GROUP_COMPLETE, this.onResourceLoadComplete, this);

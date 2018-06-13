@@ -175,7 +175,7 @@ namespace game {
             return [null, null, cs2, null, csLast];
         }
 
-        public static testForTing() {
+        public static testForHeroTing() {
             var cs1 = [];
             cs1.push(new MjCard(1, 1));
             cs1.push(new MjCard(1, 1));
@@ -296,6 +296,14 @@ namespace game {
             cs1.push(new MjCard(2, 3));
             //
 
+            let cs4=[new MjCard(2, 2)];
+            return [cs1, null, null, cs4, null];
+        }
+        public static testForHeroPeng() {
+            var cs1 = [];
+            cs1.push(new MjCard(2, 2));
+            cs1.push(new MjCard(2, 2));
+            //
             let cs4=[new MjCard(2, 2)];
             return [cs1, null, null, cs4, null];
         }

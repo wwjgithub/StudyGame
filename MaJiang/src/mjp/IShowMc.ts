@@ -76,9 +76,9 @@ namespace game {
 
             if (event.type == egret.TouchEvent.TOUCH_END) {
                 this.discard(mc);
-                log("touchend")
+                log("IShowMc onClickCard touch end")
             } else if (event.type === egret.TouchEvent.TOUCH_BEGIN) {
-                log("touch begin")
+                log("IShowMc onClickCard touch begin")
                 SoundManager.play("select");
                 mc.oriY = mc.y;
                 mc.y -= 12;
@@ -94,6 +94,7 @@ namespace game {
         }
 
         protected discard(mc: CardSprite): void {
+            log(" IShowMc discard",this)
             this.showCardMcs.splice(this.showCardMcs.indexOf(mc), 1);
             this.dispatchEvent(new MjEvent(MjEvent.DISCARD_SHOWMC, false, false, mc));
         }

@@ -14,10 +14,10 @@ namespace game {
 
         static show_card_width: number = 69;
         static SHOW_COMPUTER: boolean = true;
-        static AI: boolean=false;
+        static AI: boolean = false;
 
         static removeMe(m: DisplayObject) {
-            if (m.parent != null) {
+            if (m != null && m.parent != null) {
                 m.parent.removeChild(m);
             }
         }
