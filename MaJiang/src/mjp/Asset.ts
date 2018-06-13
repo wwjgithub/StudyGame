@@ -16,7 +16,7 @@ namespace game {
                 image.anchorOffsetY = image.height / 2;
                 sp.addChild(image);
                 image.scaleX = image.scaleY = 0.3;
-                image.x -= 20;
+                image.x -= 15;
                 image.y += 15;
             }
             return sp;

@@ -28,9 +28,9 @@ namespace game {
         private static createAnGang(card: MjCard): MjComponent {
             var mc1: Sprite = Asset.getFreezeCardBackMcDown(card);
             var mc2: Sprite = Asset.getFreezeCardBackMcDown(card);
-            mc2.x = mc1.width;
+            mc2.x = mc1.width-10;
             var mc3: Sprite = Asset.getFreezeCardBackMcDown(card);
-            mc3.x = mc1.width * 2;
+            mc3.x = mc1.width * 2-20;
             var mc: MjComponent = new MjComponent();
             mc.card = card;
             mc.addChild(mc1);

@@ -393,7 +393,7 @@ namespace game {
 
         private onPlayerAnGang(event: MjEvent): void {
             this.anim.showAnGang((event.currentTarget as IPlayer));
-            egret.setTimeout(this.nextPalyerFetch, this, .5, true);
+            egret.setTimeout(this.nextPalyerFetch, this, 500, true);
 
         }
 
@@ -421,8 +421,8 @@ namespace game {
             //先发好牌
             let m=1;
             if(m==1) {
-                // MjRound.instance.menFeng=4;
-                let cc=TestInitCards.testForHeroTing();
+                MjRound.instance.menFeng=1;
+                let cc=TestInitCards.testForHeroAnGang();
                 MjRound.instance.fetchCardsImmediate.apply(MjRound.instance, cc);
             }else{
 

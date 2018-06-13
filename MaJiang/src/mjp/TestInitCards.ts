@@ -110,20 +110,7 @@ namespace game {
             cs2.push(new MjCard(1, 1));
             cs2.push(new MjCard(1, 1));
             cs2.push(new MjCard(1, 1));
-            cs2.push(new MjCard(2, 2));
-            cs2.push(new MjCard(2, 2));
-            cs2.push(new MjCard(2, 2));
-            cs2.push(new MjCard(2, 3));
-            cs2.push(new MjCard(2, 3));
-            cs2.push(new MjCard(2, 3));
-            cs2.push(new MjCard(2, 4));
-            cs2.push(new MjCard(2, 4));
-            cs2.push(new MjCard(1, 4));
-            cs2.push(new MjCard(1, 5));
             var csLast = [];
-            csLast.push(new MjCard(1, 1));
-            csLast.push(new MjCard(3, 1));
-            csLast.push(new MjCard(2, 2));
             csLast.push(new MjCard(1, 1));
             return [cs2, null, null, null, csLast];
         }
@@ -294,6 +281,16 @@ namespace game {
             cs1.push(new MjCard(2, 1));
             cs1.push(new MjCard(2, 2));
             cs1.push(new MjCard(2, 3));
+            //
+
+            let cs4=[new MjCard(2, 2)];
+            return [cs1, null, null, cs4, null];
+        }
+        public static testForHeroMingGang() {
+            var cs1 = [];
+            cs1.push(new MjCard(2, 2));
+            cs1.push(new MjCard(2, 2));
+            cs1.push(new MjCard(2, 2));
             //
 
             let cs4=[new MjCard(2, 2)];
