@@ -436,14 +436,15 @@ namespace game {
             this.addChild(this.tingTip);
         }
 
+        protected onClickCard(event: egret.TouchEvent):void {
+            //用于覆盖父类
+        }
+
         private onTouchShow(event: egret.TouchEvent): void {
             if (!this.enable) return;
-
             if (event.type == egret.TouchEvent.TOUCH_BEGIN) {
                 let mc: CardSprite = this.getCardByGlobalPosition(event.stageX, event.stageY);
                 if (mc != null && (mc.filters == null || mc.filters.length == 0)) {//能点击的. filter代表听状态
-                    log("IShowMcForHero touch begin")
-
                     var last: CardSprite = this.curDiscardCard;
                     this.changeCurDiscardMc(mc, event.stageX, event.stageY);//先选中这个
                     if (this.tingInfos != null) {//有听牌
@@ -458,41 +459,11 @@ namespace game {
             } else if (event.type == egret.TouchEvent.TOUCH_END) {
                 if (this.tingInfos == null) {
                     //不听状态
-                    log("IShowMcForHero touch end")
                     if (this.curDiscardCard != null) {
                         this.discard(this.curDiscardCard);
                     }
                     this.curDiscardCard = null;
                 }
-            } else if (event.type == egret.TouchEvent.TOUCH_MOVE) {/*
-                if (this.dragMc != null) {
-                    //缓动
-                    this.dragMc.x = event.stageX;
-                    this.dragMc.y = event.stageY;
-                } else {
-                    if (this.touchBeginPoint != null) {
-                        if (event.stageY < this.touchBeginPoint.y - 50) {//向上拖动
-                            this.dragMc = Asset.getFrontStandCard(this.curDiscardCard.card);
-                            this.dragMc.anchorOffsetX = this.dragMc.width / 2;
-                            this.dragMc.anchorOffsetY = this.dragMc.height / 2;
-                            Anim.instance.addChild(this.dragMc);
-                            this.dragMc.x = event.stageX;
-                            this.dragMc.y = event.stageY;
-                            //
-                            var filter: ColorMatrixFilter = new ColorMatrixFilter();
-                            this.curDiscardCard.filters = [new ColorMatrixFilter(FilterUtil.getBrightnessMatrix(-.3))];
-                        } else {
-                            var curDownMc: CardSprite = this.getCardByGlobalPosition(event.stageX, event.stageY);
-                            if (curDownMc != null && curDownMc != this.curDiscardCard && curDownMc.filters.length == 0) {
-                                this.changeCurDiscardMc(curDownMc, event.stageX, event.stageY);
-                                if (this.tingInfos != null) {
-                                    this.showTingTip(curDownMc);
-                                }
-                            }
-                        }
-                    }
-                }
-            */
             }
         }
 

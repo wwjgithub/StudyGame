@@ -37,8 +37,8 @@
 		"bin-debug/mjp/MjEvent.js",
 		"bin-debug/mjp/MjFan.js",
 		"bin-debug/mjp/MjFanInfo.js",
+		"bin-debug/mjp/MjFetchInfo.js",
 		"bin-debug/mjp/Asset.js",
-		"bin-debug/mjp/MjGenerator.js",
 		"bin-debug/mjp/MjPlayer.js",
 		"bin-debug/mjp/MjPlayerThinkStatus.js",
 		"bin-debug/mjp/MjRound.js",
@@ -60,12 +60,13 @@
 		"bin-debug/mjp/CButton.js",
 		"bin-debug/mjp/PlayerUp.js",
 		"bin-debug/mjp/ComponentFactory.js",
+		"bin-debug/mjp/ShowMcInterface.js",
 		"bin-debug/mjp/SoundManager.js",
 		"bin-debug/mjp/SplitTypeInfo.js",
 		"bin-debug/mjp/StartAnimBtn.js",
 		"bin-debug/mjp/UserImageTip.js",
 		"bin-debug/mjp/Table.js",
 		"bin-debug/mjp/TestInitCards.js",
-		"bin-debug/mjp/MjFetchInfo.js"
+		"bin-debug/mjp/MjGenerator.js"
 	]
 }
