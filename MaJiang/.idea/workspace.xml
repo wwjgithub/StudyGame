@@ -3,9 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="ee1e23a0-adfe-4962-b683-603802c80056" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/index.html" afterPath="$PROJECT_DIR$/index.html" />
-      <change beforePath="$PROJECT_DIR$/src/mjp/Asset.ts" afterPath="$PROJECT_DIR$/src/mjp/Asset.ts" />
-      <change beforePath="$PROJECT_DIR$/src/mjp/ComponentFactory.ts" afterPath="$PROJECT_DIR$/src/mjp/ComponentFactory.ts" />
+      <change beforePath="$PROJECT_DIR$/src/mjp/Anim.ts" afterPath="$PROJECT_DIR$/src/mjp/Anim.ts" />
       <change beforePath="$PROJECT_DIR$/src/mjp/Table.ts" afterPath="$PROJECT_DIR$/src/mjp/Table.ts" />
       <change beforePath="$PROJECT_DIR$/src/mjp/TestInitCards.ts" afterPath="$PROJECT_DIR$/src/mjp/TestInitCards.ts" />
     </list>
@@ -45,7 +43,7 @@
         <entry file="file://$PROJECT_DIR$/index.html">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="240">
-              <caret line="17" column="22" lean-forward="true" selection-start-line="17" selection-start-column="22" selection-end-line="17" selection-end-column="22" />
+              <caret line="17" column="22" lean-forward="false" selection-start-line="17" selection-start-column="22" selection-end-line="17" selection-end-column="22" />
               <folding />
             </state>
           </provider>
@@ -54,28 +52,18 @@
       <file leaf-file-name="Table.ts" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/mjp/Table.ts">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="175">
-              <caret line="391" column="9" lean-forward="true" selection-start-line="391" selection-start-column="9" selection-end-line="391" selection-end-column="9" />
+            <state relative-caret-position="315">
+              <caret line="424" column="46" lean-forward="false" selection-start-line="424" selection-start-column="46" selection-end-line="424" selection-end-column="46" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Anim.ts" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/mjp/Anim.ts">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="223">
-              <caret line="52" column="15" lean-forward="false" selection-start-line="52" selection-start-column="15" selection-end-line="52" selection-end-column="15" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="TestInitCards.ts" pinned="false" current-in-tab="false">
+      <file leaf-file-name="TestInitCards.ts" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/mjp/TestInitCards.ts">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="382">
-              <caret line="114" column="12" lean-forward="false" selection-start-line="114" selection-start-column="12" selection-end-line="114" selection-end-column="12" />
+            <state relative-caret-position="200">
+              <caret line="116" column="0" lean-forward="true" selection-start-line="116" selection-start-column="0" selection-end-line="116" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -91,11 +79,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ComponentFactory.ts" pinned="false" current-in-tab="true">
+      <file leaf-file-name="ComponentFactory.ts" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/mjp/ComponentFactory.ts">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="185">
-              <caret line="85" column="33" lean-forward="true" selection-start-line="85" selection-start-column="33" selection-end-line="85" selection-end-column="33" />
+            <state relative-caret-position="165">
+              <caret line="84" column="34" lean-forward="false" selection-start-line="84" selection-start-column="34" selection-end-line="84" selection-end-column="34" />
               <folding />
             </state>
           </provider>
@@ -155,7 +143,7 @@
         <entry file="file://$PROJECT_DIR$/src/mjp/IPlayer.ts">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="215">
-              <caret line="132" column="29" lean-forward="true" selection-start-line="132" selection-start-column="29" selection-end-line="132" selection-end-column="29" />
+              <caret line="132" column="29" lean-forward="false" selection-start-line="132" selection-start-column="29" selection-end-line="132" selection-end-column="29" />
               <folding />
             </state>
           </provider>
@@ -274,7 +262,6 @@
         <option value="$PROJECT_DIR$/src/Main.ts" />
         <option value="$PROJECT_DIR$/resource/default.res.json" />
         <option value="$PROJECT_DIR$/src/mjp/SoundManager.ts" />
-        <option value="$PROJECT_DIR$/src/mjp/Anim.ts" />
         <option value="$PROJECT_DIR$/src/mjp/PlayerUp.ts" />
         <option value="$PROJECT_DIR$/src/mjp/MethodUtil.ts" />
         <option value="$PROJECT_DIR$/src/mjp/MjEvent.ts" />
@@ -291,11 +278,12 @@
         <option value="$PROJECT_DIR$/src/mjp/IShowMc.ts" />
         <option value="$PROJECT_DIR$/src/mjp/IShowMcForHero.ts" />
         <option value="$PROJECT_DIR$/src/mjp/Opt.ts" />
-        <option value="$PROJECT_DIR$/src/mjp/TestInitCards.ts" />
         <option value="$PROJECT_DIR$/src/mjp/ComponentFactory.ts" />
         <option value="$PROJECT_DIR$/src/mjp/Asset.ts" />
-        <option value="$PROJECT_DIR$/src/mjp/Table.ts" />
         <option value="$PROJECT_DIR$/index.html" />
+        <option value="$PROJECT_DIR$/src/mjp/Table.ts" />
+        <option value="$PROJECT_DIR$/src/mjp/Anim.ts" />
+        <option value="$PROJECT_DIR$/src/mjp/TestInitCards.ts" />
       </list>
     </option>
   </component>
@@ -911,22 +899,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/mjp/Opt.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="337">
-          <caret line="216" column="58" lean-forward="false" selection-start-line="216" selection-start-column="58" selection-end-line="216" selection-end-column="58" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/mjp/TestInitCards.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="382">
-          <caret line="114" column="12" lean-forward="false" selection-start-line="114" selection-start-column="12" selection-end-line="114" selection-end-column="12" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/mjp/MjComponent.ts">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="229">
@@ -951,26 +923,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/mjp/Anim.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="223">
-          <caret line="52" column="15" lean-forward="false" selection-start-line="52" selection-start-column="15" selection-end-line="52" selection-end-column="15" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/mjp/Table.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="175">
-          <caret line="391" column="9" lean-forward="true" selection-start-line="391" selection-start-column="9" selection-end-line="391" selection-end-column="9" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/mjp/IPlayer.ts">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="215">
-          <caret line="132" column="29" lean-forward="true" selection-start-line="132" selection-start-column="29" selection-end-line="132" selection-end-column="29" />
+          <caret line="132" column="29" lean-forward="false" selection-start-line="132" selection-start-column="29" selection-end-line="132" selection-end-column="29" />
           <folding />
         </state>
       </provider>
@@ -978,15 +934,47 @@
     <entry file="file://$PROJECT_DIR$/index.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="240">
-          <caret line="17" column="22" lean-forward="true" selection-start-line="17" selection-start-column="22" selection-end-line="17" selection-end-column="22" />
+          <caret line="17" column="22" lean-forward="false" selection-start-line="17" selection-start-column="22" selection-end-line="17" selection-end-column="22" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/mjp/ComponentFactory.ts">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="185">
-          <caret line="85" column="33" lean-forward="true" selection-start-line="85" selection-start-column="33" selection-end-line="85" selection-end-column="33" />
+        <state relative-caret-position="165">
+          <caret line="84" column="34" lean-forward="false" selection-start-line="84" selection-start-column="34" selection-end-line="84" selection-end-column="34" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/mjp/Opt.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="337">
+          <caret line="216" column="58" lean-forward="false" selection-start-line="216" selection-start-column="58" selection-end-line="216" selection-end-column="58" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/mjp/Table.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="315">
+          <caret line="424" column="46" lean-forward="false" selection-start-line="424" selection-start-column="46" selection-end-line="424" selection-end-column="46" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/mjp/Anim.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="140">
+          <caret line="7" column="17" lean-forward="false" selection-start-line="7" selection-start-column="17" selection-end-line="7" selection-end-column="17" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/mjp/TestInitCards.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="200">
+          <caret line="116" column="0" lean-forward="true" selection-start-line="116" selection-start-column="0" selection-end-line="116" selection-end-column="0" />
           <folding />
         </state>
       </provider>

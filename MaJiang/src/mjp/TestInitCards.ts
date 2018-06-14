@@ -115,28 +115,18 @@ namespace game {
             return [cs2, null, null, null, csLast];
         }
 
-        public static testForBuGang() {
-            var cs2 = [];
-            cs2.push(new MjCard(1, 1));
-            cs2.push(new MjCard(1, 1));
-            cs2.push(new MjCard(2, 2));
-            cs2.push(new MjCard(2, 2));
-            cs2.push(new MjCard(2, 2));
-            cs2.push(new MjCard(2, 3));
-            cs2.push(new MjCard(2, 3));
-            cs2.push(new MjCard(2, 3));
-            cs2.push(new MjCard(2, 4));
-            cs2.push(new MjCard(2, 4));
-            cs2.push(new MjCard(1, 4));
-            cs2.push(new MjCard(1, 5));
+        public static testForHeroBuGang() {
+            var cs1 = [];
+            cs1.push(new MjCard(2, 2));
+            cs1.push(new MjCard(2, 2));
+            var cs4 = [];
+            cs4.push(new MjCard(2, 2));
             var csLast = [];
             csLast.push(new MjCard(3, 1));
-            csLast.push(new MjCard(1, 1));
             csLast.push(new MjCard(3, 1));
             csLast.push(new MjCard(3, 1));
-            csLast.push(new MjCard(3, 1));
-            csLast.push(new MjCard(1, 1));
-            return [cs2, null, null, null, csLast];
+            csLast.push(new MjCard(2, 2));
+            return [cs1, null, null, cs4, csLast];
         }
 
         public static testForOtherBuGang() {
@@ -283,9 +273,10 @@ namespace game {
             cs1.push(new MjCard(2, 3));
             //
 
-            let cs4=[new MjCard(2, 2)];
+            let cs4 = [new MjCard(2, 2)];
             return [cs1, null, null, cs4, null];
         }
+
         public static testForHeroMingGang() {
             var cs1 = [];
             cs1.push(new MjCard(2, 2));
@@ -293,15 +284,16 @@ namespace game {
             cs1.push(new MjCard(2, 2));
             //
 
-            let cs4=[new MjCard(2, 2)];
+            let cs4 = [new MjCard(2, 2)];
             return [cs1, null, null, cs4, null];
         }
+
         public static testForHeroPeng() {
             var cs1 = [];
             cs1.push(new MjCard(2, 2));
             cs1.push(new MjCard(2, 2));
             //
-            let cs4=[new MjCard(2, 2)];
+            let cs4 = [new MjCard(2, 2)];
             return [cs1, null, null, cs4, null];
         }
 

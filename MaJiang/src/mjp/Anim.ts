@@ -57,7 +57,7 @@ namespace game {
         private showCommonAnim(sp: Sprite): void {
             sp.scaleX = sp.scaleY = 2;
             this.addChild(sp);
-            egret.Tween.get(sp).to({scaleX: 1, scaleY: 1}, 200, Ease.sineIn).call(this.showCommonAnimBg, this, [sp])
+            egret.Tween.get(sp).to({scaleX: 1, scaleY: 1}, 200, Ease.sineOut).call(this.showCommonAnimBg, this, [sp])
 
         }
 
