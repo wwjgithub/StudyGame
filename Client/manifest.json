@@ -19,6 +19,7 @@
 		"bin-debug/ThemeAdapter.js",
 		"bin-debug/core/controller/StartCommand.js",
 		"bin-debug/core/model/HeroProxy.js",
-		"bin-debug/core/view/LoginMediator.js"
+		"bin-debug/core/view/LoginMediator.js",
+		"bin-debug/core/view/LoginView.js"
 	]
 }
